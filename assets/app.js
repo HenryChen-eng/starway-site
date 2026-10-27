@@ -503,12 +503,13 @@ function renderStarway() {
   if (grid) {
     grid.innerHTML = D().channels.map((c, i) => `
       <article class="donate-card">
-        <h3>${P(c.title)}</h3>
-        <div class="sub">${P(c.sub)}</div>
         <figure class="recipient-photo">
           <img src="${c.photo}" alt="${P(c.alt)}" loading="lazy">
         </figure>
-        <div class="recipient-line"><span>${P(c.person)}</span><span>${P(c.region)}</span></div>
+        <h3>${P(c.title)}</h3>
+        <div class="sub">${P(c.sub)}</div>
+        <p class="dc-desc">${P(c.desc)}</p>
+        <div class="dc-count">${P(c.count)}</div>
         <a class="btn btn-gold" href="donate.html?ch=${i}">${LANG.isZh() ? "前往捐赠" : "Donate"}</a>
       </article>`).join("");
   }
@@ -766,20 +767,23 @@ function renderMinors() {
 }
 
 function renderDonate() {
-  /* 捐赠详情（donate.html） */
+  /* 捐赠列表页（donate.html?ch=0 被捐赠者直捐 / ch=1 公益机构直捐） */
   const dWrap = document.getElementById("donateDetail");
-  if (dWrap) {
-    const idx = Math.max(0, Math.min(D().channels.length - 1, parseInt(new URLSearchParams(location.search).get("ch"), 10) || 0));
-    const c = D().channels[idx];
-    document.title = (LANG.isZh() ? "前往捐赠 · " : "Donate · ") + P(c.sub) + " · 星轨";
-    dWrap.innerHTML = `
-      <div class="dd-hero">
-        <figure class="dd-photo"><img src="${c.photo}" alt="${P(c.alt)}"></figure>
+  if (!dWrap) return;
+
+  const idx = Math.max(0, Math.min(D().channels.length - 1, parseInt(new URLSearchParams(location.search).get("ch"), 10) || 0));
+  const mod = D().channels[idx];
+  const list = idx === 0 ? D().recipients : D().ngos;
+  document.title = (LANG.isZh() ? "前往捐赠 · " : "Donate · ") + P(mod.title) + " · 星轨";
+
+  const unit = (c, i) => `
+    <article class="dd-unit" id="unit-${i}">
+      <div class="dd-head">
+        ${c.photo ? `<figure class="dd-photo"><img src="${c.photo}" alt="${P(c.alt || c.title)}" loading="lazy"></figure>` : ""}
         <div class="dd-info">
-          <div class="dd-eyebrow">${LANG.isZh() ? "受助人信息" : "Beneficiary"}</div>
-          <h1>${P(c.sub)}</h1>
+          <h2>${P(c.title)}</h2>
           <div class="dd-meta">
-            <span><b>${LANG.isZh() ? "受助人" : "Who"}</b>${P(c.person)}</span>
+            ${c.person ? `<span><b>${LANG.isZh() ? "受助人" : "Who"}</b>${P(c.person)}</span>` : ""}
             <span><b>${LANG.isZh() ? "所在地" : "Where"}</b>${P(c.region)}</span>
           </div>
           <div class="dd-story">${c.story.map((s) => `<p>${P(s)}</p>`).join("")}</div>
@@ -790,27 +794,45 @@ function renderDonate() {
         </div>
       </div>
       <div class="dd-body">
-        <div class="dd-updates">
-          <h2>${LANG.isZh() ? "项目进展" : "Updates"}</h2>
-          ${c.updates.map((u) => `
-            <div class="dd-update">
-              <span class="d">${u.d}</span>
-              <span class="t">${P(u.t)}</span>
-            </div>`).join("")}
+        <div class="dd-main">
+          <div class="dd-plan">
+            <h3>${LANG.isZh() ? "项目计划" : "Project plan"}</h3>
+            <ol>${c.plan.map((s) => `<li>${P(s)}</li>`).join("")}</ol>
+          </div>
+          <div class="dd-updates">
+            <h3>${LANG.isZh() ? "项目进展" : "Updates"}</h3>
+            ${c.updates.map((u) => `
+              <div class="dd-update">
+                <span class="d">${u.d}</span>
+                <span class="t">${P(u.t)}</span>
+              </div>`).join("")}
+          </div>
         </div>
         <aside class="dd-pay">
-          <h2>${LANG.isZh() ? "扫码捐赠" : "Scan to donate"}</h2>
+          <h3>${LANG.isZh() ? "扫码捐赠" : "Scan to donate"}</h3>
           <div class="qr-box big"><canvas data-qr="${c.seed}"></canvas></div>
           <div class="qr-note">${P(c.note)}</div>
-          <ul class="dd-assure">
-            <li>${LANG.isZh() ? "款项直接进入受助人 / 机构官方账户，平台不经手资金" : "Funds go directly to the recipient / NGO account; the platform never touches money"}</li>
-            <li>${LANG.isZh() ? "执行票据按月公示于星轨计划页" : "Receipts published monthly on the Starway Project page"}</li>
-          </ul>
-          <a class="dd-back" href="starway.html#donate">← ${LANG.isZh() ? "返回星轨计划" : "Back to Starway Project"}</a>
         </aside>
-      </div>`;
-    dWrap.querySelectorAll("canvas[data-qr]").forEach((cv) => drawQR(cv, parseInt(cv.dataset.qr, 10)));
-  }
+      </div>
+    </article>`;
+
+  dWrap.innerHTML = `
+    <div class="dd-module-head">
+      <figure class="dd-photo"><img src="${mod.photo}" alt="${P(mod.alt)}" loading="lazy"></figure>
+      <div>
+        <div class="dd-eyebrow">${LANG.isZh() ? "前往捐赠" : "Donate now"}</div>
+        <h1>${P(mod.title)}</h1>
+        <p class="dd-mod-desc">${P(mod.desc)}</p>
+        <div class="dc-count">${P(mod.count)}</div>
+        <a class="dd-back" href="starway.html#donate">← ${LANG.isZh() ? "返回星轨计划" : "Back to Starway Project"}</a>
+      </div>
+    </div>
+    ${list.map(unit).join("")}
+    <ul class="dd-assure">
+      <li>${LANG.isZh() ? "款项直接进入受助人 / 机构官方账户，平台不经手资金" : "Funds go directly to the recipient / NGO account; the platform never touches money"}</li>
+      <li>${LANG.isZh() ? "执行票据按月公示于星轨计划页" : "Receipts published monthly on the Starway Project page"}</li>
+    </ul>`;
+  dWrap.querySelectorAll("canvas[data-qr]").forEach((cv) => drawQR(cv, parseInt(cv.dataset.qr, 10)));
 }
 
 function renderPage() {

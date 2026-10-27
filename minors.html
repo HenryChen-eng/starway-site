@@ -125,14 +125,13 @@
 <script src="assets/app.js"></script>
 <script src="assets/a11y.js"></script>
 <script>
-  /* 强制实名门：涉及未成年人内容，需登录并完成实名认证后查看 */
+  /* 实名信息为未成年人的账号登录后自动进入本模式，无需额外验证；
+     除捐赠功能外，其它功能不受限制 */
   document.addEventListener("DOMContentLoaded", () => {
-    if (window.AUTH && !AUTH.isVerified()) {
-      AUTH.gate({
-        minor: true,
-        reason: "本页涉及未成年人内容与家长管理功能。根据未成年人保护相关规定，需先完成实名注册并登录后查看。",
-        reasonEn: "This page contains content and parent controls for minors. Real-name registration and sign-in are required first."
-      });
+    if (!window.AUTH || !AUTH.isVerified()) return;
+    const badge = document.querySelector(".minor-badge span:last-child");
+    if (badge && AUTH.isMinor() && AUTH.name()) {
+      badge.textContent = (LANG.isZh() ? "未成年人模式已开启 · 欢迎，" : "Minor mode is on · Welcome, ") + AUTH.name();
     }
   });
 </script>

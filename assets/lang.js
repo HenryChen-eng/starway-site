@@ -523,8 +523,31 @@
 
     channels: [
       {
+        id: "recipients",
+        title: { zh: "被捐赠者直捐", en: "Direct to recipients" },
+        sub: { zh: "真实受助人 · 信息与项目计划全部公开", en: "Real beneficiaries · every story and plan in the open" },
+        desc: { zh: "善款直达受助人本人账户，平台不经手资金。每位受助人的情况、筹款进度与项目计划全部公示，随时可查。", en: "Funds go straight to each recipient's own account — the platform never touches money. Every story, progress bar and project plan is public." },
+        photo: "assets/img/recipient-xiaoyu.png",
+        alt: { zh: "受助人小雨的照片：山区小学女孩在书桌前微笑", en: "Photo of Xiaoyu, a mountain-village schoolgirl smiling at her desk" },
+        count: { zh: "2 位在捐受助人 · 2 份项目计划", en: "2 recipients · 2 project plans" },
+        seed: 3
+      },
+      {
+        id: "ngo",
+        title: { zh: "公益机构直捐", en: "Direct to partner NGOs" },
+        sub: { zh: "合作机构官方公募通道 · 支持开具票据", en: "Partner NGOs' official channels · receipts available" },
+        desc: { zh: "通过合作机构的官方公募通道捐赠，可开具捐赠票据；执行报告与审计结果按季度公示。", en: "Give through the NGOs' official public-fundraising channels; receipts available, with quarterly execution and audit reports." },
+        photo: "assets/img/recipient-ngo.png",
+        alt: { zh: "合作机构项目的照片：东非教室里举手的孩子", en: "Photo from the partner programme: children raising hands in an East African classroom" },
+        count: { zh: "3 个在捐项目 · 季度公示", en: "3 programmes · quarterly reports" },
+        seed: 11
+      }
+    ],
+
+    recipients: [
+      {
         id: "xiaoyu",
-        title: { zh: "微信收款码", en: "WeChat Pay" },
+        title: { zh: "小雨的学习桌计划", en: "Xiaoyu's study desk" },
         sub: { zh: "受助人 · 小雨的学习桌计划", en: "Beneficiary · Xiaoyu's study desk" },
         photo: "assets/img/recipient-xiaoyu.png",
         alt: { zh: "受助人小雨的照片：山区小学女孩在书桌前微笑", en: "Photo of Xiaoyu, a mountain-village schoolgirl smiling at her desk" },
@@ -533,6 +556,11 @@
         story: [
           { zh: "小雨的家在半山腰上，每天往返学校要走两个小时山路。她的书桌是一张掉漆的旧饭桌，晚上写作业只能凑着家里唯一一盏昏黄的灯。", en: "Xiaoyu lives halfway up a mountain, two hours' walk from school. Her \"desk\" is an old painted-peeling dinner table, and at night she studies by the house's only dim bulb." },
           { zh: "学习桌计划为她这样的 120 个孩子配备可升降书桌、护眼台灯与整套文具，并请驻村老师定期回访使用情况。", en: "The study-desk project provides 120 children like her with height-adjustable desks, eye-care lamps and full stationery kits, with teachers following up regularly." }
+        ],
+        plan: [
+          { zh: "为怒江州 4 所山区小学的 120 名学生各配一套可升降书桌与护眼台灯", en: "Provide 120 students in 4 rural Nujiang schools with a desk and eye-care lamp each" },
+          { zh: "11 月前完成全部配送，驻村老师逐户安装并拍照回访", en: "All sets delivered before November, installed door-to-door with photo follow-ups" },
+          { zh: "2027 年春季学期回访使用情况，损坏配件免费补发", en: "Usage review in the spring 2027 term; broken parts replaced free of charge" }
         ],
         raised: "¥18,600", goal: "¥32,000", pct: 58,
         updates: [
@@ -545,7 +573,7 @@
       },
       {
         id: "chen",
-        title: { zh: "支付宝收款码", en: "Alipay" },
+        title: { zh: "陈奶奶医疗互助计划", en: "Grandma Chen's medical fund" },
         sub: { zh: "受助人 · 陈奶奶医疗互助计划", en: "Beneficiary · Grandma Chen's medical fund" },
         photo: "assets/img/recipient-chen.png",
         alt: { zh: "受助人陈奶奶的照片：农村院子里微笑的老人", en: "Photo of Grandma Chen smiling in her village courtyard" },
@@ -555,6 +583,11 @@
           { zh: "陈奶奶的老伴早年去世，儿女在外务工。今年她在县医院查出需要二次手术，术后每月还要复查与长期服药。", en: "Grandma Chen lost her husband years ago; her children work far from home. This year the county hospital confirmed she needs a second operation, plus monthly check-ups and long-term medication." },
           { zh: "医疗互助计划承担她手术自付部分与 12 个月的复查费用，由村委会与志愿者按月公示票据。", en: "The medical fund covers her out-of-pocket surgery costs and 12 months of follow-ups, with receipts published monthly by the village committee and volunteers." }
         ],
+        plan: [
+          { zh: "支付二次手术自付部分，预计 12 月初在县医院进行", en: "Cover the second operation's out-of-pocket costs, expected early December at the county hospital" },
+          { zh: "承担术后 12 个月复查与长期用药费用，按月凭票据结算", en: "Fund 12 months of follow-ups and medication, settled monthly against receipts" },
+          { zh: "村委会与志愿者每月公示票据，结余自动滚入下一位待助家庭", en: "Receipts published monthly; any surplus rolls over to the next family in need" }
+        ],
         raised: "¥6,800", goal: "¥15,000", pct: 45,
         updates: [
           { d: "2026.06", t: { zh: "第一次手术顺利完成，进入恢复期", en: "First operation completed successfully; recovery under way" } },
@@ -563,18 +596,25 @@
         ],
         note: { zh: "收款码占位 · 审核后替换为受助人真实收款码", en: "Placeholder · replace with the verified recipient QR code" },
         seed: 7
-      },
+      }
+    ],
+
+    ngos: [
       {
-        id: "ngo",
-        title: { zh: "公益机构直捐", en: "Direct to partner NGO" },
-        sub: { zh: "合作方 · 儿童教育与医疗专项", en: "Partner · education & medical fund" },
+        id: "kenya",
+        title: { zh: "流动学校与净水计划", en: "Mobile schools & clean water" },
+        sub: { zh: "合作方 · 儿童教育与医疗专项基金", en: "Partner · children's education & medical fund" },
         photo: "assets/img/recipient-ngo.png",
         alt: { zh: "合作机构项目的照片：东非教室里举手的孩子", en: "Photo from the partner programme: children raising hands in an East African classroom" },
-        region: { zh: "肯尼亚 · 图尔卡纳郡 · 流动学校", en: "Kenya · Turkana County · mobile schools" },
-        person: { zh: "合作机构 · 儿童教育与医疗专项基金", en: "Partner NGO · children's education & medical fund" },
+        region: { zh: "肯尼亚 · 图尔卡纳郡", en: "Turkana County, Kenya" },
         story: [
           { zh: "在肯尼亚图尔卡纳郡，许多孩子要走到十几公里外才有学校。合作机构运营 6 所流动学校，跟着牧民家庭的迁徙路线开课，同时提供一顿热餐与基础医疗。", en: "In Turkana County, Kenya, the nearest school is often over ten kilometres away. Our partner runs 6 mobile schools that follow pastoralist families, each also providing a hot meal and basic healthcare." },
           { zh: "你的捐赠直接进入机构官方公募通道，可开具捐赠票据；每季度公示项目执行报告与审计结果。", en: "Donations go straight into the NGO's official public-fundraising channel; receipts are available, and quarterly execution and audit reports are published." }
+        ],
+        plan: [
+          { zh: "2026 年底前新增 2 所流动学校，覆盖牧民迁徙北线", en: "Two more mobile schools by end-2026, covering the northern migration route" },
+          { zh: "为全部 6 所学校接入净水与储水罐，培训 8 名社区维护员", en: "Clean water and storage tanks for all 6 schools; 8 community caretakers trained" },
+          { zh: "每季度公示执行报告与独立审计结果", en: "Quarterly execution reports and independent audit results published" }
         ],
         raised: "$6,200", goal: "$12,000", pct: 52,
         updates: [
@@ -584,6 +624,46 @@
         ],
         note: { zh: "机构官方公募通道 · 支持开具捐赠票据", en: "Official public-fundraising channel · receipts available" },
         seed: 11
+      },
+      {
+        id: "syria",
+        title: { zh: "儿童心理支持课程", en: "Child psychosocial support" },
+        sub: { zh: "合作方 · 叙利亚临时学校", en: "Partner · temporary schools, Syria" },
+        region: { zh: "叙利亚 · 阿勒坡周边临时学校", en: "Temporary schools around Aleppo, Syria" },
+        story: [
+          { zh: "在叙利亚的临时学校里，许多孩子经历过失去与迁徙。当地合作机构用绘画、音乐与团体游戏治疗，帮助他们重新建立安全感，并培训本地教师持续开展课程。", en: "In Syria's temporary schools, many children have lost homes and moved again and again. The local partner uses art, music and group play therapy to rebuild a sense of safety, and trains local teachers to keep the sessions going." }
+        ],
+        plan: [
+          { zh: "为 2 所临时学校的 180 名儿童提供全年每周一次团体课程", en: "Weekly group sessions all year for 180 children in 2 temporary schools" },
+          { zh: "培训 12 名本地教师取得心理支持课程资质", en: "12 local teachers certified in psychosocial support" }
+        ],
+        raised: "$4,800", goal: "$10,000", pct: 48,
+        updates: [
+          { d: "2026.07", t: { zh: "课程覆盖 2 所学校，本地教师培训开班", en: "Sessions running in 2 schools; local teacher training started" } },
+          { d: "2026.10", t: { zh: "秋季学期课程全部排定，教材送达", en: "Autumn term scheduled; materials delivered" } }
+        ],
+        note: { zh: "机构官方公募通道 · 支持开具捐赠票据", en: "Official public-fundraising channel · receipts available" },
+        seed: 13
+      },
+      {
+        id: "nepal",
+        title: { zh: "震后教室重建", en: "Classroom rebuilding" },
+        sub: { zh: "合作方 · 尼泊尔山区教育重建项目", en: "Partner · post-earthquake education, Nepal" },
+        region: { zh: "尼泊尔 · 辛杜帕尔乔克山区", en: "Sindhupalchok highlands, Nepal" },
+        story: [
+          { zh: "地震之后，山区的孩子们在铁皮棚里上课已经两年。重建项目按抗震标准新建教室，配齐课桌、教材与冬季取暖设备，让孩子在冬天也能坐进暖和的教室。", en: "Two years after the earthquake, children in these highland villages still study in tin sheds. The programme builds earthquake-resistant classrooms, fully equipped with desks, textbooks and winter heating." }
+        ],
+        plan: [
+          { zh: "按抗震标准新建 2 间教室，2027 年 3 月前交付使用", en: "Two earthquake-resistant classrooms delivered by March 2027" },
+          { zh: "配齐课桌椅、教材与冬季取暖炉具", en: "Full furniture, textbooks and winter heating stoves included" }
+        ],
+        raised: "$21,000", goal: "$36,000", pct: 58,
+        updates: [
+          { d: "2026.08", t: { zh: "地基完工，主体结构开始施工", en: "Foundations done; main structure under way" } },
+          { d: "2026.10", t: { zh: "主体封顶，进入内部装修阶段", en: "Structure topped out; interior fitting started" } }
+        ],
+        note: { zh: "机构官方公募通道 · 支持开具捐赠票据", en: "Official public-fundraising channel · receipts available" },
+        seed: 17
       }
     ],
 
