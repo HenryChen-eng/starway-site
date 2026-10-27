@@ -356,6 +356,7 @@
     </div>
     <div class="call-actions">
       <a class="btn-blue" href="peace.html#declaration" data-zh="读《宣言》全文 →" data-en="Read the full Declaration →">读《宣言》全文 →</a>
+      <button class="btn-blue ghost" id="shareBtn" type="button" data-zh="复制链接 · 传播和平 →" data-en="Copy link · spread peace →">复制链接 · 传播和平 →</button>
       <a class="btn-blue ghost" href="starway.html#donate" data-zh="去星轨计划看看 →" data-en="Visit the Starway Project →">去星轨计划看看 →</a>
     </div>
   </div>
@@ -401,5 +402,35 @@
 <script src="assets/lang.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/a11y.js"></script>
+<script>
+  /* 一键复制本页链接，传播《世界人权宣言》 */
+  (function () {
+    function bind() {
+      const btn = document.getElementById("shareBtn");
+      if (!btn || btn.dataset.bound) return;
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", async () => {
+        const zh = window.LANG && LANG.isZh();
+        const link = location.href.split("#")[0];
+        const msg = () => toast(zh ? "链接已复制 · 把和平传递给下一个人 ✦" : "Link copied · pass the peace on ✦", "#9FD0F0", "#0A2436");
+        /* 剪贴板 API，800ms 内无响应即回退 execCommand */
+        try {
+          await Promise.race([
+            navigator.clipboard.writeText(link),
+            new Promise((_, rej) => setTimeout(() => rej("slow"), 800))
+          ]);
+        } catch (e) {
+          const ta = document.createElement("textarea");
+          ta.value = link; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          document.execCommand("copy"); ta.remove();
+        }
+        msg();
+      });
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bind);
+    else bind();
+  })();
+</script>
 </body>
 </html>

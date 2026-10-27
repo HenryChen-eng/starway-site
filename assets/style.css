@@ -1949,3 +1949,6 @@ html.a11y-motion .ab-tag { animation: none; }
 }
 .admin-link:hover { color: #E8C268; }
 .nav-cta.verified.admin { background: linear-gradient(135deg, #7DD9A6, #4CAF7D); color: #0B2B1B; }
+
+/* 首页和平区 · 复制链接按钮（button 元素对齐 a 样式） */
+.call-actions button.btn-blue { font-family: inherit; cursor: pointer; }
