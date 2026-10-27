@@ -743,7 +743,7 @@ body.peace-theme { background: #0D0A07; }
 
 /* 捐款渠道 */
 .donate { background: #0F0C06; border-block: 1px solid rgba(232, 194, 104, 0.12); }
-.donate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.donate-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin: 0 auto; gap: 24px; align-items: start; }
 .donate-card {
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   padding: 34px 26px 28px;
