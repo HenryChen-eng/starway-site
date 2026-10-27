@@ -595,6 +595,91 @@
       { m: "2026.06", t: { zh: "医疗互助计划 · 陈奶奶术后复查费用支持", en: "Medical fund · Grandma Chen's post-surgery care" }, a: "+ ¥6,800" }
     ],
 
+    amber: {
+      kicker: { zh: "AMBER ALERT · 团圆行动", en: "AMBER ALERT · REUNION" },
+      title: { zh: "安珀警报 · 寻亲启事", en: "Amber Alerts & Missing Children" },
+      lead: {
+        zh: "每一条寻亲启事背后，都是一个没有睡整觉的家庭。星轨计划与团圆公益网络同步发布失踪儿童信息：紧急警报第一时间置顶，线索直达警方与家属。多一个人看见，就多一分回家的可能。",
+        en: "Behind every notice is a family that has not slept a whole night. The Starway Project publishes missing-child notices together with the Reunion network: urgent alerts stay on top, and tips go straight to police and families. Every extra pair of eyes is one more chance of coming home."
+      },
+      banner: {
+        tag: { zh: "生效警报", en: "ACTIVE ALERT" },
+        title: { zh: "安珀警报 · 1 条生效中", en: "1 amber alert active" },
+        cta: { zh: "看到他请立即拨打 110", en: "If you see him, call 110 immediately" },
+        updated: { zh: "更新于 26 分钟前", en: "Updated 26 minutes ago" }
+      },
+      status: {
+        amber: { zh: "安珀警报 · 生效中", en: "AMBER · ACTIVE" },
+        seeking: { zh: "寻亲进行中", en: "SEARCH ONGOING" },
+        found: { zh: "已团圆", en: "REUNITED" }
+      },
+      lab: {
+        age: { zh: "年龄", en: "Age" },
+        lost: { zh: "失踪时间", en: "Last seen" },
+        place: { zh: "失踪地点", en: "Place" },
+        look: { zh: "体貌特征", en: "Description" },
+        wear: { zh: "失踪时穿着", en: "Clothing" },
+        detail: { zh: "查看详情", en: "Details" },
+        tip: { zh: "提供线索", en: "Submit a tip" },
+        call: { zh: "报警电话", en: "Hotline" },
+        close: { zh: "关闭", en: "Close" },
+        tipTitle: { zh: "提供线索", en: "Submit a tip" },
+        tipNote: { zh: "线索将同步给办案民警与家属。紧急情况请直接拨打 110。", en: "Tips go to the police and the family. In an emergency, call 110." },
+        tipPh: { zh: "时间、地点、你看到的情况……越具体越好", en: "Time, place, what you saw… the more specific the better" },
+        tipSend: { zh: "提交线索", en: "Send tip" },
+        tipDone: { zh: "线索已记录，感谢你（演示环境，未真实发送）", en: "Tip recorded — thank you (demo only, not really sent)" },
+        alias: { zh: "为保护未成年人，姓名均为化名，照片为示意图", en: "Names are aliases and photos are placeholders, to protect the children" },
+        partner: { zh: "信息同步：公安部儿童失踪信息紧急发布平台 · 团圆系统（演示接入）", en: "Synced with the police emergency missing-children platform & Reunion system (demo)" }
+      },
+      cases: [
+        {
+          id: "amber-2026-0421",
+          level: "amber",
+          photo: "assets/img/amber-boy.png",
+          name: { zh: "小航（化名）", en: "Xiaohang (alias)" },
+          age: { zh: "7 岁 · 男", en: "7 · boy" },
+          lost: { zh: "2026.10.27 · 16:40", en: "27 Oct 2026 · 16:40" },
+          place: { zh: "云南 · 怒江州六库镇 · 江边小学放学路上", en: "Liuku, Nujiang, Yunnan · on the way home from riverside primary school" },
+          look: { zh: "身高约 122cm，短发，左眉角有一颗小痣，说话带乡音，性格怕生", en: "About 122 cm, short hair, a small mole by the left eyebrow, local accent, shy with strangers" },
+          wear: { zh: "白色校服外套、红领巾、蓝色运动鞋", en: "White school jacket, red scarf, blue trainers" },
+          brief: {
+            zh: "10 月 27 日放学后未归家，监控显示沿江西路向北独行。怀疑被带离，警方已发布安珀警报。",
+            en: "Did not come home after school on 27 Oct; cameras show him walking north along Jiangxi Road alone. Possible abduction — police issued an amber alert."
+          }
+        },
+        {
+          id: "seek-2026-0308",
+          level: "seeking",
+          photo: "assets/img/find-girl.png",
+          name: { zh: "圆圆（化名）", en: "Yuanyuan (alias)" },
+          age: { zh: "5 岁 · 女", en: "5 · girl" },
+          lost: { zh: "2026.03.08 · 傍晚", en: "8 Mar 2026 · evening" },
+          place: { zh: "贵州 · 毕节市某乡镇集市", en: "A market town, Bijie, Guizhou" },
+          look: { zh: "身高约 105cm，双马尾，扎黄色发绳，右耳后有浅色胎记", en: "About 105 cm, twin pigtails with yellow ribbons, a light birthmark behind the right ear" },
+          wear: { zh: "粉色羽绒服、红色小靴子", en: "Pink padded coat, little red boots" },
+          brief: {
+            zh: "随家人赶集时走失，疑似被拐。三年来警方与志愿者持续比对线索，从未停止。",
+            en: "Went missing at a market, suspected abduction. For three years police and volunteers have kept matching tips without pause."
+          }
+        },
+        {
+          id: "found-2026-0216",
+          level: "found",
+          photo: "assets/img/found-girl.png",
+          name: { zh: "小满（化名）", en: "Xiaoman (alias)" },
+          age: { zh: "12 岁 · 女", en: "12 · girl" },
+          lost: { zh: "2024.11 — 2026.02.16 团圆", en: "Nov 2024 — reunited 16 Feb 2026" },
+          place: { zh: "河南 → 广东", en: "Henan → Guangdong" },
+          look: { zh: "—", en: "—" },
+          wear: { zh: "—", en: "—" },
+          brief: {
+            zh: "失踪 15 个月，一名星轨玩家在游戏社区看到寻亲启事后提供线索，警方跨省解救，除夕前一周回到母亲身边。",
+            en: "Missing for 15 months. A Starway player recognised the notice in our game community and tipped the police; she was rescued across provinces and home one week before Lunar New Year's Eve."
+          }
+        }
+      ]
+    },
+
     minorGames: [
       { name: { zh: "星星拼图", en: "Star Puzzle" }, age: { zh: "益智 · 3 岁以上", en: "Puzzle · 3+" }, cls: "c1", icon: "puzzle" },
       { name: { zh: "音乐小屋", en: "Music House" }, age: { zh: "节奏 · 4 岁以上", en: "Rhythm · 4+" }, cls: "c2", icon: "note" },

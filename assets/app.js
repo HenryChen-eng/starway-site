@@ -522,6 +522,115 @@ function renderStarway() {
         <span class="a">${r.a}</span>
       </div>`).join("");
   }
+
+  renderAmber();
+}
+
+/* ---------- 安珀警报 · 寻亲启事 ---------- */
+function renderAmber() {
+  const A = D().amber;
+  if (!A) return;
+  const banner = document.getElementById("amberBanner");
+  const grid = document.getElementById("amberGrid");
+  const active = A.cases.find((c) => c.level === "amber");
+
+  if (banner && active) {
+    banner.innerHTML = `
+      <span class="ab-pulse" aria-hidden="true"></span>
+      <div class="ab-tag">${P(A.banner.tag)}</div>
+      <div class="ab-main">
+        <b>${P(A.banner.title)}</b>
+        <span>${P(active.name)} · ${P(active.age)} · ${P(active.place)}</span>
+      </div>
+      <a class="ab-call" href="tel:110">${P(A.banner.cta)}</a>`;
+  }
+
+  if (grid) {
+    grid.innerHTML = A.cases.map((c, i) => `
+      <article class="amber-card ${c.level}">
+        <figure class="ac-photo"><img src="${c.photo}" alt="${P(c.name)}" loading="lazy"></figure>
+        <div class="ac-body">
+          <span class="ac-status">${P(A.status[c.level])}</span>
+          <h3>${P(c.name)}</h3>
+          <p class="ac-brief">${P(c.brief)}</p>
+          <div class="ac-meta">
+            <span>${P(A.lab.age)}：${P(c.age)}</span>
+            <span>${P(A.lab.lost)}：${P(c.lost)}</span>
+          </div>
+        </div>
+        <div class="ac-actions">
+          <button class="ac-btn ghost" type="button" data-am-open="${i}">${P(A.lab.detail)}</button>
+          <a class="ac-btn hot" href="tel:110">${P(A.lab.call)} 110</a>
+        </div>
+      </article>`).join("");
+    grid.querySelectorAll("[data-am-open]").forEach((b) =>
+      b.addEventListener("click", () => openAmber(+b.dataset.amOpen)));
+  }
+}
+
+function openAmber(i) {
+  const A = D().amber;
+  const c = A.cases[i];
+  if (!c) return;
+  const modal = document.getElementById("amberModal");
+  const body = document.getElementById("amBody");
+  if (!modal || !body) return;
+
+  const row = (k, v) => v && v.zh && v.zh !== "—"
+    ? `<div class="am-row"><b>${P(k)}</b><span>${P(v)}</span></div>` : "";
+
+  body.innerHTML = `
+    <div class="am-head ${c.level}">
+      <figure class="am-photo"><img src="${c.photo}" alt="${P(c.name)}"></figure>
+      <div>
+        <span class="ac-status">${P(A.status[c.level])}</span>
+        <h3>${P(c.name)}</h3>
+        <p class="am-brief">${P(c.brief)}</p>
+      </div>
+    </div>
+    <div class="am-facts">
+      ${row(A.lab.age, c.age)}
+      ${row(A.lab.lost, c.lost)}
+      ${row(A.lab.place, c.place)}
+      ${row(A.lab.look, c.look)}
+      ${row(A.lab.wear, c.wear)}
+    </div>
+    <div class="am-tip">
+      <b>${P(A.lab.tipTitle)}</b>
+      <p>${P(A.lab.tipNote)}</p>
+      <textarea id="amTipText" rows="3" placeholder="${P(A.lab.tipPh)}"></textarea>
+      <div class="am-tip-actions">
+        <a class="ac-btn hot" href="tel:110">${P(A.lab.call)} 110</a>
+        <button class="ac-btn gold" type="button" id="amTipSend">${P(A.lab.tipSend)}</button>
+      </div>
+    </div>
+    <p class="am-note">${P(A.lab.alias)}</p>`;
+
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  body.querySelector("#amTipSend").addEventListener("click", () => {
+    toast(P(A.lab.tipDone), "#7DD9A6", "#0B2B1B");
+    body.querySelector("#amTipText").value = "";
+  });
+}
+
+function initAmberModal() {
+  const modal = document.getElementById("amberModal");
+  if (!modal || modal.dataset.bound) return;
+  modal.dataset.bound = "1";
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-am-close]")) {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+    }
+  });
 }
 
 function renderPeace() {
@@ -989,6 +1098,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
   initMinors();
   initRegister();
+  initAmberModal();
   initMusic();
 
   document.querySelectorAll(".lang-switch button, .pw-lang button").forEach((b) => {
