@@ -767,7 +767,7 @@ function renderMinors() {
 }
 
 function renderDonate() {
-  /* 捐赠列表页（donate.html?ch=0 被捐赠者直捐 / ch=1 公益机构直捐） */
+  /* 捐赠列表页（donate.html?ch=0 受助者直捐 / ch=1 公益机构直捐） */
   const dWrap = document.getElementById("donateDetail");
   if (!dWrap) return;
 
@@ -779,7 +779,7 @@ function renderDonate() {
   const unit = (c, i) => `
     <article class="dd-unit" id="unit-${i}">
       <div class="dd-head">
-        ${c.photo ? `<figure class="dd-photo"><img src="${c.photo}" alt="${P(c.alt || c.title)}" loading="lazy"></figure>` : ""}
+        ${c.photo ? `<figure class="dd-photo"><span class="dd-num">${String(i + 1).padStart(2, "0")}</span><img src="${c.photo}" alt="${P(c.alt || c.title)}" loading="lazy"></figure>` : ""}
         <div class="dd-info">
           <h2>${P(c.title)}</h2>
           <div class="dd-meta">
@@ -818,14 +818,14 @@ function renderDonate() {
 
   dWrap.innerHTML = `
     <div class="dd-module-head">
-      <figure class="dd-photo"><img src="${mod.photo}" alt="${P(mod.alt)}" loading="lazy"></figure>
-      <div>
-        <div class="dd-eyebrow">${LANG.isZh() ? "前往捐赠" : "Donate now"}</div>
-        <h1>${P(mod.title)}</h1>
-        <p class="dd-mod-desc">${P(mod.desc)}</p>
-        <div class="dc-count">${P(mod.count)}</div>
-        <a class="dd-back" href="starway.html#donate">← ${LANG.isZh() ? "返回星轨计划" : "Back to Starway Project"}</a>
-      </div>
+      <div class="dd-eyebrow">${LANG.isZh() ? "前往捐赠" : "Donate now"}</div>
+      <h1>${P(mod.title)}</h1>
+      <p class="dd-mod-desc">${P(mod.desc)}</p>
+      <div class="dc-count">${P(mod.count)}</div>
+      <nav class="dd-nav">
+        ${list.map((c, i) => `<a href="#unit-${i}">${String(i + 1).padStart(2, "0")} · ${P(c.title)}</a>`).join("")}
+        <a class="dd-back" href="starway.html#donate">← ${LANG.isZh() ? "返回星轨计划" : "Back"}</a>
+      </nav>
     </div>
     ${list.map(unit).join("")}
     <ul class="dd-assure">

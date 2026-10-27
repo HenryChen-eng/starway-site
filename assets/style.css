@@ -1890,23 +1890,40 @@ html.a11y-motion .ab-tag { animation: none; }
 .donate-card .btn { margin-top: auto; }
 
 .dd-module-head {
-  display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: center;
+  text-align: center; max-width: 720px; margin: 0 auto 28px;
+  padding: 44px 40px;
   background: #141004; border: 1px solid rgba(232, 194, 104, 0.2);
-  border-radius: var(--radius); padding: 34px; margin-bottom: 40px;
+  border-radius: var(--radius);
 }
-.dd-module-head .dd-photo img { aspect-ratio: 16 / 10; }
 .dd-module-head h1 { font-size: 30px; line-height: 1.35; margin-bottom: 14px; }
-.dd-mod-desc { font-size: 14.5px; line-height: 1.9; color: #B9B29B; margin-bottom: 14px; }
-.dd-module-head .dd-back { margin-top: 16px; }
+.dd-mod-desc { font-size: 14.5px; line-height: 1.9; color: #B9B29B; margin-bottom: 16px; }
+.dd-nav {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 10px 22px; margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid rgba(232,194,104,.14);
+}
+.dd-nav a { font-size: 13px; color: #C9B98D; transition: color .2s; }
+.dd-nav a:hover { color: #E8C268; }
+.dd-nav .dd-back { color: #8A7A55; }
 
 .dd-unit {
   background: #0D0A02; border: 1px solid rgba(232, 194, 104, 0.16);
   border-radius: var(--radius-l); padding: 34px; margin-bottom: 34px;
+  scroll-margin-top: 90px;
 }
-.dd-unit .dd-head { display: grid; grid-template-columns: 300px 1fr; gap: 34px; align-items: start; margin-bottom: 30px; }
+.dd-unit .dd-head { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; margin-bottom: 28px; }
+.dd-unit .dd-photo { position: relative; }
+.dd-num {
+  position: absolute; left: 12px; top: 12px; z-index: 1;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  color: #1A1408; background: rgba(232,194,104,.92);
+  border-radius: 8px; padding: 3px 9px;
+}
 .dd-unit .dd-info h2 { font-size: 23px; margin-bottom: 14px; }
-.dd-unit .dd-body { grid-template-columns: 1fr 300px; }
-.dd-unit .dd-pay { position: static; padding: 24px; }
+.dd-unit .dd-body { grid-template-columns: 1fr 280px; gap: 28px; }
+.dd-unit .dd-pay { position: static; padding: 22px; }
+.dd-unit .dd-pay h3 { font-size: 16px; margin-bottom: 14px; }
+.dd-unit .qr-box.big { width: 180px; height: 180px; }
 .dd-plan { margin-bottom: 28px; }
 .dd-plan h3, .dd-unit .dd-updates h3 { font-size: 17px; margin-bottom: 14px; }
 .dd-plan ol { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
@@ -1914,8 +1931,21 @@ html.a11y-motion .ab-tag { animation: none; }
 .dd-plan li::marker { color: #E8C268; font-weight: 600; }
 
 @media (max-width: 960px) {
-  .dd-module-head { grid-template-columns: 1fr; }
+  .dd-module-head { padding: 28px 22px; }
   .dd-unit { padding: 22px; }
   .dd-unit .dd-head { grid-template-columns: 1fr; }
   .dd-unit .dd-body { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   管理员入口
+   ========================================================= */
+.admin-entry { text-align: center; padding: 10px 0 48px; }
+.admin-link {
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; color: #6E6244; letter-spacing: 0.05em;
+  border-bottom: 1px dashed rgba(232,194,104,.3); padding-bottom: 2px;
+  transition: color .2s;
+}
+.admin-link:hover { color: #E8C268; }
+.nav-cta.verified.admin { background: linear-gradient(135deg, #7DD9A6, #4CAF7D); color: #0B2B1B; }

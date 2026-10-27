@@ -26,9 +26,10 @@
     paintCta();
   }
 
-  /* 是否已登录且完成实名认证 */
+  /* 是否已登录且完成实名认证（管理员视为永久已认证） */
+  function isAdmin() { const a = get(); return !!(a && a.admin); }
   function isVerified() { return !!get(); }
-  function isMinor() { const a = get(); return !!(a && a.minor); }
+  function isMinor() { const a = get(); return !!(a && a.minor && !a.admin); }
   function name() { const a = get(); return a ? a.name : ""; }
 
   /* 导航 CTA：已实名后显示用户名 */
@@ -36,8 +37,11 @@
     const a = get();
     document.querySelectorAll(".nav-cta[href='register.html']").forEach((el) => {
       if (a) {
-        el.textContent = (LANG.isZh() ? "已实名 · " : "Verified · ") + a.name;
+        el.textContent = a.admin
+          ? (LANG.isZh() ? "管理员模式" : "Admin mode")
+          : (LANG.isZh() ? "已实名 · " : "Verified · ") + a.name;
         el.classList.add("verified");
+        el.classList.toggle("admin", !!a.admin);
       }
     });
     /* 未成年模式页的实名按钮 */
@@ -46,8 +50,9 @@
     });
   }
 
-  /* 打开认证门：未登录/未实名时覆盖内容，强制引导注册 */
+  /* 打开认证门：未登录/未实名时覆盖内容，强制引导注册（管理员直接放行） */
   function gate(opts) {
+    if (isAdmin()) return null;
     opts = opts || {};
     const wrap = document.createElement("div");
     wrap.className = "auth-gate" + (opts.minor ? " minor" : "");
@@ -78,5 +83,5 @@
 
   document.addEventListener("DOMContentLoaded", paintCta);
 
-  window.AUTH = { get, set, logout, isVerified, isMinor, name, gate, paintCta };
+  window.AUTH = { get, set, logout, isVerified, isMinor, isAdmin, name, gate, paintCta };
 })();

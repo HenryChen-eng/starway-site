@@ -155,9 +155,24 @@
   </div>
 </main>
 
+<!-- 管理员入口 -->
+<div class="admin-entry">
+  <button class="admin-link" id="adminLogin" type="button"
+    data-zh="管理员登录（免验证访问全部功能）"
+    data-en="Admin sign-in (full access, no verification)">
+    管理员登录（免验证访问全部功能）
+  </button>
+</div>
+
 <script src="assets/lang.js"></script>
 <script src="assets/auth.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/a11y.js"></script>
+<script>
+  document.getElementById("adminLogin").addEventListener("click", () => {
+    AUTH.set({ on: true, name: "管理员", admin: true });
+    location.href = "index.html";
+  });
+</script>
 </body>
 </html>

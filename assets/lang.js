@@ -524,7 +524,7 @@
     channels: [
       {
         id: "recipients",
-        title: { zh: "被捐赠者直捐", en: "Direct to recipients" },
+        title: { zh: "受助者直捐", en: "Direct to recipients" },
         sub: { zh: "真实受助人 · 信息与项目计划全部公开", en: "Real beneficiaries · every story and plan in the open" },
         desc: { zh: "善款直达受助人本人账户，平台不经手资金。每位受助人的情况、筹款进度与项目计划全部公示，随时可查。", en: "Funds go straight to each recipient's own account — the platform never touches money. Every story, progress bar and project plan is public." },
         photo: "assets/img/recipient-xiaoyu.png",
@@ -685,7 +685,7 @@
       banner: {
         tag: { zh: "生效警报", en: "ACTIVE ALERT" },
         title: { zh: "安珀警报 · 1 条生效中", en: "1 amber alert active" },
-        cta: { zh: "看到他请立即拨打 110", en: "If you see him, call 110 immediately" },
+        cta: { zh: "看到他们请立即拨打 110", en: "If you see them, call 110 immediately" },
         updated: { zh: "更新于 26 分钟前", en: "Updated 26 minutes ago" }
       },
       status: {
