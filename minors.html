@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>未成年人模式 · 星轨 STARWAY</title>
+<meta name="description" content="星轨未成年人模式：实名年龄核验、时长管理、消费保护与内容分级。">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/a11y.css">
+</head>
+<body class="kids-theme" data-page="minors">
+
+<div class="kids-stars"><canvas id="kidsStars"></canvas></div>
+
+<div class="kids-wrap">
+
+  <!-- 顶栏 -->
+  <div class="kids-top">
+    <button class="gate" id="gateBtn" type="button">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="7" width="10" height="7" rx="1.5" fill="#FFD966"/>
+        <path d="M5 7V5a3 3 0 016 0v2" stroke="#FFD966" stroke-width="1.6"/>
+        <circle cx="8" cy="10.5" r="1.2" fill="#1B2350"/>
+      </svg>
+      <span data-zh="家长管理 · 需要家长验证" data-en="Parent controls · verification required">家长管理 · 需要家长验证</span>
+    </button>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="zh" class="on">中</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="back-btn" href="index.html" data-zh="← 回到大人的网站" data-en="← Back to the main site">← 回到大人的网站</a>
+    </div>
+  </div>
+
+  <!-- 标题 -->
+  <div class="minor-hero">
+    <div class="minor-badge">
+      <span class="dot"></span>
+      <span data-zh="未成年人模式已开启" data-en="Minor mode is on">未成年人模式已开启</span>
+    </div>
+    <h1 class="kids-title" data-zh="这里是星星乐园" data-en="Welcome to Star Park">这里是星星乐园</h1>
+    <p class="kids-sub" data-zh="只放适龄的内容，也会帮你记得休息 · 适合未满 18 周岁" data-en="Only age-appropriate content, and a gentle reminder to rest · for under-18s">只放适龄的内容，也会帮你记得休息 · 适合未满 18 周岁</p>
+  </div>
+
+  <!-- 状态 -->
+  <div class="status-row">
+    <div class="status-card">
+      <div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="#FFD966" stroke-width="1.6"/>
+          <circle cx="8.5" cy="11" r="2.2" stroke="#FFD966" stroke-width="1.4"/>
+          <path d="M13.5 10h5M13.5 14h4M5 15.5c.8-1.4 2-2 3.5-2s2.7.6 3.5 2" stroke="#FFD966" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="tx">
+        <b data-zh="已通过实名核验" data-en="Real-name verified">已通过实名核验</b>
+        <span data-zh="账号年龄 12 岁 · 自动进入本模式" data-en="Account age 12 · this mode applied automatically">账号年龄 12 岁 · 自动进入本模式</span>
+      </div>
+    </div>
+
+    <div class="status-card">
+      <div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="8.5" stroke="#7FE08C" stroke-width="1.6"/>
+          <path d="M12 7v5.4l3.4 2.3" stroke="#7FE08C" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="tx">
+        <b id="kidTime">今天还剩 15:00</b>
+        <span data-zh="每日上限 60 分钟 · 22:00–08:00 休息" data-en="60 min daily cap · closed 22:00–08:00">每日上限 60 分钟 · 22:00–08:00 休息</span>
+      </div>
+    </div>
+
+    <div class="status-card">
+      <div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="8.5" stroke="#4DC3FF" stroke-width="1.6"/>
+          <path d="M8.6 14.5c1-2.4 2.2-3.6 3.4-3.6s2.4 1.2 3.4 3.6" stroke="#4DC3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9.6" cy="9.4" r="1.1" fill="#4DC3FF"/><circle cx="14.4" cy="9.4" r="1.1" fill="#4DC3FF"/>
+        </svg>
+      </div>
+      <div class="tx">
+        <b data-zh="本模式不开放付费" data-en="Payments are disabled">本模式不开放付费</b>
+        <span data-zh="未满 8 周岁不可付费；8 岁以上按限额" data-en="No payments under 8; strict limits above 8">未满 8 周岁不可付费；8 岁以上按限额</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 适龄内容 -->
+  <div class="kids-games" id="kidGames"></div>
+
+  <!-- 保护措施 -->
+  <div class="protect-grid" id="protectGrid"></div>
+
+  <!-- 操作 -->
+  <div class="minor-actions">
+    <a class="minor-btn primary" href="register.html" data-zh="完成 / 更新实名信息 →" data-en="Complete or update real-name info →">完成 / 更新实名信息 →</a>
+    <button class="minor-btn ghost" id="gateBtn2" type="button" data-zh="家长管理面板" data-en="Parent control panel">家长管理面板</button>
+    <button class="minor-btn ghost" id="exitMinor" type="button" data-zh="退出未成年人模式" data-en="Exit minor mode">退出未成年人模式</button>
+  </div>
+
+  <div class="minor-foot-note" data-zh="本模式依据《中华人民共和国未成年人保护法》及网络游戏防沉迷相关规定设置。退出未成年人模式需家长身份验证；如发现实名信息有误，可由监护人携带证明材料联系我们更正。未成年人账号不会收到任何募捐邀请。"
+       data-en="This mode follows China's Law on the Protection of Minors and regulations on preventing gaming addiction among minors. Exiting requires parent verification. If the registered age is wrong, a guardian may contact us with supporting documents to correct it. Minor accounts never receive donation requests.">本模式依据《中华人民共和国未成年人保护法》及网络游戏防沉迷相关规定设置。退出未成年人模式需家长身份验证；如发现实名信息有误，可由监护人携带证明材料联系我们更正。未成年人账号不会收到任何募捐邀请。</div>
+</div>
+
+<!-- 家长门 -->
+<div class="modal" id="gateModal">
+  <div class="modal-box">
+    <h3 data-zh="家长验证" data-en="Parent verification">家长验证</h3>
+    <p data-zh="请回答下面的题目，确认由家长本人操作。" data-en="Please answer the question below to confirm an adult is present.">请回答下面的题目，确认由家长本人操作。</p>
+    <div class="q" id="gateQ">3 × 4 = ?</div>
+    <input id="gateInput" type="text" inputmode="numeric" data-ph-zh="输入答案" data-ph-en="Your answer" placeholder="输入答案">
+    <div class="modal-err" id="gateErr"></div>
+    <div class="modal-actions">
+      <button class="btn btn-plain" id="gateCancel" type="button" data-zh="取消" data-en="Cancel">取消</button>
+      <button class="btn btn-gold" id="gateOk" type="button" data-zh="确认" data-en="Confirm">确认</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/lang.js"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+<script>
+  /* 强制实名门：涉及未成年人内容，需登录并完成实名认证后查看 */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.AUTH && !AUTH.isVerified()) {
+      AUTH.gate({
+        minor: true,
+        reason: "本页涉及未成年人内容与家长管理功能。根据未成年人保护相关规定，需先完成实名注册并登录后查看。",
+        reasonEn: "This page contains content and parent controls for minors. Real-name registration and sign-in are required first."
+      });
+    }
+  });
+</script>
+</body>
+</html>

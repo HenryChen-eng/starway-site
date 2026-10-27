@@ -1,0 +1,360 @@
+/* =========================================================
+   辅助功能层 · ACCESSIBILITY
+   独立样式文件，两套视觉体系（游戏站 / 联合国页）共用。
+   只在 <html> 上打标记，不改动页面自身的布局与配色。
+   ========================================================= */
+
+:root {
+  --a11y-zoom: 1;
+  --a11y-zoom-inv: 1;
+}
+
+/* ---------------- 悬浮入口 ---------------- */
+.a11y-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 240;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px 12px 15px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #9c8dff, #6c5ce7);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  zoom: var(--a11y-zoom-inv);
+}
+.a11y-fab:hover { transform: translateY(-2px); box-shadow: 0 20px 48px rgba(108, 92, 231, 0.5); }
+.a11y-fab:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.a11y-fab svg { width: 20px; height: 20px; flex: none; }
+.a11y-fab .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #7dd9a6; box-shadow: 0 0 8px #7dd9a6; display: none;
+}
+.a11y-fab.has-on .dot { display: inline-block; }
+.a11y-fab .n {
+  min-width: 17px; height: 17px; padding: 0 4px;
+  border-radius: 99px; background: #ffd166; color: #221a00;
+  font-size: 10.5px; font-weight: 700; line-height: 17px; text-align: center;
+  display: none;
+}
+.a11y-fab.has-on .n { display: inline-block; }
+
+/* ---------------- 面板 ---------------- */
+.a11y-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 76px;
+  z-index: 241;
+  width: min(352px, calc(100vw - 28px));
+  max-height: min(78vh, 640px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 20px 14px;
+  border-radius: 18px;
+  background: #12111c;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.6);
+  color: #f2f3f7;
+  font-family: "Inter", "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.99);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  zoom: var(--a11y-zoom-inv);
+}
+.a11y-panel.open { opacity: 1; visibility: visible; transform: none; }
+.a11y-panel::-webkit-scrollbar { width: 6px; }
+.a11y-panel::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.22); border-radius: 99px; }
+
+.a11y-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.a11y-head b { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; }
+.a11y-head span { display: block; font-size: 10px; color: #9a9aab; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 3px; }
+.a11y-close {
+  width: 30px; height: 30px; flex: none; border: 0; border-radius: 9px;
+  background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 17px; line-height: 1;
+  cursor: pointer;
+}
+.a11y-close:hover { background: rgba(255, 255, 255, 0.16); }
+
+.a11y-sub {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #8d8d9f; margin: 15px 0 2px;
+  font-family: "SF Mono", ui-monospace, monospace;
+}
+
+.a11y-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; padding: 10px 0; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.a11y-item:last-child { border-bottom: 0; }
+.a11y-item:hover .t b { color: #cfc6ff; }
+.a11y-item .t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.a11y-item .t b { font-size: 13px; font-weight: 500; color: #f2f3f7; transition: color 0.2s; }
+.a11y-item .t i { font-style: normal; font-size: 11px; color: #8d8d9f; line-height: 1.5; }
+.a11y-item:focus-visible { outline: 2px solid #9c8dff; outline-offset: 3px; border-radius: 8px; }
+.a11y-item[aria-disabled="true"] { opacity: 0.42; cursor: not-allowed; }
+
+/* 开关 */
+.sw {
+  position: relative; width: 42px; height: 23px; flex: none;
+  border-radius: 99px; background: rgba(255, 255, 255, 0.18);
+  transition: background 0.25s;
+}
+.sw::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 17px; height: 17px; border-radius: 50%; background: #fff;
+  transition: left 0.25s ease;
+}
+[aria-checked="true"] > .sw { background: #4ec98a; }
+[aria-checked="true"] > .sw::after { left: 22px; }
+
+/* 分段选择 */
+.seg {
+  display: inline-flex; gap: 2px; padding: 2px; flex: none;
+  border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 99px;
+}
+.seg button {
+  padding: 4px 9px; border: 0; border-radius: 99px; background: none;
+  color: #b8b8c8; font: inherit; font-size: 10.5px; line-height: 1.3; cursor: pointer;
+  font-family: "SF Mono", ui-monospace, monospace;
+}
+.seg button.on { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.seg button:focus-visible { outline: 2px solid #9c8dff; outline-offset: 2px; }
+
+.a11y-tip {
+  margin-top: 12px; padding: 9px 11px; border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 10.5px; line-height: 1.6; color: #9a9aab;
+}
+.a11y-reset {
+  width: 100%; margin-top: 12px; padding: 10px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22); background: none;
+  color: #e6e6f0; font: inherit; font-size: 12px; cursor: pointer;
+}
+.a11y-reset:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* =========================================================
+   模式：只在 <html> 上加类
+   ========================================================= */
+
+/* 大字体 / 内容放大（1 = 大字，2 = 特大） */
+html.a11y-large body { zoom: var(--a11y-zoom); }
+
+/* 高对比度文字 */
+html.a11y-contrast {
+  --text: #ffffff;
+  --muted: #dcdfe7;
+  --dim: #b6bcc8;
+  --line: rgba(255, 255, 255, 0.34);
+  --line-strong: rgba(255, 255, 255, 0.5);
+}
+html.a11y-contrast body { background: #000; }
+html.a11y-contrast body .nav,
+html.a11y-contrast body .footer,
+html.a11y-contrast body .loader,
+html.a11y-contrast body .music-bar { background: #000; }
+html.a11y-contrast body .game-card,
+html.a11y-contrast body .log-row,
+html.a11y-contrast body .stat,
+html.a11y-contrast body .proj-card,
+html.a11y-contrast body .donate-card,
+html.a11y-contrast body .trans-row,
+html.a11y-contrast body .auth-card,
+html.a11y-contrast body .status-card,
+html.a11y-contrast body .protect-card,
+html.a11y-contrast body .story-card { background: #05050a; }
+html.a11y-contrast body a { text-decoration: underline !important; text-underline-offset: 3px; }
+html.a11y-contrast body .btn,
+html.a11y-contrast body .pill,
+html.a11y-contrast body .tag,
+html.a11y-contrast body .log-tag { border: 1px solid #fff; }
+html.a11y-contrast body .pill.on { background: #fff; color: #000; }
+html.a11y-contrast body.kids-theme { background: #0b0a20; }
+
+/* 联合国页（浅色纸面）的高对比度：直接改它自己的纸墨变量 */
+html.a11y-contrast body.pw {
+  --paper: #ffffff;
+  --paper-2: #ffffff;
+  --ink: #000000;
+  --ink-2: #121212;
+  --ink-3: #333333;
+  --rule: rgba(0, 0, 0, 0.55);
+  --rule-2: rgba(0, 0, 0, 0.85);
+}
+html.a11y-contrast body.pw a { text-decoration: underline !important; text-underline-offset: 3px; }
+
+/* 颜色反转 */
+html.a11y-invert { filter: invert(1) hue-rotate(180deg); }
+html.a11y-invert body img,
+html.a11y-invert body svg,
+html.a11y-invert body canvas,
+html.a11y-invert body video { filter: invert(1) hue-rotate(180deg); }
+
+/* 色彩视觉增强：形状 / 纹样 / 文字标签，不只靠颜色区分 */
+html.a11y-cb body a { text-decoration: underline !important; text-underline-offset: 3px; }
+html.a11y-cb body .pill::before,
+html.a11y-cb body .log-tag::before { font-weight: 700; }
+html.a11y-cb body .pill.on::before { content: "✓ "; }
+html.a11y-cb body .pill.dev::before { content: "◷ "; }
+html.a11y-cb body .log-tag.update::before { content: "✓ "; }
+html.a11y-cb body .log-tag.peace::before { content: "◆ "; }
+html.a11y-cb body .log-tag.dev::before { content: "● "; }
+html.a11y-cb body .proj-card .meter i {
+  background: repeating-linear-gradient(45deg, #e8c268 0 5px, #1a1408 5px 7px);
+}
+html.a11y-cb body .donate-card { border-style: dashed; border-width: 2px; }
+html.a11y-cb body .kid-card { box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.28); }
+html.a11y-cb body .region-block::before { content: "▣ "; }
+
+/* 红绿色弱 / 蓝黄色弱：矩阵校正 */
+html.a11y-cbfilter-deuter { filter: url(#a11y-cb-deuter); }
+html.a11y-cbfilter-protan { filter: url(#a11y-cb-protan); }
+html.a11y-cbfilter-tritan { filter: url(#a11y-cb-tritan); }
+html.a11y-cbfilter-deuter body img,
+html.a11y-cbfilter-protan body img,
+html.a11y-cbfilter-tritan body img { filter: none; }
+
+/* 减少动效 */
+html.a11y-motion *,
+html.a11y-motion *::before,
+html.a11y-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-motion body .reveal { opacity: 1 !important; transform: none !important; }
+
+/* ---------------- 图片描述 ---------------- */
+.alt-cap {
+  display: block;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border-left: 2px solid #e8c268;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: inherit;
+  font-style: normal;
+  text-align: left;
+}
+.alt-cap::before { content: "🖼 "; }
+
+/* ---------------- 字幕 / 语音状态条 ---------------- */
+.a11y-caption {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 238;
+  display: none;
+  align-items: center;
+  gap: 9px;
+  max-width: min(660px, calc(100vw - 190px));
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.6;
+  text-align: center;
+  zoom: var(--a11y-zoom-inv);
+}
+html.a11y-captions .a11y-caption.on { display: flex; }
+.a11y-caption b { color: #ffd166; font-weight: 600; }
+.a11y-caption .mic { color: #7dd9a6; font-size: 15px; line-height: 1; }
+.a11y-caption .mic.rec { animation: a11yPulse 1.1s infinite; }
+@keyframes a11yPulse { 50% { opacity: 0.25; } }
+
+/* ---------------- 随选朗读浮标 ---------------- */
+.a11y-select-btn {
+  position: fixed;
+  z-index: 245;
+  display: none;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 99px;
+  background: #6c5ce7;
+  color: #fff;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+.a11y-select-btn.on { display: block; }
+
+/* ---------------- 键盘 ---------------- */
+:focus-visible { outline: 2px solid #9c8dff; outline-offset: 3px; }
+
+.skip-link {
+  position: fixed;
+  left: -9999px;
+  top: 10px;
+  z-index: 300;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #6c5ce7;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { left: 12px; }
+
+/* ---------------- 朗读高亮 ---------------- */
+.a11y-reading { background: rgba(255, 209, 102, 0.24) !important; outline: 1px solid rgba(255, 209, 102, 0.45); border-radius: 4px; }
+
+@media (max-width: 560px) {
+  .a11y-fab { right: 14px; bottom: 14px; padding: 11px 15px; }
+  .a11y-panel { right: 14px; left: 14px; bottom: 68px; width: auto; }
+  .a11y-caption { max-width: calc(100vw - 28px); font-size: 12px; }
+}
+
+@media print {
+  .a11y-fab, .a11y-panel, .a11y-caption, .a11y-select-btn { display: none !important; }
+}
+
+/* ---------------- 补充修正 ---------------- */
+/* 大字模式下，导航与按钮不换行，超出可横向滚动 */
+html.a11y-large body .nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+html.a11y-large body .nav::-webkit-scrollbar { display: none; }
+html.a11y-large body .nav a,
+html.a11y-large body .nav .btn,
+html.a11y-large body .music-bar,
+html.a11y-large body .lang-switch button,
+html.a11y-large body .pw-lang button,
+html.a11y-large body .pw-nav a,
+html.a11y-large body .pw-music,
+html.a11y-large body .minor-btn,
+html.a11y-large body .auth-card button { white-space: nowrap; }
+
+/* 高对比度：首屏也压成纯黑 */
+html.a11y-contrast body .hero,
+html.a11y-contrast body .sw-hero,
+html.a11y-contrast body .minor-hero,
+html.a11y-contrast body .auth-main { background: #000; }
+html.a11y-large body .music-btn,
+html.a11y-large body .nav-cta,
+html.a11y-large body .pw-mark .txt b { white-space: nowrap; }
+html.a11y-contrast body.kids-theme .kid-card { box-shadow: 0 0 0 2px #fff; }
+html.a11y-contrast body .kid-card h3 { color: #1A1005; }

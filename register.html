@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实名注册 · 星轨 STARWAY</title>
+<meta name="description" content="星轨账号实名注册：账号创建、实名信息核验、未成年人监护人授权。">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/a11y.css">
+</head>
+<body data-page="register">
+
+<header class="nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+    <span>星轨 STARWAY</span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" data-zh="首页" data-en="Home">首页</a>
+    <a href="starway.html" class="gold" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
+    <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+    <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh" class="on">中</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <a class="nav-cta" href="index.html" data-zh="返回官网" data-en="Back to site">返回官网</a>
+  </div>
+</header>
+
+<main class="auth-main">
+  <div class="auth-card">
+    <div class="auth-head">
+      <div class="kicker" data-zh="ACCOUNT · REAL-NAME" data-en="ACCOUNT · REAL-NAME">ACCOUNT · REAL-NAME</div>
+      <h1 data-zh="创建星轨账号 · 实名注册" data-en="Create a Starway account · real-name sign-up">创建星轨账号 · 实名注册</h1>
+      <p data-zh="依据《未成年人保护法》与网络游戏防沉迷规定，我们需要核验真实年龄，才能判断是否为你开启未成年人模式。信息仅用于核验与保护，加密存储，不用于营销。"
+         data-en="Under China's Law on the Protection of Minors and anti-addiction rules, we must verify your real age to know whether minor mode applies. Data is used only for verification and protection, stored encrypted, never for marketing.">依据《未成年人保护法》与网络游戏防沉迷规定，我们需要核验真实年龄，才能判断是否为你开启未成年人模式。信息仅用于核验与保护，加密存储，不用于营销。</p>
+    </div>
+
+    <div class="steps">
+      <div class="s on" data-step="1"><i>1</i><span data-zh="账号" data-en="Account">账号</span></div>
+      <div class="line"></div>
+      <div class="s" data-step="2"><i>2</i><span data-zh="实名" data-en="Identity">实名</span></div>
+      <div class="line"></div>
+      <div class="s" data-step="3"><i>3</i><span data-zh="完成" data-en="Done">完成</span></div>
+    </div>
+
+    <!-- 第一步 -->
+    <div class="pane on" id="pane1">
+      <div class="field">
+        <label data-zh="手机号" data-en="Mobile number">手机号</label>
+        <input id="phone" type="tel" inputmode="numeric" maxlength="11" data-ph-zh="11 位手机号" data-ph-en="11-digit number" placeholder="11 位手机号">
+      </div>
+      <div class="field">
+        <label data-zh="短信验证码" data-en="SMS code">短信验证码</label>
+        <div class="sms-row">
+          <input id="code" type="text" inputmode="numeric" maxlength="6" data-ph-zh="6 位验证码" data-ph-en="6-digit code" placeholder="6 位验证码">
+          <button type="button" id="sendCode" data-zh="获取验证码" data-en="Send code">获取验证码</button>
+        </div>
+        <div class="hint" data-zh="演示环境：不真实发送短信，任意 4 位以上数字即可通过。" data-en="Demo build: no SMS is sent — any 4+ digits will pass.">演示环境：不真实发送短信，任意 4 位以上数字即可通过。</div>
+      </div>
+      <div class="field">
+        <label data-zh="设置密码" data-en="Password">设置密码</label>
+        <input id="pw" type="password" data-ph-zh="至少 8 位，含字母与数字" data-ph-en="At least 8 characters" placeholder="至少 8 位，含字母与数字">
+      </div>
+      <div class="auth-err" id="err1"></div>
+      <div class="auth-actions">
+        <button class="btn btn-primary" type="button" id="next1" data-zh="下一步：填写实名信息 →" data-en="Next: identity details →">下一步：填写实名信息 →</button>
+      </div>
+    </div>
+
+    <!-- 第二步 -->
+    <div class="pane" id="pane2">
+      <div class="field">
+        <label data-zh="真实姓名" data-en="Legal name">真实姓名</label>
+        <input id="realname" type="text" data-ph-zh="与证件一致" data-ph-en="As shown on your ID" placeholder="与证件一致">
+      </div>
+      <div class="field">
+        <label data-zh="证件类型" data-en="Document type">证件类型</label>
+        <select id="idtype">
+          <option value="cn" data-zh="居民身份证" data-en="Resident ID card">居民身份证</option>
+          <option value="passport" data-zh="护照" data-en="Passport">护照</option>
+          <option value="hkmo" data-zh="港澳台居民居住证" data-en="Residence permit (HK/Macao/Taiwan)">港澳台居民居住证</option>
+          <option value="other" data-zh="其他有效证件" data-en="Other valid document">其他有效证件</option>
+        </select>
+      </div>
+      <div class="field">
+        <label data-zh="证件号码" data-en="Document number">证件号码</label>
+        <input id="idnum" type="text" maxlength="18" data-ph-zh="请输入证件号码" data-ph-en="Enter document number" placeholder="请输入证件号码">
+        <div class="hint" data-zh="仅用于实名与年龄核验，加密存储，不会公开展示。" data-en="Used only for identity and age verification; encrypted, never shown publicly.">仅用于实名与年龄核验，加密存储，不会公开展示。</div>
+      </div>
+      <div class="field">
+        <label data-zh="出生日期（用于判定是否进入未成年人模式）" data-en="Date of birth (determines minor mode)">出生日期（用于判定是否进入未成年人模式）</label>
+        <input id="birth" type="date" value="2008-06-01">
+      </div>
+      <label class="check">
+        <input type="checkbox" id="agree">
+        <span data-zh="我已阅读并同意《用户协议》《隐私政策》，并确认所填信息真实有效。" data-en="I have read the Terms of Service and Privacy Policy, and confirm the information is accurate.">我已阅读并同意《用户协议》《隐私政策》，并确认所填信息真实有效。</span>
+      </label>
+      <div class="auth-err" id="err2"></div>
+      <div class="auth-actions">
+        <button class="btn btn-plain" type="button" id="back2" data-zh="上一步" data-en="Back">上一步</button>
+        <button class="btn btn-primary" type="button" id="next2" data-zh="提交核验 →" data-en="Submit →">提交核验 →</button>
+      </div>
+    </div>
+
+    <!-- 监护人授权（未满 18 岁） -->
+    <div class="pane" id="paneGuardian">
+      <div class="guardian-note">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3l7 3v6c0 4.3-2.9 7.6-7 9-4.1-1.4-7-4.7-7-9V6l7-3z" stroke="#E8C268" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M9 12l2.2 2.2L15.5 10" stroke="#E8C268" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span data-zh="检测到账号年龄未满 18 周岁。需要监护人授权后才能继续，授权后将自动开启未成年人模式。" data-en="This account is under 18. Guardian consent is required; minor mode will be enabled afterwards.">检测到账号年龄未满 18 周岁。需要监护人授权后才能继续，授权后将自动开启未成年人模式。</span>
+      </div>
+      <div class="field">
+        <label data-zh="监护人姓名" data-en="Guardian's name">监护人姓名</label>
+        <input id="gname" type="text" data-ph-zh="监护人真实姓名" data-ph-en="Guardian's legal name" placeholder="监护人真实姓名">
+      </div>
+      <div class="field">
+        <label data-zh="监护人手机号" data-en="Guardian's mobile">监护人手机号</label>
+        <div class="sms-row">
+          <input id="gphone" type="tel" inputmode="numeric" maxlength="11" data-ph-zh="监护人手机号" data-ph-en="Guardian's number" placeholder="监护人手机号">
+          <button type="button" id="sendGuard" data-zh="发送授权短信" data-en="Send consent SMS">发送授权短信</button>
+        </div>
+      </div>
+      <div class="field">
+        <label data-zh="监护人收到的验证码" data-en="Code sent to guardian">监护人收到的验证码</label>
+        <input id="gcode" type="text" inputmode="numeric" maxlength="6" data-ph-zh="6 位验证码" data-ph-en="6-digit code" placeholder="6 位验证码">
+      </div>
+      <div class="auth-err" id="errG"></div>
+      <div class="auth-actions">
+        <button class="btn btn-plain" type="button" id="backG" data-zh="上一步" data-en="Back">上一步</button>
+        <button class="btn btn-gold" type="button" id="submitG" data-zh="完成授权 →" data-en="Complete →">完成授权 →</button>
+      </div>
+    </div>
+
+    <!-- 完成 -->
+    <div class="pane" id="paneDone">
+      <div class="done-panel">
+        <div class="tick">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12.5l4.5 4.5L19 7" stroke="#7DD9A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 id="doneTitle" data-zh="注册完成" data-en="You're all set">注册完成</h2>
+        <p id="doneText" data-zh="实名核验通过，账号已创建。" data-en="Identity verified, account created.">实名核验通过，账号已创建。</p>
+        <div class="auth-actions" style="width:100%;max-width:340px">
+          <a class="btn btn-primary" id="doneGo" href="index.html" data-zh="进入官网" data-en="Enter the site">进入官网</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="assets/lang.js"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+</body>
+</html>

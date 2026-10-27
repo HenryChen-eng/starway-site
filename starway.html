@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星轨计划 STARWAY PROJECT · 星轨工作室</title>
+<meta name="description" content="星轨计划：每月把收入的 2% 投入国内与海外的公益项目，善款去向全部公开。">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/a11y.css">
+</head>
+<body class="starway-theme" data-page="starway">
+
+<!-- ============ 音乐条 ============ -->
+<div class="music-bar" id="musicBar">
+  <svg class="note" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7 13.5V3.5L15 2V12" stroke="#E8C268" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="5" cy="13.5" r="2.4" fill="#E8C268"/><circle cx="13" cy="12" r="2.4" fill="#E8C268"/>
+  </svg>
+  <strong data-zh="《同行》· 星轨计划主题曲" data-en="“Walk With You” · the Starway Project theme">《同行》· 星轨计划主题曲</strong>
+  <span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  <button class="pause" id="musicBarBtn" type="button" data-zh="暂停" data-en="Pause">暂停</button>
+  <span class="hint" data-zh="进入本页自动播放 · 不打扰可以随时关掉" data-en="Plays on entry · turn it off any time">进入本页自动播放 · 不打扰可以随时关掉</span>
+</div>
+
+<!-- ============ 导航 ============ -->
+<header class="nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+    <span>星轨 STARWAY</span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" data-zh="首页" data-en="Home">首页</a>
+    <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+    <a href="starway.html" class="gold active" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
+    <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+    <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh" class="on">中</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button class="music-btn" id="navMusic" type="button">
+      <span class="bars"><i></i><i></i><i></i><i></i></span>
+      <span data-zh="音乐" data-en="Music">音乐</span>
+    </button>
+    <a class="nav-cta" href="register.html" data-zh="实名注册 / 登录" data-en="Sign up / Log in">实名注册 / 登录</a>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="sw-hero">
+  <div class="copy">
+    <div class="kicker gold" data-zh="STARWAY PROJECT · EST. 2021" data-en="STARWAY PROJECT · EST. 2021">STARWAY PROJECT · EST. 2021</div>
+    <h1 data-html data-zh="游戏连接世界，<br>善意走到真实的人身边" data-en="Games connect worlds;<br>kindness reaches real people">游戏连接世界，<br>善意走到真实的人身边</h1>
+    <p class="lead" data-zh="星轨计划是我们把游戏收入的一部分，交给真正需要帮助的人的方式。项目不限于国内——从云南的山村到内罗毕的学校，我们和当地机构一起，把事做完、把账公开。"
+       data-en="The Starway Project is how we hand part of our game revenue to people who actually need it. Not only at home: from mountain villages in Yunnan to schools in Nairobi, we finish the work with local partners — and publish every figure.">星轨计划是我们把游戏收入的一部分，交给真正需要帮助的人的方式。项目不限于国内——从云南的山村到内罗毕的学校，我们和当地机构一起，把事做完、把账公开。</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#donate" data-zh="我想要帮助" data-en="I want to help">我想要帮助</a>
+      <a class="btn btn-plain" href="#ledger" data-zh="查看善款公示" data-en="See the ledger">查看善款公示</a>
+    </div>
+  </div>
+  <div class="art"><img src="assets/img/peace.png" alt="星轨计划主视觉"></div>
+</section>
+
+<!-- ============ 数据 ============ -->
+<section class="peace-stats">
+  <div><b class="gold" data-count="186400" data-prefix="¥">¥186,400</b><span data-zh="累计公益投入" data-en="Total funding">累计公益投入</span></div>
+  <div><b data-count="486">486</b><span data-zh="受助家庭与个人" data-en="Families &amp; individuals">受助家庭与个人</span></div>
+  <div><b data-count="6">6</b><span data-zh="覆盖国家与地区" data-en="Countries &amp; regions">覆盖国家与地区</span></div>
+  <div><b data-count="12">12</b><span data-zh="合作公益机构" data-en="Partner organisations">合作公益机构</span></div>
+</section>
+
+<!-- ============ 项目范围 ============ -->
+<section class="peace-section" id="projects">
+  <div class="center-head">
+    <div class="kicker gold" data-zh="PROGRAMS" data-en="PROGRAMS">PROGRAMS</div>
+    <h2 data-zh="我们正在做的六件事" data-en="Six programs in progress">我们正在做的六件事</h2>
+    <p data-zh="国内三个、海外三个。每个项目都有明确的执行方、预算与验收方式，进度条为当前资金执行比例。"
+       data-en="Three at home, three abroad. Every program has a named implementer, a budget and acceptance criteria; the bar shows how much funding has been deployed.">国内三个、海外三个。每个项目都有明确的执行方、预算与验收方式，进度条为当前资金执行比例。</p>
+  </div>
+
+  <div class="region-block">
+    <div class="region-label">
+      <span>Domestic</span>
+      <b data-zh="国内项目" data-en="In China">国内项目</b>
+      <p data-zh="与本地公益机构、学校直接对接，资金由机构监管账户拨付。"
+         data-en="Run directly with local NGOs and schools; funds are disbursed from supervised accounts.">与本地公益机构、学校直接对接，资金由机构监管账户拨付。</p>
+    </div>
+    <div class="proj-grid" id="projCn"></div>
+  </div>
+
+  <div class="region-block" style="margin-bottom:0">
+    <div class="region-label">
+      <span>International</span>
+      <b data-zh="海外项目" data-en="Overseas">海外项目</b>
+      <p data-zh="通过具备跨境执行资质的合作机构落地，按当地法规披露收支。"
+         data-en="Delivered through partners with cross-border execution credentials; disclosed under local law.">通过具备跨境执行资质的合作机构落地，按当地法规披露收支。</p>
+    </div>
+    <div class="proj-grid" id="projIntl"></div>
+  </div>
+</section>
+
+<!-- ============ 受助者故事 ============ -->
+<section class="peace-section" id="stories" style="padding-top:0">
+  <div class="center-head">
+    <div class="kicker gold" data-zh="THEIR STORIES" data-en="THEIR STORIES">THEIR STORIES</div>
+    <h2 data-zh="被你们点亮的他们" data-en="The people you lit up">被你们点亮的他们</h2>
+  </div>
+
+  <div class="story-list">
+    <article class="story-card reveal">
+      <div>
+        <q data-zh="“新学期我有了自己的书桌和台灯。晚上写作业的时候，我总觉得星星在陪我。”"
+           data-en="“This term I have my own desk and lamp. When I do homework at night, I always feel the stars are keeping me company.”">“新学期我有了自己的书桌和台灯。晚上写作业的时候，我总觉得星星在陪我。”</q>
+        <div class="story-person">
+          <div class="avatar gold">雨</div>
+          <span data-zh="小雨 · 云南山区，9 岁 · 学习桌计划" data-en="Xiaoyu · 9, rural Yunnan · Study Desk Program">小雨 · 云南山区，9 岁 · 学习桌计划</span>
+        </div>
+      </div>
+      <div class="quote-mark">”</div>
+    </article>
+
+    <article class="story-card reveal">
+      <div>
+        <q data-zh="“图书角建起来了，600 本书。孩子们现在每天都在讨论《星痕》里的星图。”"
+           data-en="“The reading corner is open — 600 books. The children now argue about the star maps in Starscar every single day.”">“图书角建起来了，600 本书。孩子们现在每天都在讨论《星痕》里的星图。”</q>
+        <div class="story-person">
+          <div class="avatar violet">李</div>
+          <span data-zh="李老师 · 甘肃支教教师 · 校园图书角" data-en="Ms Li · volunteer teacher, Gansu · Reading Corners">李老师 · 甘肃支教教师 · 校园图书角</span>
+        </div>
+      </div>
+      <div class="quote-mark">”</div>
+    </article>
+
+    <article class="story-card reveal">
+      <div>
+        <q data-zh="“井打好以后，孩子们不用再走四公里去打水。他们现在有更多时间待在教室里。”"
+           data-en="“Since the well was finished, the children no longer walk four kilometres for water. They spend that time in class now.”">“井打好以后，孩子们不用再走四公里去打水。他们现在有更多时间待在教室里。”</q>
+        <div class="story-person">
+          <div class="avatar mint">G</div>
+          <span data-zh="Grace W. · 肯尼亚内罗毕，社区学校校长 · 净水井项目" data-en="Grace W. · head teacher, Nairobi, Kenya · Clean Water Wells">Grace W. · 肯尼亚内罗毕，社区学校校长 · 净水井项目</span>
+        </div>
+      </div>
+      <div class="quote-mark">”</div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 捐款渠道 ============ -->
+<section class="peace-section donate" id="donate">
+  <div class="center-head">
+    <div class="kicker gold" data-zh="DONATION CHANNELS" data-en="DONATION CHANNELS">DONATION CHANNELS</div>
+    <h2 data-zh="选择你信任的方式，献出一份爱心" data-en="Choose a channel you trust">选择你信任的方式，献出一份爱心</h2>
+    <p data-zh="收款码由平台审核后展示。未来这里会放入受助人本人的收款码，善款直达，不经我们手。"
+       data-en="QR codes are shown only after platform review. Verified recipients' own codes will appear here — money goes straight to them, not through us.">收款码由平台审核后展示。未来这里会放入受助人本人的收款码，善款直达，不经我们手。</p>
+  </div>
+  <div class="donate-grid" id="donateGrid"></div>
+</section>
+
+<!-- ============ 善款公示 ============ -->
+<section class="peace-section" id="ledger">
+  <div class="section-head" style="margin-bottom:32px">
+    <div class="t">
+      <div class="kicker gold" data-zh="TRANSPARENCY" data-en="TRANSPARENCY">TRANSPARENCY</div>
+      <h2 data-zh="善款公示 · 每一笔都有去处" data-en="Public ledger · every cent has a destination">善款公示 · 每一笔都有去处</h2>
+    </div>
+    <a class="more" href="#" data-zh="下载年度报告 →" data-en="Annual report →">下载年度报告 →</a>
+  </div>
+  <div class="trans-list" id="ledgerList"></div>
+
+  <div class="assure">
+    <div class="assure-item">
+      <b data-zh="善款直达" data-en="Straight to the recipient">善款直达</b>
+      <span data-zh="收款码为受助人本人或合作机构官方账户，星轨不经手资金。" data-en="Codes belong to recipients or partner NGOs. Starway never holds the money.">收款码为受助人本人或合作机构官方账户，星轨不经手资金。</span>
+    </div>
+    <div class="assure-item">
+      <b data-zh="季度公示" data-en="Quarterly disclosure">季度公示</b>
+      <span data-zh="每季度公布收支明细，包括海外项目的汇率与手续费。" data-en="Income and spending published quarterly, including FX and transfer fees on overseas programs.">每季度公布收支明细，包括海外项目的汇率与手续费。</span>
+    </div>
+    <div class="assure-item">
+      <b data-zh="隐私保护" data-en="Privacy protected">隐私保护</b>
+      <span data-zh="受助者肖像与故事均取得书面同意，可随时要求撤回。" data-en="Images and stories are used with written consent, revocable at any time.">受助者肖像与故事均取得书面同意，可随时要求撤回。</span>
+    </div>
+  </div>
+
+  <p style="margin-top:28px;font-size:11.5px;color:#8A7A55;line-height:1.9" data-zh="说明：海外项目通过具备资质的合作机构执行，单笔超过等值 5 万元人民币的支出需提供执行报告与票据。星轨计划不接受未成年人捐款。"
+     data-en="Note: overseas programs are executed by qualified partners; any single disbursement above CNY 50,000 equivalent requires an execution report and receipts. The Starway Project does not accept donations from minors.">说明：海外项目通过具备资质的合作机构执行，单笔超过等值 5 万元人民币的支出需提供执行报告与票据。星轨计划不接受未成年人捐款。</p>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="f-brand">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+        <span>星轨 STARWAY</span>
+      </a>
+      <p data-zh="每一颗星，都值得一趟旅程。用游戏温暖世界。" data-en="Every star deserves a journey. Warming the world with games.">每一颗星，都值得一趟旅程。用游戏温暖世界。</p>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="星轨计划" data-en="Starway Project">星轨计划</h4>
+      <a href="#projects" data-zh="项目范围" data-en="Programs">项目范围</a>
+      <a href="#stories" data-zh="受助者故事" data-en="Their stories">受助者故事</a>
+      <a href="#donate" data-zh="捐款渠道" data-en="Donation channels">捐款渠道</a>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="透明" data-en="Transparency">透明</h4>
+      <a href="#ledger" data-zh="善款公示" data-en="Public ledger">善款公示</a>
+      <a href="#" data-zh="年度报告" data-en="Annual report">年度报告</a>
+      <a href="#" data-zh="合作机构" data-en="Partners">合作机构</a>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="其他" data-en="Elsewhere">其他</h4>
+      <a href="index.html" data-zh="回到官网" data-en="Studio site">回到官网</a>
+      <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+      <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-zh="Copyright 2026 星轨 Starway · 星轨计划" data-en="Copyright 2026 Starway · Starway Project">Copyright 2026 星轨 Starway · 星轨计划</span>
+    <span data-zh="善款公示每季度更新 · 最近更新 2026.10" data-en="Ledger updated quarterly · latest 2026.10">善款公示每季度更新 · 最近更新 2026.10</span>
+  </div>
+</footer>
+
+<script src="assets/lang.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+</body>
+</html>

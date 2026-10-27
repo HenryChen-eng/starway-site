@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星轨 STARWAY · 独立游戏工作室</title>
+<meta name="description" content="星轨 STARWAY，独立游戏工作室。我们做叙事游戏，也做真实的善事：星轨计划、世界和平。">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/a11y.css">
+</head>
+<body data-page="home">
+
+<!-- ============ 加载页 ============ -->
+<div class="loader" id="loader">
+  <canvas id="starfield"></canvas>
+  <div class="loader-inner">
+    <svg class="loader-logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/>
+      <path d="M54 8 L55.5 13 L60 14.5 L55.5 16 L54 21 L52.5 16 L48 14.5 L52.5 13 Z" fill="white" fill-opacity=".8"/>
+    </svg>
+    <div class="loader-brand" data-zh="星轨 STARWAY" data-en="STARWAY">星轨 STARWAY</div>
+    <div class="loader-tag" data-zh="每一颗星，都值得一趟旅程" data-en="Every star deserves a journey">每一颗星，都值得一趟旅程</div>
+
+    <div class="progress-block">
+      <div class="progress-track"><div class="progress-fill" id="loaderFill"></div></div>
+      <div class="progress-text" id="loaderText">正在加载宇宙… 0%</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="label" data-zh="小贴士 · TIPS" data-en="TIP">小贴士 · TIPS</div>
+      <p id="loaderTip">按住 Shift 键，可以让星空中的小星星眨眼哦。</p>
+    </div>
+
+    <button class="music-chip" id="musicChip" type="button" aria-label="背景音乐开关">
+      <span class="eq"><i></i><i></i><i></i><i></i></span>
+      <span data-zh="主题曲《星尘》· 点击暂停" data-en="Theme “Stardust” · click to pause">主题曲《星尘》· 点击暂停</span>
+    </button>
+
+    <button class="loader-skip" id="loaderSkip" type="button" data-zh="跳过加载 →" data-en="Skip →">跳过加载 →</button>
+  </div>
+</div>
+
+<!-- ============ 导航 ============ -->
+<header class="nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+    <span>星轨 STARWAY</span>
+  </a>
+
+  <nav class="nav-links">
+    <a href="index.html" class="active" data-zh="首页" data-en="Home">首页</a>
+    <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+    <a href="starway.html" class="gold" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
+    <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+    <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+  </nav>
+
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh" class="on">中</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button class="music-btn" id="navMusic" type="button">
+      <span class="bars"><i></i><i></i><i></i><i></i></span>
+      <span data-zh="音乐" data-en="Music">音乐</span>
+    </button>
+    <a class="nav-cta" href="register.html" data-zh="实名注册 / 登录" data-en="Sign up / Log in">实名注册 / 登录</a>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="hero-copy">
+    <div class="kicker" data-zh="独立游戏工作室 · EST. 2021" data-en="INDEPENDENT GAME STUDIO · EST. 2021">独立游戏工作室 · EST. 2021</div>
+    <h1 data-html data-zh="在星轨尽头，<br>遇见你的故事" data-en="At the end of the star track,<br>you meet your own story">在星轨尽头，<br>遇见你的故事</h1>
+    <p data-zh="我们是两个人的小工作室，用耐心打磨每一个世界。愿你在其中找到光，也找到同路的旅人。"
+       data-en="We are a two-person studio, polishing every world with patience. May you find light in them — and fellow travellers on the way.">我们是两个人的小工作室，用耐心打磨每一个世界。愿你在其中找到光，也找到同路的旅人。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#games" data-zh="查看我们的游戏" data-en="Explore our games">查看我们的游戏</a>
+      <a class="btn btn-ghost" href="starway.html" data-zh="星轨计划 →" data-en="Starway Project →">星轨计划 →</a>
+    </div>
+    <div class="hero-meta" data-zh="Steam / WeGame / TapTap · 全球 120 万玩家 · 好评率 94%" data-en="Steam / WeGame / TapTap · 1.2M players worldwide · 94% positive">Steam / WeGame / TapTap · 全球 120 万玩家 · 好评率 94%</div>
+  </div>
+
+  <div class="hero-art">
+    <img src="assets/img/hero.png" alt="星轨游戏主视觉">
+    <div class="badge"><span class="dot"></span><span data-zh="《星痕》现已发售" data-en="Starscar — out now">《星痕》现已发售</span></div>
+  </div>
+</section>
+
+<!-- ============ 游戏作品 ============ -->
+<section class="section" id="games">
+  <div class="section-head">
+    <div class="t">
+      <div class="kicker" data-zh="OUR GAMES" data-en="OUR GAMES">OUR GAMES</div>
+      <h2 data-zh="我们的游戏" data-en="Our games">我们的游戏</h2>
+    </div>
+    <a class="more" href="#games" data-zh="查看全部作品 →" data-en="All titles →">查看全部作品 →</a>
+  </div>
+  <div class="games-grid" id="gamesGrid"></div>
+</section>
+
+<!-- ============ 工作室故事 ============ -->
+<section class="story" id="story">
+  <div class="story-copy">
+    <div class="kicker" data-zh="OUR STORY" data-en="OUR STORY">OUR STORY</div>
+    <h2 data-html data-zh="两个人的工作室，<br>一群人的星轨" data-en="A studio of two,<br>a star track shared by many">两个人的工作室，<br>一群人的星轨</h2>
+    <p data-zh="2021 年，我们辞掉工作，在一间朝北的小房间里开始了星轨。我们相信游戏不只是消遣——它是故事、是陪伴，也是把温柔传递给世界的方式。"
+       data-en="In 2021 we quit our jobs and started Starway in a small north-facing room. We believe games are more than entertainment — they are stories, company, and a way to pass kindness on to the world.">2021 年，我们辞掉工作，在一间朝北的小房间里开始了星轨。我们相信游戏不只是消遣——它是故事、是陪伴，也是把温柔传递给世界的方式。</p>
+    <p data-zh="所以除了做游戏，我们每月把收入的 2% 投入「星轨计划」，帮助国内与海外真正需要帮助的人；也把心里最想说的话，放在了「世界和平」那一页。"
+       data-en="So besides making games, we put 2% of monthly revenue into the Starway Project — for people in need at home and abroad — and we put the thing we most want to say on the “World Peace” page.">所以除了做游戏，我们每月把收入的 2% 投入「星轨计划」，帮助国内与海外真正需要帮助的人；也把心里最想说的话，放在了「世界和平」那一页。</p>
+    <a class="btn btn-plain" href="#devlog" style="align-self:flex-start" data-zh="看我们的开发日志 →" data-en="Read the devlog →">看我们的开发日志 →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b data-count="3" data-suffix=" 款">3 款</b><span data-zh="已发行 / 开发中游戏" data-en="Released / in development">已发行 / 开发中游戏</span></div>
+    <div class="stat"><b data-count="120" data-suffix="万+">120万+</b><span data-zh="全球玩家" data-en="Players worldwide">全球玩家</span></div>
+    <div class="stat"><b data-count="94" data-suffix="%">94%</b><span data-zh="玩家好评率" data-en="Positive reviews">玩家好评率</span></div>
+    <div class="stat"><b class="gold" data-count="186400" data-prefix="¥">¥186,400</b><span data-zh="星轨计划累计投入" data-en="Starway Project total funding">星轨计划累计投入</span></div>
+  </div>
+</section>
+
+<!-- ============ 开发日志 ============ -->
+<section class="section alt" id="devlog">
+  <div class="section-head">
+    <div class="t">
+      <div class="kicker" data-zh="DEVLOG &amp; NEWS" data-en="DEVLOG &amp; NEWS">DEVLOG &amp; NEWS</div>
+      <h2 data-zh="开发日志 · 新闻" data-en="Devlog &amp; news">开发日志 · 新闻</h2>
+    </div>
+    <a class="more" href="#devlog" data-zh="订阅更新 →" data-en="Subscribe →">订阅更新 →</a>
+  </div>
+  <div class="log-list" id="logList"></div>
+</section>
+
+<!-- ============ 星轨计划横幅 ============ -->
+<section class="peace-banner reveal">
+  <div class="copy">
+    <div class="kicker gold" data-zh="STARWAY PROJECT" data-en="STARWAY PROJECT">STARWAY PROJECT</div>
+    <h2 data-zh="游戏之外，我们也关心真实的世界" data-en="Beyond games, we care about the real world">游戏之外，我们也关心真实的世界</h2>
+    <p data-zh="每月收入的 2% 进入「星轨计划」，国内与海外共 6 个项目正在进行。每一笔善款，都在这里公开。"
+       data-en="2% of monthly revenue goes into the Starway Project — six programs running at home and abroad. Every donation is published.">每月收入的 2% 进入「星轨计划」，国内与海外共 6 个项目正在进行。每一笔善款，都在这里公开。</p>
+    <a class="btn btn-gold" href="starway.html" data-zh="前往星轨计划" data-en="Visit the Starway Project">前往星轨计划</a>
+  </div>
+  <div class="dove">
+    <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 120 C40 100 45 70 75 62 C70 40 95 30 110 44 C125 28 150 34 152 56 C185 58 195 90 172 104 C178 126 152 138 136 126 C128 146 96 148 88 128 C76 138 64 134 60 120 Z" fill="#E8C268" fill-opacity=".9"/>
+      <circle cx="168" cy="52" r="4" fill="#1A1408"/>
+      <path d="M30 150 C70 132 140 132 195 118" stroke="#E8C268" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 100 C55 92 90 96 118 88" stroke="#E8C268" stroke-opacity=".3" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ 世界和平 · 完整区块 ============ -->
+<section class="peace-home" id="peace">
+
+  <!-- 蓝色入口横幅 -->
+  <div class="ph-band reveal">
+    <div class="copy">
+      <div class="kicker" data-zh="WORLD PEACE · UNIVERSAL DECLARATION OF HUMAN RIGHTS" data-en="WORLD PEACE · UNIVERSAL DECLARATION OF HUMAN RIGHTS">WORLD PEACE · UNIVERSAL DECLARATION OF HUMAN RIGHTS</div>
+      <h2 data-zh="愿世界和平" data-en="May peace prevail on Earth">愿世界和平</h2>
+      <p data-zh="这是我作为一个普通人、一个创作者，最想留下的一句话。它不属于游戏品牌，所以它有自己的那一页——联合国蓝，和《世界人权宣言》。"
+         data-en="This is what I, as one ordinary person and one maker, most want to leave behind. It does not belong to a game brand — so it has a page of its own: United Nations blue, and the Universal Declaration of Human Rights.">这是我作为一个普通人、一个创作者，最想留下的一句话。它不属于游戏品牌，所以它有自己的那一页——联合国蓝，和《世界人权宣言》。</p>
+      <div class="ph-band-actions">
+        <a class="btn-blue" href="peace.html" data-zh="进入《世界和平》 →" data-en="Enter “World Peace” →">进入《世界和平》 →</a>
+        <a class="btn-blue ghost" href="peace.html#declaration" data-zh="读《宣言》全文" data-en="Read the full Declaration">读《宣言》全文</a>
+      </div>
+    </div>
+    <div class="ph-band-art" aria-hidden="true">
+      <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="120" cy="120" r="96" stroke="#6FB7E8" stroke-opacity=".35" stroke-width="1"/>
+        <circle cx="120" cy="120" r="72" stroke="#6FB7E8" stroke-opacity=".22" stroke-width="1"/>
+        <path d="M74 138 C60 124 64 104 84 99 C81 84 97 77 107 87 C117 76 133 80 135 95 C157 96 164 117 149 127 C153 142 136 150 125 142 C120 156 98 157 92 143 C84 150 76 147 74 138 Z" fill="#9FD0F0" fill-opacity=".9"/>
+        <circle cx="146" cy="93" r="2.6" fill="#0A3B66"/>
+        <path d="M52 168 C84 154 132 154 172 143" stroke="#6FB7E8" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M46 108 C70 102 96 105 116 99" stroke="#6FB7E8" stroke-opacity=".3" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 价值观 -->
+  <div class="ph-block reveal">
+    <div class="ph-head">
+      <div class="kicker blue" data-zh="WHY IT MATTERS" data-en="WHY IT MATTERS">WHY IT MATTERS</div>
+      <h3 data-zh="和平不只是没有战争" data-en="Peace is more than the absence of war">和平不只是没有战争</h3>
+      <p data-zh="战争是和平最响亮的敌人，但远不是唯一的。贫困、歧视、失学、无医可求、无法发声——这些安静的东西，同样在一点一点拿走一个人的安全感。所以谈和平，最终要谈回到人身上。"
+         data-en="War is the loudest enemy of peace, but far from the only one. Poverty, discrimination, no schooling, no doctor, no voice — quiet things that also erode a person's sense of safety. So when we talk about peace, we end up talking about people.">战争是和平最响亮的敌人，但远不是唯一的。贫困、歧视、失学、无医可求、无法发声——这些安静的东西，同样在一点一点拿走一个人的安全感。所以谈和平，最终要谈回到人身上。</p>
+    </div>
+    <div class="value-grid">
+      <article class="value-card">
+        <div class="vn">01</div>
+        <h4 data-zh="人的尊严" data-en="Human dignity">人的尊严</h4>
+        <p data-zh="每个人仅仅因为是人，就拥有不可剥夺的尊严。它不需要被授予，也不能被剥夺。" data-en="Every person holds an inalienable dignity simply for being human. It is not granted, and cannot be taken away.">每个人仅仅因为是人，就拥有不可剥夺的尊严。它不需要被授予，也不能被剥夺。</p>
+      </article>
+      <article class="value-card">
+        <div class="vn">02</div>
+        <h4 data-zh="平等与不歧视" data-en="Equality, no exceptions">平等与不歧视</h4>
+        <p data-zh="不因为出生在哪里、说什么语言、相信什么、有没有钱而打折。《宣言》第一条把这句话放在了最前面。" data-en="Not discounted by where you were born, what you speak, what you believe, or what you own. Article 1 puts this first for a reason.">不因为出生在哪里、说什么语言、相信什么、有没有钱而打折。《宣言》第一条把这句话放在了最前面。</p>
+      </article>
+      <article class="value-card">
+        <div class="vn">03</div>
+        <h4 data-zh="免于恐惧与匮乏" data-en="Freedom from fear and want">免于恐惧与匮乏</h4>
+        <p data-zh="夜里能安睡，病了能就医，孩子能上学。和平是这些具体的事，而不是一句口号。" data-en="Sleeping without sirens, seeing a doctor when ill, a child going to school. Peace is these concrete things, not a slogan.">夜里能安睡，病了能就医，孩子能上学。和平是这些具体的事，而不是一句口号。</p>
+      </article>
+      <article class="value-card">
+        <div class="vn">04</div>
+        <h4 data-zh="团结与互助" data-en="Solidarity">团结与互助</h4>
+        <p data-zh="别人的苦难不是别人的事。伸出手，是普通人能做到的最具体的和平。" data-en="Another's suffering is not someone else's business. Reaching out is the most concrete peace an ordinary person can make.">别人的苦难不是别人的事。伸出手，是普通人能做到的最具体的和平。</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- 《世界人权宣言》摘录 -->
+  <div class="ph-block reveal" id="declaration">
+    <div class="ph-head">
+      <div class="kicker blue" data-zh="THE UNIVERSAL DECLARATION" data-en="THE UNIVERSAL DECLARATION">THE UNIVERSAL DECLARATION</div>
+      <h3 data-zh="《世界人权宣言》说了什么" data-en="What the Universal Declaration says">《世界人权宣言》说了什么</h3>
+      <p data-zh="1948 年 12 月 10 日，联合国大会通过《世界人权宣言》，把“人人生而自由，在尊严和权利上一律平等”写成了所有国家共同的标准。七十多年过去，它仍未被完全实现——这正是它值得被一遍遍读出来的原因。"
+         data-en="On 10 December 1948 the UN General Assembly adopted the Universal Declaration of Human Rights, setting “all human beings are born free and equal in dignity and rights” as a common standard for all nations. Seventy-odd years on it is still not fully realised — which is exactly why it deserves to be read again and again.">1948 年 12 月 10 日，联合国大会通过《世界人权宣言》，把“人人生而自由，在尊严和权利上一律平等”写成了所有国家共同的标准。七十多年过去，它仍未被完全实现——这正是它值得被一遍遍读出来的原因。</p>
+    </div>
+
+    <blockquote class="ph-quote" data-zh="“对人类家庭所有成员的固有尊严及其平等的和不移的权利的承认，乃是世界自由、正义与和平的基础。”"
+                data-en="“Recognition of the inherent dignity and of the equal and inalienable rights of all members of the human family is the foundation of freedom, justice and peace in the world.”">“对人类家庭所有成员的固有尊严及其平等的和不移的权利的承认，乃是世界自由、正义与和平的基础。”</blockquote>
+    <div class="ph-quote-src" data-zh="——《世界人权宣言》序言，1948" data-en="— Preamble, Universal Declaration of Human Rights, 1948">——《世界人权宣言》序言，1948</div>
+
+    <div class="article-grid">
+      <article class="art-mini">
+        <div class="an" data-zh="第一条" data-en="Article 1">第一条</div>
+        <p data-zh="人人生而自由，在尊严和权利上一律平等。他们赋有理性和良心，并应以兄弟关系的精神相对待。"
+           data-en="All human beings are born free and equal in dignity and rights. They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.">人人生而自由，在尊严和权利上一律平等。他们赋有理性和良心，并应以兄弟关系的精神相对待。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第三条" data-en="Article 3">第三条</div>
+        <p data-zh="人人有权享有生命、自由和人身安全。"
+           data-en="Everyone has the right to life, liberty and security of person.">人人有权享有生命、自由和人身安全。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第五条" data-en="Article 5">第五条</div>
+        <p data-zh="任何人不得加以酷刑，或施以残忍的、不人道的或侮辱性的待遇或刑罚。"
+           data-en="No one shall be subjected to torture or to cruel, inhuman or degrading treatment or punishment.">任何人不得加以酷刑，或施以残忍的、不人道的或侮辱性的待遇或刑罚。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第二十六条 · 二" data-en="Article 26 · 2">第二十六条 · 二</div>
+        <p data-zh="教育的目的在于充分发展人的个性并加强对人权和基本自由的尊重。教育应促进各国、各种族或各宗教集团间的了解、容忍和友谊，并应促进联合国维护和平的各项活动。"
+           data-en="Education shall be directed to the full development of the human personality and to the strengthening of respect for human rights and fundamental freedoms. It shall promote understanding, tolerance and friendship among all nations, racial or religious groups, and shall further the activities of the United Nations for the maintenance of peace.">教育的目的在于充分发展人的个性并加强对人权和基本自由的尊重。教育应促进各国、各种族或各宗教集团间的了解、容忍和友谊，并应促进联合国维护和平的各项活动。</p>
+      </article>
+    </div>
+    <a class="ph-more" href="peace.html#declaration" data-zh="在《世界和平》页读完整序言与三十条 →" data-en="Read the full preamble and all 30 articles on the World Peace page →">在《世界和平》页读完整序言与三十条 →</a>
+  </div>
+
+  <!-- 联合国宪章 -->
+  <div class="ph-block reveal" id="charter">
+    <div class="ph-head">
+      <div class="kicker blue" data-zh="THE UN CHARTER · 1945" data-en="THE UN CHARTER · 1945">THE UN CHARTER · 1945</div>
+      <h3 data-zh="《联合国宪章》：和平第一次被写进条约" data-en="The UN Charter: peace written into a treaty">《联合国宪章》：和平第一次被写进条约</h3>
+      <p data-zh="1945 年 6 月 26 日，五十个国家的代表在旧金山签署《联合国宪章》。它不是宣言，不是倡议，而是一份有法律约束力的条约——「不得使用威胁或武力」「以和平方法解决争端」这些句子，从此成了各国签字认下的义务。"
+         data-en="On 26 June 1945, representatives of fifty nations signed the Charter of the United Nations in San Francisco. It is not a declaration or an appeal but a binding treaty — “refrain from the threat or use of force”, “settle disputes by peaceful means” became obligations that states put their signature to.">1945 年 6 月 26 日，五十个国家的代表在旧金山签署《联合国宪章》。它不是宣言，不是倡议，而是一份有法律约束力的条约——「不得使用威胁或武力」「以和平方法解决争端」这些句子，从此成了各国签字认下的义务。</p>
+    </div>
+
+    <div class="ph-facts">
+      <div><b>1945</b><span data-zh="6 月 26 日订于旧金山" data-en="Signed at San Francisco, 26 June">6 月 26 日订于旧金山</span></div>
+      <div><b>50</b><span data-zh="个国家首批签署" data-en="founding signatories">个国家首批签署</span></div>
+      <div><b>19 · 111</b><span data-zh="章 · 条" data-en="chapters · articles">章 · 条</span></div>
+    </div>
+
+    <blockquote class="ph-quote" data-zh="“我联合国人民同兹决心，欲免后世再遭今代人类两度身历惨不堪言之战祸。”"
+                data-en="“WE THE PEOPLES OF THE UNITED NATIONS DETERMINED to save succeeding generations from the scourge of war, which twice in our lifetime has brought untold sorrow to mankind.”">“我联合国人民同兹决心，欲免后世再遭今代人类两度身历惨不堪言之战祸。”</blockquote>
+    <div class="ph-quote-src" data-zh="——《联合国宪章》序言，1945" data-en="— Preamble, Charter of the United Nations, 1945">——《联合国宪章》序言，1945</div>
+
+    <div class="article-grid">
+      <article class="art-mini">
+        <div class="an" data-zh="第一条 · 宗旨" data-en="Article 1 · Purposes">第一条 · 宗旨</div>
+        <p data-zh="维持国际和平及安全……并以和平方法且依正义及国际法之原则，调整或解决足以破坏和平之国际争端或情势。"
+           data-en="To maintain international peace and security … and to bring about by peaceful means, and in conformity with the principles of justice and international law, adjustment or settlement of international disputes …">维持国际和平及安全……并以和平方法且依正义及国际法之原则，调整或解决足以破坏和平之国际争端或情势。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第二条 · 四" data-en="Article 2 · 4">第二条 · 四</div>
+        <p data-zh="各会员国在其国际关系上不得使用威胁或武力……侵害任何会员国或国家之领土完整或政治独立。"
+           data-en="All Members shall refrain in their international relations from the threat or use of force against the territorial integrity or political independence of any state …">各会员国在其国际关系上不得使用威胁或武力……侵害任何会员国或国家之领土完整或政治独立。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第三十三条 · 一" data-en="Article 33 · 1">第三十三条 · 一</div>
+        <p data-zh="任何争端之当事国……应尽先以谈判、调查、调停、和解、公断、司法解决……求得解决。"
+           data-en="The parties to any dispute … shall, first of all, seek a solution by negotiation, enquiry, mediation, conciliation, arbitration, judicial settlement …">任何争端之当事国……应尽先以谈判、调查、调停、和解、公断、司法解决……求得解决。</p>
+      </article>
+      <article class="art-mini">
+        <div class="an" data-zh="第五十六条" data-en="Article 56">第五十六条</div>
+        <p data-zh="各会员国担允采取共同及个别行动与本组织合作，以达成第五十五条所载之宗旨。"
+           data-en="All Members pledge themselves to take joint and separate action in co-operation with the Organization for the achievement of the purposes set forth in Article 55.">各会员国担允采取共同及个别行动与本组织合作，以达成第五十五条所载之宗旨。</p>
+      </article>
+    </div>
+    <a class="ph-more" href="peace.html#charter" data-zh="读《联合国宪章》序言与十九章结构 →" data-en="Read the Charter's preamble and all 19 chapters →">读《联合国宪章》序言与十九章结构 →</a>
+  </div>
+
+  <!-- 我们的行动 -->
+  <div class="ph-block reveal" id="actions">
+    <div class="ph-head">
+      <div class="kicker blue" data-zh="WHAT WE ACTUALLY DID" data-en="WHAT WE ACTUALLY DID">WHAT WE ACTUALLY DID</div>
+      <h3 data-zh="我们做了什么" data-en="What we actually did">我们做了什么</h3>
+      <p data-zh="说“愿世界和平”很容易，难的是把它做成一件件可以被核对的事。下面是星轨这几年真正落地的东西，不夸大，也不隐藏。"
+         data-en="Saying “may peace prevail” is easy. The hard part is turning it into things you can check. Here is what Starway has actually done — nothing exaggerated, nothing hidden.">说“愿世界和平”很容易，难的是把它做成一件件可以被核对的事。下面是星轨这几年真正落地的东西，不夸大，也不隐藏。</p>
+    </div>
+
+    <div class="ph-nums">
+      <div class="ph-num"><b>2%</b><span data-zh="每月收入投入公益" data-en="of monthly revenue to public good">每月收入投入公益</span></div>
+      <div class="ph-num"><b>6</b><span data-zh="在行项目 · 国内与海外" data-en="running programs, at home &amp; abroad">在行项目 · 国内与海外</span></div>
+      <div class="ph-num"><b>120</b><span data-zh="套学习桌与护眼台灯" data-en="desks &amp; eye-care lamps delivered">套学习桌与护眼台灯</span></div>
+      <div class="ph-num"><b>5</b><span data-zh="种语言的《宣言》全文" data-en="languages for the full Declaration">种语言的《宣言》全文</span></div>
+    </div>
+
+    <div class="action-grid">
+      <article class="action-card">
+        <div class="ai">◎</div>
+        <h4 data-zh="每月 2% 收入，长期投入" data-en="2% of revenue, every month">每月 2% 收入，长期投入</h4>
+        <p data-zh="不是一次性捐款，而是从 2021 年起每月固定拿出收入的 2% 进入「星轨计划」，国内与海外六个项目同时在跑。" data-en="Not a one-off donation: since 2021 a fixed 2% of monthly revenue goes into the Starway Project, funding six programs at home and abroad.">不是一次性捐款，而是从 2021 年起每月固定拿出收入的 2% 进入「星轨计划」，国内与海外六个项目同时在跑。</p>
+      </article>
+      <article class="action-card">
+        <div class="ai">▤</div>
+        <h4 data-zh="120 套学习桌，送到云南山区" data-en="120 study desks to rural Yunnan">120 套学习桌，送到云南山区</h4>
+        <p data-zh="可升降书桌、护眼台灯与整套文具，配给怒江山区 120 个孩子，并由驻村老师定期回访使用情况。" data-en="Height-adjustable desks, eye-care lamps and full stationery kits for 120 children in Nujiang, with resident teachers following up on use.">可升降书桌、护眼台灯与整套文具，配给怒江山区 120 个孩子，并由驻村老师定期回访使用情况。</p>
+      </article>
+      <article class="action-card">
+        <div class="ai">✚</div>
+        <h4 data-zh="医疗互助：不让手术被钱耽误" data-en="Medical fund: no surgery delayed by money">医疗互助：不让手术被钱耽误</h4>
+        <p data-zh="为独居老人承担手术自付部分与 12 个月复查费用，票据由村委会与志愿者按月公示。" data-en="Covering out-of-pocket surgery costs and 12 months of check-ups for elderly people living alone, with receipts published monthly.">为独居老人承担手术自付部分与 12 个月复查费用，票据由村委会与志愿者按月公示。</p>
+      </article>
+      <article class="action-card">
+        <div class="ai">◍</div>
+        <h4 data-zh="肯尼亚 6 所流动学校" data-en="Six mobile schools in Kenya">肯尼亚 6 所流动学校</h4>
+        <p data-zh="跟着牧民家庭的迁徙路线开课，每个教学点配一顿热餐、基础医疗与净水井。" data-en="Classes follow pastoralist families' migration routes; every site provides a hot meal, basic healthcare and a clean-water well.">跟着牧民家庭的迁徙路线开课，每个教学点配一顿热餐、基础医疗与净水井。</p>
+      </article>
+      <article class="action-card">
+        <div class="ai">文</div>
+        <h4 data-zh="把《宣言》做成五种语言" data-en="The Declaration in five languages">把《宣言》做成五种语言</h4>
+        <p data-zh="中文、英文、俄文、法文、阿拉伯文全文可读，阿拉伯语自动从右向左排版——让它真的能被更多人读到。" data-en="Full text in Chinese, English, Russian, French and Arabic, with right-to-left layout for Arabic — so more people can actually read it.">中文、英文、俄文、法文、阿拉伯文全文可读，阿拉伯语自动从右向左排版——让它真的能被更多人读到。</p>
+      </article>
+      <article class="action-card">
+        <div class="ai">◐</div>
+        <h4 data-zh="让每个人都能读到这一页" data-en="Making the page readable for everyone">让每个人都能读到这一页</h4>
+        <p data-zh="屏幕朗读、随选朗读、大字体、高对比度、颜色反转、字幕与左右声道切换——视障、听障、老年读者都能用。" data-en="Screen reading, select-to-speak, large text, high contrast, colour inversion, captions and channel switching — usable by blind, deaf and elderly readers.">屏幕朗读、随选朗读、大字体、高对比度、颜色反转、字幕与左右声道切换——视障、听障、老年读者都能用。</p>
+      </article>
+    </div>
+    <a class="ph-more" href="starway.html#ledger" data-zh="查看每一笔善款公示 →" data-en="See every donation in the ledger →">查看每一笔善款公示 →</a>
+  </div>
+
+  <!-- 呼吁 -->
+  <div class="ph-call reveal">
+    <div class="kicker blue" data-zh="A SMALL ASK" data-en="A SMALL ASK">A SMALL ASK</div>
+    <h3 data-zh="珍爱和平，从读一遍开始" data-en="Cherish peace — start by reading it once">珍爱和平，从读一遍开始</h3>
+    <p data-zh="我们改变不了所有的战争，但可以让更多人记得：人人生而自由，在尊严和权利上一律平等。如果你也同意，有三件小事可以做。"
+       data-en="We cannot stop every war, but we can help more people remember: all human beings are born free and equal in dignity and rights. If you agree, there are three small things you can do.">我们改变不了所有的战争，但可以让更多人记得：人人生而自由，在尊严和权利上一律平等。如果你也同意，有三件小事可以做。</p>
+    <div class="call-steps">
+      <div class="cs"><b>01</b><span data-zh="把《宣言》读完一遍" data-en="Read the Declaration once">把《宣言》读完一遍</span></div>
+      <div class="cs"><b>02</b><span data-zh="把这一页发给一个人" data-en="Send this page to one person">把这一页发给一个人</span></div>
+      <div class="cs"><b>03</b><span data-zh="参与一次星轨计划" data-en="Join one Starway project">参与一次星轨计划</span></div>
+    </div>
+    <div class="call-actions">
+      <a class="btn-blue" href="peace.html#declaration" data-zh="读《宣言》全文 →" data-en="Read the full Declaration →">读《宣言》全文 →</a>
+      <a class="btn-blue ghost" href="starway.html#donate" data-zh="去星轨计划看看 →" data-en="Visit the Starway Project →">去星轨计划看看 →</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="f-brand">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+        <span>星轨 STARWAY</span>
+      </a>
+      <p data-zh="每一颗星，都值得一趟旅程。用游戏温暖世界。" data-en="Every star deserves a journey. Warming the world with games.">每一颗星，都值得一趟旅程。用游戏温暖世界。</p>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="探索" data-en="Explore">探索</h4>
+      <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+      <a href="index.html#devlog" data-zh="开发日志" data-en="Devlog">开发日志</a>
+      <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="公益" data-en="Public good">公益</h4>
+      <a class="gold" href="starway.html" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
+      <a href="starway.html#donate" data-zh="捐款渠道" data-en="Donation channels">捐款渠道</a>
+      <a href="starway.html#ledger" data-zh="善款公示" data-en="Public ledger">善款公示</a>
+      <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+    </div>
+    <div class="f-col">
+      <h4 data-zh="关注我们" data-en="Follow">关注我们</h4>
+      <a href="#" data-zh="微博 / B站 / 小红书" data-en="Weibo / Bilibili / RED">微博 / B站 / 小红书</a>
+      <a href="#" data-zh="Discord 社区" data-en="Discord community">Discord 社区</a>
+      <a href="mailto:hello@starway.game">hello@starway.game</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-zh="Copyright 2026 星轨 Starway · 独立游戏工作室" data-en="Copyright 2026 Starway · Independent game studio">Copyright 2026 星轨 Starway · 独立游戏工作室</span>
+    <span data-zh="京ICP备XXXXXXXX号 · 未成年人保护指引" data-en="ICP filing XXXXXXXX · Minor protection policy">京ICP备XXXXXXXX号 · 未成年人保护指引</span>
+  </div>
+</footer>
+
+<script src="assets/lang.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+</body>
+</html>

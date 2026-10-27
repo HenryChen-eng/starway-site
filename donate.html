@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>前往捐赠 · 星轨计划 STARWAY PROJECT</title>
+<meta name="description" content="受助人详细信息与收款码。捐赠需登录并完成实名认证，未成年账号不可支付。">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/a11y.css">
+</head>
+<body class="starway-theme" data-page="donate">
+
+<!-- ============ 导航 ============ -->
+<header class="nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 4 L44 28 L68 36 L44 44 L36 68 L28 44 L4 36 L28 28 Z" fill="#E8C268"/></svg>
+    <span>星轨 STARWAY</span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" data-zh="首页" data-en="Home">首页</a>
+    <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+    <a href="starway.html" class="gold active" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
+    <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
+    <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="zh" class="on">中</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button class="music-btn" id="navMusic" type="button">
+      <span class="bars"><i></i><i></i><i></i><i></i></span>
+      <span data-zh="音乐" data-en="Music">音乐</span>
+    </button>
+    <a class="nav-cta" href="register.html" data-zh="实名注册 / 登录" data-en="Sign up / Log in">实名注册 / 登录</a>
+  </div>
+</header>
+
+<!-- ============ 捐赠详情 ============ -->
+<main class="donate-page">
+  <div class="dd-headbar">
+    <a class="crumb" href="starway.html#donate">← <span data-zh="星轨计划 · 捐款渠道" data-en="Starway Project · Channels">星轨计划 · 捐款渠道</span></a>
+    <div class="dd-headbar-note" data-zh="捐赠前需登录并完成实名认证 · 未成年账号不可支付"
+         data-en="Sign-in & identity verification required before donating · payments disabled for minors">
+      捐赠前需登录并完成实名认证 · 未成年账号不可支付</div>
+  </div>
+
+  <div class="auth-strip" id="authStrip" hidden>
+    <span data-zh="已登录：" data-en="Signed in:">已登录：</span><b data-auth-name></b>
+    <em data-zh="实名认证已通过" data-en="Identity verified">实名认证已通过</em>
+  </div>
+
+  <div id="donateDetail" class="donate-detail"></div>
+</main>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="footer-bottom">
+    <span data-zh="Copyright 2026 星轨 Starway · 星轨计划" data-en="Copyright 2026 Starway · Starway Project">Copyright 2026 星轨 Starway · 星轨计划</span>
+    <span data-zh="善款公示每季度更新 · 最近更新 2026.10" data-en="Ledger updated quarterly · latest 2026.10">善款公示每季度更新 · 最近更新 2026.10</span>
+  </div>
+</footer>
+
+<script src="assets/lang.js"></script>
+<script src="assets/auth.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+<script>
+  /* 认证门：未登录/未实名 → 强制跳注册；未成年账号 → 阻断支付 */
+  document.addEventListener("DOMContentLoaded", () => {
+    const strip = document.getElementById("authStrip");
+    if (window.AUTH && AUTH.isVerified()) {
+      if (AUTH.isMinor()) {
+        AUTH.gate({ blockMinor: true });
+      } else {
+        strip.hidden = false;
+        AUTH.paintCta();
+      }
+    } else if (window.AUTH) {
+      AUTH.gate({});
+    }
+  });
+</script>
+</body>
+</html>
