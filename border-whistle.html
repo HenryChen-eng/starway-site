@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>《边界哨声》BORDER WHISTLE · 游戏详情 · 星轨 STARWAY</title>
-<meta name="description" content="《边界哨声》：反战叙事潜行游戏。你没有枪，只有一只哨子。含美术规范展示、世界切换、遗物与流弹时刻特效演示。">
+<meta name="description" content="《边界哨声》：32bit 像素反战短篇步行叙事游戏。双世界穿梭、遗物收集、时间循环与流弹时刻。35–45 分钟，无战斗、无击杀、无 BOSS。">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/bw.css">
 <link rel="stylesheet" href="assets/a11y.css">
@@ -43,23 +43,25 @@
     <img class="bw-war-img" src="assets/img/bw-war.png" alt="">
   </div>
   <div class="bw-hero-inner bw-wrap">
-    <div class="bw-kicker" data-zh="BORDER WHISTLE · 开发中 34%" data-en="BORDER WHISTLE · IN DEVELOPMENT 34%">BORDER WHISTLE · 开发中 34%</div>
+    <div class="bw-kicker" data-zh="BORDER WHISTLE · 32BIT 像素 · 开发中 34%" data-en="BORDER WHISTLE · 32-BIT PIXEL · IN DEVELOPMENT 34%">BORDER WHISTLE · 32BIT 像素 · 开发中 34%</div>
     <h1 class="bw-title">《边界哨声》<small>BORDER&nbsp;WHISTLE</small></h1>
-    <p class="bw-tagline" data-zh="你没有枪。你只有一只哨子。" data-en="You carry no rifle. Only a whistle.">你没有枪。你只有一只哨子。</p>
+    <p class="bw-tagline" data-zh="边界分割同一片土地，遗物留住曾经的时光，哨声呼唤遥远的理解。"
+       data-en="A border splits one land. Relics keep what time once held. A whistle calls for understanding across the divide.">边界分割同一片土地，遗物留住曾经的时光，哨声呼唤遥远的理解。</p>
     <div class="bw-tags">
-      <span class="tag" data-zh="反战叙事" data-en="Anti-war narrative">反战叙事</span>
-      <span class="tag" data-zh="潜行" data-en="Stealth">潜行</span>
-      <span class="tag" data-zh="抉择" data-en="Choices">抉择</span>
+      <span class="tag" data-zh="步行叙事" data-en="Walking sim">步行叙事</span>
+      <span class="tag" data-zh="轻解谜" data-en="Light puzzle">轻解谜</span>
+      <span class="tag" data-zh="时间循环" data-en="Time loop">时间循环</span>
+      <span class="tag" data-zh="反战" data-en="Anti-war">反战</span>
       <span class="tag" data-zh="像素" data-en="Pixel art">像素</span>
     </div>
-    <div class="bw-meta" data-zh="PC · Steam / Epic · 预计 2027 · 32bit 像素美术" data-en="PC · Steam / Epic · Coming 2027 · 32-bit pixel art">PC · Steam / Epic · 预计 2027 · 32bit 像素美术</div>
+    <div class="bw-meta" data-zh="PC · Steam 优先 · 35–45 分钟 · 无战斗 · 无击杀 · 无 BOSS" data-en="PC · Steam first · 35–45 min · no combat · no kills · no boss">PC · Steam 优先 · 35–45 分钟 · 无战斗 · 无击杀 · 无 BOSS</div>
     <div class="bw-hero-actions">
-      <a class="bw-btn" href="#spec" data-zh="看美术规范 ↓" data-en="Art direction ↓">看美术规范 ↓</a>
-      <a class="bw-btn ghost" href="#fx" data-zh="试玩特效演示" data-en="Try the VFX demo">试玩特效演示</a>
+      <a class="bw-btn" href="#loop" data-zh="看核心循环 ↓" data-en="Core loop ↓">看核心循环 ↓</a>
+      <a class="bw-btn ghost" href="#fx" data-zh="试玩流弹时刻" data-en="Try the stray-shot demo">试玩流弹时刻</a>
     </div>
   </div>
   <div class="bw-world-switch">
-    <span class="bw-switch-label" data-zh="世界切换 · WORLD SWITCH" data-en="WORLD SWITCH">世界切换 · WORLD SWITCH</span>
+    <span class="bw-switch-label" data-zh="世界切换 · 全页生效" data-en="WORLD SWITCH · WHOLE PAGE">世界切换 · 全页生效</span>
     <div class="bw-switch" role="group" aria-label="World switch">
       <button type="button" data-world-btn="peace" class="on-peace" data-zh="安宁" data-en="Peace">安宁</button>
       <button type="button" data-world-btn="war" data-zh="战火" data-en="War">战火</button>
@@ -67,220 +69,224 @@
   </div>
 </section>
 
-<!-- ============ 反战宣言 ============ -->
+<!-- 滚动后出现的迷你世界切换 -->
+<div class="bw-fab" id="bwFab" hidden>
+  <div class="bw-switch" role="group" aria-label="World switch">
+    <button type="button" data-world-btn="peace" class="on-peace" data-zh="安宁" data-en="Peace">安宁</button>
+    <button type="button" data-world-btn="war" data-zh="战火" data-en="War">战火</button>
+  </div>
+</div>
+
+<!-- ============ 核心主题 ============ -->
 <section class="bw-statement bw-section">
   <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="A STATEMENT" data-en="A STATEMENT">A STATEMENT</div>
-    <blockquote data-zh="《边界哨声》不想让你成为英雄。它想让你站上扣动扳机的位置，然后发现——你手里没有枪，只有一只哨子。而当你吹响它，山谷对面会传来一模一样的回声。"
-                data-en="Border Whistle does not want to make you a hero. It puts you where the trigger would be — and finds no rifle in your hands, only a whistle. And when you blow it, the same sound answers from across the valley.">《边界哨声》不想让你成为英雄。它想让你站上扣动扳机的位置，然后发现——你手里没有枪，只有一只哨子。而当你吹响它，山谷对面会传来一模一样的回声。</blockquote>
-    <p class="bw-note" data-zh="战争结束，从来不是因为某一边赢了。而是因为终于有两拨人，同时听见了对方的声音。这份心情，也写在《世界和平》页。"
-       data-en="Wars never end because one side wins. They end when two groups of people finally hear each other at the same time. This wish continues on our “World Peace” page.">战争结束，从来不是因为某一边赢了。而是因为终于有两拨人，同时听见了对方的声音。这份心情，也写在《世界和平》页。</p>
+    <div class="bw-kicker" data-zh="THE THEME" data-en="THE THEME">THE THEME</div>
+    <blockquote data-zh="我们不断循环，想要跨越边界拯救所有人；直到读懂一件件遗物才明白：和平不是抹去伤痛，而是记住那些平凡的幸福，并愿意隔着隔阂听见彼此——但这份理解，永远无法强求所有人。"
+                data-en="We loop again and again, trying to save everyone across the border — until, relic by relic, we finally understand: peace is not erasing the pain. It is remembering the ordinary happiness, and choosing to hear each other across the divide. And that understanding can never be forced on everyone.">我们不断循环，想要跨越边界拯救所有人；直到读懂一件件遗物才明白：和平不是抹去伤痛，而是记住那些平凡的幸福，并愿意隔着隔阂听见彼此——但这份理解，永远无法强求所有人。</blockquote>
+    <p class="bw-note" data-zh="《边界哨声》反对的是战争本身，不是任何一群人。没有 BOSS，没有可以消灭的敌人——战争是一股持续侵蚀家园的力量。这份心情，也写在《世界和平》页。"
+       data-en="Border Whistle opposes war itself, not any group of people. There is no boss and no enemy to defeat — war is a force that keeps eroding home. This wish continues on our “World Peace” page.">《边界哨声》反对的是战争本身，不是任何一群人。没有 BOSS，没有可以消灭的敌人——战争是一股持续侵蚀家园的力量。这份心情，也写在《世界和平》页。</p>
     <div style="text-align:center"><a class="bw-btn ghost" href="peace.html" data-zh="去《世界和平》页 →" data-en="Visit “World Peace” →">去《世界和平》页 →</a></div>
   </div>
 </section>
 
-<!-- ============ 核心机制 ============ -->
+<!-- ============ 四条红线 ============ -->
 <section class="bw-section">
   <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="CORE MECHANICS" data-en="CORE MECHANICS">CORE MECHANICS</div>
-    <h2 class="bw-h2" data-zh="三条规则" data-en="Three rules">三条规则</h2>
-    <div class="bw-mech">
-      <article class="px-card">
-        <b class="num">01</b>
-        <h3 data-zh="只有哨子，没有枪" data-en="A whistle, never a rifle">只有哨子，没有枪</h3>
-        <p data-zh="全程无法射击，没有任何武器可以拾取。你唯一能发出的声音是一次口哨：它能叫停巡逻、提醒平民、回应对面——也仅此而已。"
-           data-en="You can never shoot. The only sound you can make is one whistle: to halt a patrol, warn a civilian, or answer the other side. Nothing more.">全程无法射击，没有任何武器可以拾取。你唯一能发出的声音是一次口哨：它能叫停巡逻、提醒平民、回应对面——也仅此而已。</p>
-      </article>
-      <article class="px-card">
-        <b class="num">02</b>
-        <h3 data-zh="每一次警告，都用自己交换" data-en="Every warning costs you">每一次警告，都用自己交换</h3>
-        <p data-zh="哨声会被听见——被你想保护的人，也被想消灭你的人。吹哨救对面的人，你的隐蔽值就会掉一格。救人与自保，永远不可能同时。"
-           data-en="The whistle is heard by the people you want to protect — and by the ones who want you gone. Warn the other side, and your cover drops one notch.">哨声会被听见——被你想保护的人，也被想消灭你的人。吹哨救对面的人，你的隐蔽值就会掉一格。救人与自保，永远不可能同时。</p>
-      </article>
-      <article class="px-card">
-        <b class="num">03</b>
-        <h3 data-zh="对面也是人" data-en="The other side is human too">对面也是人</h3>
-        <p data-zh="对面的哨兵有名字、有家书、有怕黑的小毛病，每晚八点准时吹走调的口琴。游戏没有任何「击杀」结算——它统计的是你让多少人看见了黎明。"
-           data-en="The sentry across the valley has a name, letters from home, and a fear of the dark. There is no kill counter — the game only counts how many people you let see the dawn.">对面的哨兵有名字、有家书、有怕黑的小毛病，每晚八点准时吹走调的口琴。游戏没有任何「击杀」结算——它统计的是你让多少人看见了黎明。</p>
-      </article>
+    <div class="bw-kicker" data-zh="RED LINES · 全程遵守" data-en="RED LINES · ALWAYS HELD">RED LINES · 全程遵守</div>
+    <h2 class="bw-h2" data-zh="这个游戏不会对你做的四件事" data-en="Four things this game will never do">这个游戏不会对你做的四件事</h2>
+    <div class="bw-redline">
+      <div class="px-card rl"><b class="num">01</b><h3 data-zh="没有血腥" data-en="No gore">没有血腥</h3><p data-zh="刀感来自留白、遗憾与信任破碎。没有尸体、血腥特写、残肢与猎奇画面。"
+         data-en="The ache comes from silence, regret and broken trust. No corpses, no gore close-ups, no mutilation, no shock imagery.">刀感来自留白、遗憾与信任破碎。没有尸体、血腥特写、残肢与猎奇画面。</p></div>
+      <div class="px-card rl"><b class="num">02</b><h3 data-zh="没有反派" data-en="No villain">没有反派</h3><p data-zh="不塑造单一反派阵营。士兵只是远处的模糊剪影——批判的是战争，不是某一群人。"
+         data-en="No villain faction. Soldiers are distant blurred silhouettes — we indict war, not people.">不塑造单一反派阵营。士兵只是远处的模糊剪影——批判的是战争，不是某一群人。</p></div>
+      <div class="px-card rl"><b class="num">03</b><h3 data-zh="你不会死" data-en="You cannot die">你不会死</h3><p data-zh="流弹只破坏环境、打断叙事、冲击情绪。玩家不会受伤、不会死亡、没有血条。"
+         data-en="Stray shots break the environment and the narrative — never you. No damage, no death, no health bar.">流弹只破坏环境、打断叙事、冲击情绪。玩家不会受伤、不会死亡、没有血条。</p></div>
+      <div class="px-card rl"><b class="num">04</b><h3 data-zh="没有奇迹" data-en="No miracle">没有奇迹</h3><p data-zh="没有完美结局，没有一键终止战争的魔法。和平是艰难、局部、需要彼此尝试理解的选择。"
+         data-en="No perfect ending, no magic button to end the war. Peace is hard, partial, and a choice to keep trying to understand.">没有完美结局，没有一键终止战争的魔法。和平是艰难、局部、需要彼此尝试理解的选择。</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ 美术规范 ============ -->
-<section class="bw-statement bw-section" id="spec">
+<!-- ============ 核心循环 ============ -->
+<section class="bw-section" id="loop">
   <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="ART DIRECTION · 32BIT RGBA" data-en="ART DIRECTION · 32BIT RGBA">ART DIRECTION · 32BIT RGBA</div>
-    <h2 class="bw-h2" data-zh="美术规范" data-en="Art direction">美术规范</h2>
-    <p class="bw-lead" data-zh="色彩：32bit RGBA 真彩色。支持平滑渐变、软阴影、半透明图层与柔光——不再受老式色板的限制，但依然保持像素的克制。"
-       data-en="Colour: true-colour 32-bit RGBA, with smooth gradients, soft shadows, translucency and glow — free from legacy palettes, yet still restrained like pixel art should be.">色彩：32bit RGBA 真彩色。支持平滑渐变、软阴影、半透明图层与柔光——不再受老式色板的限制，但依然保持像素的克制。</p>
+    <div class="bw-kicker" data-zh="CORE LOOP" data-en="CORE LOOP">CORE LOOP</div>
+    <h2 class="bw-h2" data-zh="一轮循环里，你会做的事" data-en="What you do in one loop">一轮循环里，你会做的事</h2>
+    <p class="bw-lead" data-zh="你扮演一名无名少年。小镇被无形边界分割为「安宁侧」与「战火侧」，你可以在边界石碑切换两个世界。当炮火吞没小镇核心，时间回到开战前一小时——循环开始。单轮之内完全自由，没有强制顺序。"
+       data-en="You play a nameless teenager. An invisible border splits the town into a Peace side and a War side; the boundary stone lets you switch between them. When shellfire swallows the town core, time rewinds to one hour before the war — and the loop begins. Each loop is fully free, with no required order.">你扮演一名无名少年。小镇被无形边界分割为「安宁侧」与「战火侧」，你可以在边界石碑切换两个世界。当炮火吞没小镇核心，时间回到开战前一小时——循环开始。单轮之内完全自由，没有强制顺序。</p>
+    <div class="bw-steps">
+      <div class="px-card st"><b class="num">01</b><h3 data-zh="穿梭" data-en="Traverse">穿梭</h3><p data-zh="在边界石碑切换双世界，用两侧状态差异完成对照解谜，打通转移通路、运送物资。"
+         data-en="Switch worlds at the stone; solve contrast puzzles from the two states' differences to open escape routes and move supplies.">在边界石碑切换双世界，用两侧状态差异完成对照解谜，打通转移通路、运送物资。</p></div>
+      <div class="px-card st"><b class="num">02</b><h3 data-zh="寻物" data-en="Search">寻物</h3><p data-zh="搜寻 12 件遗物，解锁战前日常闪回，试着读懂居民藏在物件里的执念。"
+         data-en="Find 12 relics, unlock flashbacks of ordinary days before the war, and read the attachments townsfolk hide in objects.">搜寻 12 件遗物，解锁战前日常闪回，试着读懂居民藏在物件里的执念。</p></div>
+      <div class="px-card st"><b class="num">03</b><h3 data-zh="劝说" data-en="Persuade">劝说</h3><p data-zh="带着读懂的牵挂去劝说居民前往避难所——不是所有人都会跟你走，有些人无论如何都不离开。"
+         data-en="Use what you've understood to persuade residents toward the shelter — not everyone will come; some will never leave.">带着读懂的牵挂去劝说居民前往避难所——不是所有人都会跟你走，有些人无论如何都不离开。</p></div>
+      <div class="px-card st"><b class="num">04</b><h3 data-zh="集哨" data-en="Assemble">集哨</h3><p data-zh="找齐 5 块哨片，拼合木哨。它是跳出循环、解锁真结局的唯一钥匙。"
+         data-en="Collect 5 whistle fragments and assemble the wooden whistle — the only key out of the loop, and to the true ending.">找齐 5 块哨片，拼合木哨。它是跳出循环、解锁真结局的唯一钥匙。</p></div>
+      <div class="px-card st"><b class="num">05</b><h3 data-zh="铭记" data-en="Remember">铭记</h3><p data-zh="随时回到石碑，把遗物陈列在石台之上。它们永久保存，不受循环重置影响，成为记忆纪念碑。"
+         data-en="Return to the stone any time and lay relics on its slab. They persist across loops — a monument of memory.">随时回到石碑，把遗物陈列在石台之上。它们永久保存，不受循环重置影响，成为记忆纪念碑。</p></div>
+    </div>
+    <div class="bw-strip">
+      <div class="cell"><b>35–45<small data-zh="分钟" data-en="min">分钟</small></b><span data-zh="单周目时长" data-en="One playthrough">单周目时长</span></div>
+      <div class="cell"><b>4+1</b><span data-zh="主场景 + 边界石碑" data-en="Scenes + boundary stone">主场景 + 边界石碑</span></div>
+      <div class="cell"><b>12</b><span data-zh="件遗物" data-en="Relics">件遗物</span></div>
+      <div class="cell"><b>5</b><span data-zh="块哨片" data-en="Whistle fragments">块哨片</span></div>
+      <div class="cell"><b class="gold">0</b><span data-zh="次战斗与击杀" data-en="Combats & kills">次战斗与击杀</span></div>
+    </div>
+  </div>
+</section>
 
-    <div class="bw-spec-grid">
-      <div class="px-card bw-spec-card">
-        <h3 data-zh="安宁侧 · 童话安宁" data-en="Peace side · storybook calm">安宁侧 · 童话安宁 <span class="bw-mono">LOW&nbsp;CONTRAST&nbsp;PASTEL</span></h3>
-        <div class="swatches peace">
-          <div class="swatch"><i></i><span data-zh="奶油 · 积雪与晨光" data-en="Cream · snow &amp; dawn">奶油 · 积雪与晨光</span><span class="bw-mono">#F2E3C8</span></div>
-          <div class="swatch"><i></i><span data-zh="沙金 · 木屋与灯光" data-en="Sand · wood &amp; lamplight">沙金 · 木屋与灯光</span><span class="bw-mono">#D9B57C</span></div>
-          <div class="swatch"><i></i><span data-zh="鼠尾草 · 松林" data-en="Sage · pines">鼠尾草 · 松林</span><span class="bw-mono">#9DBB8F</span></div>
-          <div class="swatch"><i></i><span data-zh="灰蓝 · 冰河与远山" data-en="Slate · river &amp; ridges">灰蓝 · 冰河与远山</span><span class="bw-mono">#8FB4CE</span></div>
-          <div class="swatch"><i></i><span data-zh="暮粉 · 天光渐变" data-en="Blush · sky gradient">暮粉 · 天光渐变</span><span class="bw-mono">#E2B09B</span></div>
-        </div>
-        <ul class="spec-notes">
-          <li data-zh="柔和漫射天光、软体积光，阴影边缘虚化" data-en="Soft diffuse light and volume rays; blurred shadow edges">柔和漫射天光、软体积光，阴影边缘虚化</li>
-          <li data-zh="木纹、草叶、陶釉、布褶都有细腻质感，花草随风微摆" data-en="Fine textures on wood, grass, glaze and cloth; plants sway gently">木纹、草叶、陶釉、布褶都有细腻质感，花草随风微摆</li>
-          <li data-zh="轮廓清晰，边缘允许少量色彩过渡，没有硬色块断层" data-en="Clean outlines with slight edge transitions — no hard banding">轮廓清晰，边缘允许少量色彩过渡，没有硬色块断层</li>
+<!-- ============ 系统 1 · 双世界穿梭 ============ -->
+<section class="bw-section" id="worlds">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="SYSTEM 01" data-en="SYSTEM 01">SYSTEM 01</div>
+    <h2 class="bw-h2" data-zh="双世界边界穿梭" data-en="Crossing the two worlds">双世界边界穿梭</h2>
+    <p class="bw-lead" data-zh="安宁侧与战火侧共用同一套瓦片集——战火侧不是另一张地图，而是安宁侧被侵蚀变形后的样子。解谜全部来自「同一场景、两种状态」的对照。"
+       data-en="Both sides share one tileset — the War side is not another map, it is the Peace side eroded. Every puzzle comes from comparing one place in two states.">安宁侧与战火侧共用同一套瓦片集——战火侧不是另一张地图，而是安宁侧被侵蚀变形后的样子。解谜全部来自「同一场景、两种状态」的对照。</p>
+    <div class="bw-worlds" style="margin-top:30px">
+      <div class="px-card bw-world-card peace">
+        <img src="assets/img/bw-peace.png" alt="安宁侧场景" loading="lazy">
+        <div class="cap"><b><span class="tone"></span><span data-zh="安宁侧 · 童话安宁" data-en="Peace side · storybook calm">安宁侧 · 童话安宁</span></b><span data-zh="低对比柔彩色，漫射天光，花草随风微摆" data-en="Low-contrast pastels, diffuse light, plants swaying gently">低对比柔彩色，漫射天光，花草随风微摆</span></div>
+      </div>
+      <div class="px-card bw-world-card warc">
+        <img src="assets/img/bw-war.png" alt="战火侧场景" loading="lazy">
+        <div class="cap"><b><span class="tone"></span><span data-zh="战火侧 · 侵蚀失真" data-en="War side · erosion">战火侧 · 侵蚀失真</span></b><span data-zh="枯黄发灰、碳化、锈蚀、通道色散——同一片土地" data-en="Withered grey, char, rust, chromatic bleed — the same land">枯黄发灰、碳化、锈蚀、通道色散——同一片土地</span></div>
+      </div>
+    </div>
+    <div class="px-card bw-puzzle">
+      <h3><span data-zh="对照解谜 · 示例" data-en="Contrast puzzle · example">对照解谜 · 示例</span><span class="bw-mono">THE WELL ROPE</span></h3>
+      <ol>
+        <li><span data-zh="安宁侧：井绳完好，井口敞开。" data-en="Peace side: the well rope is intact, the mouth open.">安宁侧：井绳完好，井口敞开。</span></li>
+        <li><span data-zh="战火侧：井口被碎石掩埋，绳索从缝隙里露出来。" data-en="War side: the mouth is buried in rubble, the rope poking through a gap.">战火侧：井口被碎石掩埋，绳索从缝隙里露出来。</span></li>
+        <li><span data-zh="两侧对照交互——安宁侧放下绳索，战火侧就能拉出井下的急救包裹。" data-en="Interact across states — drop the rope on the Peace side, and pull the first-aid kit out of the well on the War side.">两侧对照交互——安宁侧放下绳索，战火侧就能拉出井下的急救包裹。</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 系统 2 · 遗物 ============ -->
+<section class="bw-section" id="relics">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="SYSTEM 02" data-en="SYSTEM 02">SYSTEM 02</div>
+    <h2 class="bw-h2" data-zh="遗物 · 12 件，2 件永远找不回" data-en="Relics · 12 items, 2 lost forever">遗物 · 12 件，2 件永远找不回</h2>
+    <p class="bw-lead" data-zh="10 件普通遗物随机刷新完好或损毁状态；另有 2 件固定永久损毁遗物——烧焦的全家福、破了洞的婴儿袜——永远刷不出完好版本，没有完整温暖闪回。"
+       data-en="10 ordinary relics spawn randomly intact or damaged. Two fixed relics — a scorched family photo and a torn baby sock — are permanently ruined, with no intact version and no warm flashback.">10 件普通遗物随机刷新完好或损毁状态；另有 2 件固定永久损毁遗物——烧焦的全家福、破了洞的婴儿袜——永远刷不出完好版本，没有完整温暖闪回。</p>
+    <div class="bw-relicmap">
+      <div class="px-card rm-col">
+        <h4><span data-zh="镇口老槐树" data-en="Old locust tree">镇口老槐树</span><span class="bw-mono">S1</span></h4>
+        <ul>
+          <li><span data-zh="风筝线" data-en="Kite string">风筝线</span></li>
+          <li><span data-zh="搪瓷杯" data-en="Enamel cup">搪瓷杯</span></li>
+          <li><span data-zh="编织手环" data-en="Woven bracelet">编织手环</span></li>
         </ul>
       </div>
-      <div class="px-card bw-spec-card">
-        <h3 data-zh="战火侧 · 侵蚀失真" data-en="War side · erosion">战火侧 · 侵蚀失真 <span class="bw-mono">CHROMATIC&nbsp;BLEED</span></h3>
-        <div class="swatches war">
-          <div class="swatch"><i></i><span data-zh="尘土 · 覆盖一切" data-en="Dust · on everything">尘土 · 覆盖一切</span><span class="bw-mono">#A99980</span></div>
-          <div class="swatch"><i></i><span data-zh="灰烬 · 枯黄草木" data-en="Ash · withered green">灰烬 · 枯黄草木</span><span class="bw-mono">#8A7C63</span></div>
-          <div class="swatch"><i></i><span data-zh="枯草 · 失去生机的绿" data-en="Dry · dead green">枯草 · 失去生机的绿</span><span class="bw-mono">#6E6A4A</span></div>
-          <div class="swatch"><i></i><span data-zh="锈红 · 铁皮与火" data-en="Rust · iron &amp; fire">锈红 · 铁皮与火</span><span class="bw-mono">#9C5B3C</span></div>
-          <div class="swatch"><i></i><span data-zh="碳化 · 烧灼的木头" data-en="Char · burnt wood">碳化 · 烧灼的木头</span><span class="bw-mono">#3E372F</span></div>
-        </div>
-        <ul class="spec-notes">
-          <li data-zh="不是简单褪色：色彩偏移、通道色散、色彩渗色、胶片颗粒、轻微色差" data-en="Not just fading: hue shift, channel dispersion, colour bleed, film grain, slight aberration">不是简单褪色：色彩偏移、通道色散、色彩渗色、胶片颗粒、轻微色差</li>
-          <li data-zh="木头碳化纹理、墙面裂纹、瓦片边缘崩缺、铁皮锈蚀" data-en="Charred wood, cracked walls, chipped tile edges, rusted iron">木头碳化纹理、墙面裂纹、瓦片边缘崩缺、铁皮锈蚀</li>
-          <li data-zh="崩坏特效细腻克制，像老旧模拟信号故障，不乱糟糟" data-en="Corruption stays refined — like an ageing analogue signal, never messy">崩坏特效细腻克制，像老旧模拟信号故障，不乱糟糟</li>
+      <div class="px-card rm-col">
+        <h4><span data-zh="居民区小院" data-en="Family courtyard">居民区小院</span><span class="bw-mono">S2</span></h4>
+        <ul>
+          <li><span data-zh="布娃娃" data-en="Cloth doll">布娃娃</span></li>
+          <li><span data-zh="未寄出的家书" data-en="Unsent letter">未寄出的家书</span></li>
+          <li><span data-zh="陶瓷花盆" data-en="Ceramic flowerpot">陶瓷花盆</span></li>
+        </ul>
+      </div>
+      <div class="px-card rm-col">
+        <h4><span data-zh="废弃教室" data-en="Abandoned classroom">废弃教室</span><span class="bw-mono">S3</span></h4>
+        <ul>
+          <li><span data-zh="半块橡皮" data-en="Half an eraser">半块橡皮</span></li>
+          <li><span data-zh="蜡笔画" data-en="Crayon drawing">蜡笔画</span></li>
+          <li class="perm"><span data-zh="烧焦全家福" data-en="Scorched family photo">烧焦全家福</span><em class="perm-tag" data-zh="永久损毁" data-en="PERMANENTLY LOST">永久损毁</em></li>
+        </ul>
+      </div>
+      <div class="px-card rm-col">
+        <h4><span data-zh="河边渡口" data-en="River ferry">河边渡口</span><span class="bw-mono">S4</span></h4>
+        <ul>
+          <li><span data-zh="小鱼钩" data-en="Little fish hook">小鱼钩</span></li>
+          <li><span data-zh="褪色头巾" data-en="Faded headscarf">褪色头巾</span></li>
+          <li class="perm"><span data-zh="破洞婴儿袜" data-en="Torn baby sock">破洞婴儿袜</span><em class="perm-tag" data-zh="永久损毁" data-en="PERMANENTLY LOST">永久损毁</em></li>
         </ul>
       </div>
     </div>
-
-    <div class="bw-spec-grid" style="margin-top:20px">
-      <div class="px-card bw-spec-card">
-        <h3 data-zh="像素单位" data-en="Pixel units">像素单位 <span class="bw-mono">TILE&nbsp;&amp;&nbsp;SPRITE</span></h3>
-        <div class="bw-sizes">
-          <figure class="bw-size-fig">
-            <span class="bw-mono">32 × 32 px</span>
-            <svg width="160" height="160" shape-rendering="crispEdges" aria-hidden="true">
-              <rect width="160" height="160" fill="#241D15"/>
-              <g stroke="rgba(243,230,207,.14)" stroke-width="1">
-                <line x1="32" y1="0" x2="32" y2="160"/><line x1="64" y1="0" x2="64" y2="160"/><line x1="96" y1="0" x2="96" y2="160"/><line x1="128" y1="0" x2="128" y2="160"/>
-                <line x1="0" y1="32" x2="160" y2="32"/><line x1="0" y1="64" x2="160" y2="64"/><line x1="0" y1="96" x2="160" y2="96"/><line x1="0" y1="128" x2="160" y2="128"/>
-              </g>
-              <rect x="32" y="64" width="64" height="32" fill="#D9B57C"/>
-              <rect x="32" y="96" width="64" height="12" fill="#B58F55"/>
-              <rect x="40" y="40" width="48" height="24" fill="#9DBB8F"/>
-              <rect x="96" y="96" width="32" height="32" fill="#8FB4CE" opacity=".8"/>
-            </svg>
-            <figcaption data-zh="基础瓦片 · 1 格" data-en="Base tile · 1 cell">基础瓦片 · 1 格</figcaption>
-          </figure>
-          <figure class="bw-size-fig">
-            <span class="bw-mono">64 × 64 px</span>
-            <svg width="160" height="160" shape-rendering="crispEdges" aria-hidden="true">
-              <rect width="160" height="160" fill="#241D15"/>
-              <g stroke="rgba(243,230,207,.12)" stroke-width="1">
-                <line x1="26.7" y1="0" x2="26.7" y2="160"/><line x1="53.3" y1="0" x2="53.3" y2="160"/><line x1="80" y1="0" x2="80" y2="160"/><line x1="106.7" y1="0" x2="106.7" y2="160"/><line x1="133.3" y1="0" x2="133.3" y2="160"/>
-                <line x1="0" y1="26.7" x2="160" y2="26.7"/><line x1="0" y1="53.3" x2="160" y2="53.3"/><line x1="0" y1="80" x2="160" y2="80"/><line x1="0" y1="106.7" x2="160" y2="106.7"/><line x1="0" y1="133.3" x2="160" y2="133.3"/>
-              </g>
-              <rect x="66" y="22" width="28" height="26" fill="#E2C49A"/>
-              <rect x="60" y="12" width="40" height="12" fill="#8A6B4F"/>
-              <rect x="58" y="48" width="44" height="58" fill="#C9AE85"/>
-              <rect x="64" y="106" width="14" height="34" fill="#6E5A44"/>
-              <rect x="82" y="106" width="14" height="34" fill="#6E5A44"/>
-              <rect x="102" y="52" width="10" height="30" fill="#B58F55"/>
-            </svg>
-            <figcaption data-zh="角色 · 2×2 瓦片" data-en="Character · 2×2 tiles">角色 · 2×2 瓦片</figcaption>
-          </figure>
-          <div style="flex:1;min-width:220px">
-            <ul class="spec-notes" style="margin-top:4px">
-              <li data-zh="世界切换过渡：色彩分层溶解、色相缓慢偏移、颗粒流动，过渡顺滑" data-en="World transition: layered colour dissolve, slow hue drift, flowing grain">世界切换过渡：色彩分层溶解、色相缓慢偏移、颗粒流动，过渡顺滑</li>
-              <li data-zh="遗物独立精致绘制，布 / 陶瓷 / 木头 / 纸张材质区分清晰" data-en="Relics are drawn individually with clear material reads: cloth, ceramic, wood, paper">遗物独立精致绘制，布 / 陶瓷 / 木头 / 纸张材质区分清晰</li>
-              <li data-zh="完好遗物为径向暖柔光（半透明）；损毁遗物为暗沉灰调漫光，边缘带烟尘" data-en="Intact relics glow with translucent warm radial light; damaged ones sit in dull grey haze with drifting ash">完好遗物为径向暖柔光（半透明）；损毁遗物为暗沉灰调漫光，边缘带烟尘</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="px-card bw-spec-card">
-        <h3 data-zh="试一试：世界切换" data-en="Try it: world switch">试一试：世界切换 <span class="bw-mono">DISSOLVE</span></h3>
-        <p style="font-size:13px;color:var(--bw-muted);line-height:1.9;margin-bottom:16px" data-zh="右下角的开关就是游戏内的世界切换：安宁与战火共用同一个世界，色彩分层溶解、色相缓慢偏移、颗粒流动。切换时注意标题边缘的通道色散。"
-           data-en="The switch at the hero's corner is the in-game world toggle: the same world at peace and at war, dissolving in layered colour. Watch the channel dispersion on the titles.">右下角的开关就是游戏内的世界切换：安宁与战火共用同一个世界，色彩分层溶解、色相缓慢偏移、颗粒流动。切换时注意标题边缘的通道色散。</p>
-        <div class="bw-worlds">
-          <div class="px-card bw-world-card peace">
-            <img src="assets/img/bw-peace.png" alt="安宁侧场景" loading="lazy">
-            <div class="cap"><b><span class="tone"></span><span data-zh="安宁侧 · 童话安宁" data-en="Peace · storybook calm">安宁侧 · 童话安宁</span></b><span data-zh="低对比柔彩色，漫射天光" data-en="Low-contrast pastels, diffuse light">低对比柔彩色，漫射天光</span></div>
-          </div>
-          <div class="px-card bw-world-card warc">
-            <img src="assets/img/bw-war.png" alt="战火侧场景" loading="lazy">
-            <div class="cap"><b><span class="tone"></span><span data-zh="战火侧 · 侵蚀失真" data-en="War · erosion">战火侧 · 侵蚀失真</span></b><span data-zh="枯黄发灰、碳化、锈蚀、细颗粒" data-en="Withered grey, char, rust, fine grain">枯黄发灰、碳化、锈蚀、细颗粒</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 人物 ============ -->
-<section class="bw-section">
-  <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="THE PEOPLE" data-en="THE PEOPLE">THE PEOPLE</div>
-    <h2 class="bw-h2" data-zh="你们素未谋面，却共享同一场雪" data-en="You have never met — yet you share the same snow">你们素未谋面，却共享同一场雪</h2>
-    <div class="bw-split" style="margin-top:30px">
-      <figure><img src="assets/img/bw-chars.png" alt="《边界哨声》像素角色：吹哨的哨兵与吹口琴的少年兵" loading="lazy"></figure>
-      <div class="copy">
-        <p><b data-zh="「你」——十八岁，哨兵。" data-en="You — eighteen, a sentry.">「你」——十八岁，哨兵。</b><span data-zh="口袋里有一封没寄出去的信，收信人一栏写着「妈妈」。你的命令只有一条：不许越过冰河。"
-           data-en="In your pocket is an unsent letter addressed to “Mom”. Your orders are one line: never cross the frozen river.">口袋里有一封没寄出去的信，收信人一栏写着「妈妈」。你的命令只有一条：不许越过冰河。</span></p>
-        <p><b data-zh="「对面的人」——同样十八岁。" data-en="The one across — also eighteen.">「对面的人」——同样十八岁。</b><span data-zh="制服大了一号，每晚八点吹走调的口琴。第七夜之前，你永远不会知道他的名字——但你会认得他的琴声。"
-           data-en="His uniform is one size too big, and at eight each night he plays a broken harmonica. You will not learn his name until the seventh night.">制服大了一号，每晚八点吹走调的口琴。第七夜之前，你永远不会知道他的名字——但你会认得他的琴声。</span></p>
-        <p data-zh="两个角色都是 64×64 px 的精灵，7 帧行走、4 帧吹哨、2 帧呼吸。呼吸帧是全局唯一常驻动画——雪一直在下，人一直活着。"
-           data-en="Both characters are 64×64 sprites: 7-frame walk, 4-frame whistle, 2-frame breathing. The breathing loop never stops — the snow keeps falling, and people stay alive.">两个角色都是 64×64 px 的精灵，7 帧行走、4 帧吹哨、2 帧呼吸。呼吸帧是全局唯一常驻动画——雪一直在下，人一直活着。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 哨子 ============ -->
-<section class="bw-section" style="padding-top:0">
-  <div class="bw-wrap">
-    <div class="bw-split">
-      <div class="copy">
-        <div class="bw-kicker" data-zh="THE WHISTLE" data-en="THE WHISTLE">THE WHISTLE</div>
-        <h2 class="bw-h2" data-zh="整个游戏唯一的按钮" data-en="The only button in the game">整个游戏唯一的按钮</h2>
-        <p data-zh="一只旧黄铜哨子，祖父留下的，磕掉了一块漆。它不在道具栏里——它就是整个交互系统：短吹是询问，长吹是警告，按住不放，是把你自己交给对面的瞄准镜。"
-           data-en="One old brass whistle, a chip of lacquer missing, left by your grandfather. It never sits in an inventory — it is the whole interaction system: a short blow asks, a long blow warns, and holding it down hands yourself to the scope across the valley.">一只旧黄铜哨子，祖父留下的，磕掉了一块漆。它不在道具栏里——它就是整个交互系统：短吹是询问，长吹是警告，按住不放，是把你自己交给对面的瞄准镜。</p>
-        <p data-zh="我们把全部玩法都压在这一个声音上。因为它足够小——小到像所有真实和平的开始。"
-           data-en="We built every mechanic onto that single sound. Because it is small enough — small enough to be how every real peace begins.">我们把全部玩法都压在这一个声音上。因为它足够小——小到像所有真实和平的开始。</p>
-      </div>
-      <figure style="display:flex;align-items:center;justify-content:center">
-        <img src="assets/img/relic-whistle.png" alt="像素风黄铜哨子遗物" style="max-width:320px" loading="lazy">
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 遗物 ============ -->
-<section class="bw-statement bw-section" id="relics">
-  <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="RELICS" data-en="RELICS">RELICS</div>
-    <h2 class="bw-h2" data-zh="遗物 · 点击切换完好与损毁" data-en="Relics · click to toggle intact / damaged">遗物 · 点击切换完好与损毁</h2>
-    <p class="bw-lead" data-zh="每件遗物都独立精致绘制，材质清晰可辨。完好时是暖柔光；损毁后光晕发闷、色温下沉、边缘带细碎烟尘与色散。"
-       data-en="Each relic is drawn individually with a clear material read. Intact: warm radial glow. Damaged: dull grey haze, sunk colour temperature, ash and dispersion at the edges.">每件遗物都独立精致绘制，材质清晰可辨。完好时是暖柔光；损毁后光晕发闷、色温下沉、边缘带细碎烟尘与色散。</p>
-    <div class="bw-relics" style="margin-top:32px">
+    <ul class="spec-notes" style="margin-top:22px;max-width:760px">
+      <li data-zh="完好遗物：触发温暖日常闪回，居民看见后更容易放下心结，提升信任" data-en="Intact: warm everyday flashback; residents soften and trust grows">完好遗物：触发温暖日常闪回，居民看见后更容易放下心结，提升信任</li>
+      <li data-zh="损毁遗物：闪回变成噪点黑屏、旋律扭曲；居民容易崩溃、拒绝沟通，甚至永久失去说服机会" data-en="Damaged: flashback turns to static black; residents may break down and the branch may lock forever">损毁遗物：闪回变成噪点黑屏、旋律扭曲；居民容易崩溃、拒绝沟通，甚至永久失去说服机会</li>
+      <li data-zh="所有闪回只有和平日常——没有枪炮、冲突、士兵。战争是缺席的掠夺者" data-en="All flashbacks are peaceful everyday scenes — no guns, no conflict, no soldiers. War is the absent plunderer">所有闪回只有和平日常——没有枪炮、冲突、士兵。战争是缺席的掠夺者</li>
+      <li data-zh="陈列在石碑上的遗物永久保存，构成记忆纪念碑，影响结局画面细节" data-en="Relics laid on the stone persist forever, forming a memory monument that shapes the ending screen">陈列在石碑上的遗物永久保存，构成记忆纪念碑，影响结局画面细节</li>
+    </ul>
+    <div class="bw-relics" style="margin-top:40px">
       <div class="px-card bw-relic" role="button" tabindex="0">
-        <figure><img src="assets/img/relic-banner.png" alt="布制旗帜遗物" loading="lazy"></figure>
-        <h3 data-zh="停战旗" data-en="Ceasefire banner">停战旗</h3>
-        <span class="mat" data-zh="布 · 刺绣" data-en="CLOTH · EMBROIDERED">布 · 刺绣</span>
+        <figure><img src="assets/img/relic-banner.png" alt="布料遗物" loading="lazy"></figure>
+        <h3 data-zh="编织手环" data-en="Woven bracelet">编织手环</h3>
+        <span class="mat" data-zh="布 · 编织" data-en="CLOTH · WOVEN">布 · 编织</span>
         <span class="st" data-zh="完好 · 点击查看损毁" data-en="Intact · click to damage">完好 · 点击查看损毁</span>
       </div>
       <div class="px-card bw-relic" role="button" tabindex="0">
-        <figure><img src="assets/img/relic-jar.png" alt="陶瓷罐遗物" loading="lazy"></figure>
-        <h3 data-zh="祖母的陶罐" data-en="Grandmother's jar">祖母的陶罐</h3>
+        <figure><img src="assets/img/relic-jar.png" alt="陶瓷遗物" loading="lazy"></figure>
+        <h3 data-zh="陶瓷花盆" data-en="Ceramic flowerpot">陶瓷花盆</h3>
         <span class="mat" data-zh="陶瓷 · 釉面" data-en="CERAMIC · GLAZED">陶瓷 · 釉面</span>
         <span class="st" data-zh="完好 · 点击查看损毁" data-en="Intact · click to damage">完好 · 点击查看损毁</span>
       </div>
       <div class="px-card bw-relic" role="button" tabindex="0">
-        <figure><img src="assets/img/relic-whistle.png" alt="木哨遗物" loading="lazy"></figure>
-        <h3 data-zh="祖父的哨子" data-en="Grandfather's whistle">祖父的哨子</h3>
+        <figure><img src="assets/img/relic-whistle.png" alt="木头遗物" loading="lazy"></figure>
+        <h3 data-zh="木哨（拼合后）" data-en="Wooden whistle (assembled)">木哨（拼合后）</h3>
         <span class="mat" data-zh="木头 · 雕刻" data-en="WOOD · CARVED">木头 · 雕刻</span>
         <span class="st" data-zh="完好 · 点击查看损毁" data-en="Intact · click to damage">完好 · 点击查看损毁</span>
       </div>
       <div class="px-card bw-relic" role="button" tabindex="0">
-        <figure><img src="assets/img/relic-letters.png" alt="信件遗物" loading="lazy"></figure>
-        <h3 data-zh="十一封信" data-en="Eleven letters">十一封信</h3>
+        <figure><img src="assets/img/relic-letters.png" alt="纸张遗物" loading="lazy"></figure>
+        <h3 data-zh="未寄出的家书" data-en="Unsent letter">未寄出的家书</h3>
         <span class="mat" data-zh="纸张 · 麻绳" data-en="PAPER · TWINE">纸张 · 麻绳</span>
         <span class="st" data-zh="完好 · 点击查看损毁" data-en="Intact · click to damage">完好 · 点击查看损毁</span>
+      </div>
+    </div>
+    <p class="bw-fx-hint" style="margin-top:14px" data-zh="↑ 材质示例：点击任意一件，切换完好（径向暖柔光）与损毁（暗沉灰调漫光、边缘烟尘与色散）两种状态。"
+       data-en="↑ Material samples: click any relic to toggle intact (warm radial glow) and damaged (dull grey haze, ash and dispersion).">↑ 材质示例：点击任意一件，切换完好（径向暖柔光）与损毁（暗沉灰调漫光、边缘烟尘与色散）两种状态。</p>
+  </div>
+</section>
+
+<!-- ============ 系统 3 · 哨片 ============ -->
+<section class="bw-section" id="pieces">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="SYSTEM 03" data-en="SYSTEM 03">SYSTEM 03</div>
+    <h2 class="bw-h2" data-zh="哨片 · 拼合木哨" data-en="Whistle fragments · assemble the whistle">哨片 · 拼合木哨</h2>
+    <p class="bw-lead" data-zh="哨片与遗物相互独立，是主线道具：集齐 5 块自动拼合木哨。哨子只能在边界线上吹响——站在两个世界之间，吹响整首曲子的原点。"
+       data-en="Whistle fragments are separate from relics — they are the main-line items. Collect all 5 and the wooden whistle assembles itself. It can only be sounded on the boundary line — standing between the two worlds, playing the first note of the whole melody.">哨片与遗物相互独立，是主线道具：集齐 5 块自动拼合木哨。哨子只能在边界线上吹响——站在两个世界之间，吹响整首曲子的原点。</p>
+    <div class="bw-pieces">
+      <div class="px-card piece got"><b>01</b><span data-zh="教室 · 讲台角落" data-en="Classroom · podium corner">教室 · 讲台角落</span></div>
+      <div class="px-card piece"><b>02</b><span>？？？</span></div>
+      <div class="px-card piece"><b>03</b><span>？？？</span></div>
+      <div class="px-card piece"><b>04</b><span>？？？</span></div>
+      <div class="px-card piece"><b>05</b><span>？？？</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 系统 4 · 循环与信任 ============ -->
+<section class="bw-section" id="cycle">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="SYSTEM 04" data-en="SYSTEM 04">SYSTEM 04</div>
+    <h2 class="bw-h2" data-zh="时间循环 · 信任不会重置" data-en="Time loop · trust never resets">时间循环 · 信任不会重置</h2>
+    <div class="bw-cycle-grid">
+      <div>
+        <ul class="spec-notes">
+          <li><span data-zh="触发：炮火抵达小镇核心，时间回到开战前一小时" data-en="Trigger: shellfire reaches the town core; time rewinds one hour before the war">触发：炮火抵达小镇核心，时间回到开战前一小时</span></li>
+          <li><span data-zh="单轮 = 游戏内 1 小时，自由行动，没有强制倒计时 UI" data-en="One loop = one in-game hour, fully free, no forced countdown UI">单轮 = 游戏内 1 小时，自由行动，没有强制倒计时 UI</span></li>
+          <li><span data-zh="遗物与哨片跨循环保留；居民的恐惧、失望与创伤记忆不会清零" data-en="Relics and fragments persist; the residents' fear, disappointment and trauma never reset">遗物与哨片跨循环保留；居民的恐惧、失望与创伤记忆不会清零</span></li>
+          <li><span data-zh="本轮没能接应的人，下一轮信任降低；多次失败后永久拒绝跟随" data-en="Miss an appointment and trust drops next loop; fail repeatedly and they refuse forever">本轮没能接应的人，下一轮信任降低；多次失败后永久拒绝跟随</span></li>
+          <li><span data-zh="把损毁遗物拿给居民，大概率直接永久锁死该分支" data-en="Hand a damaged relic to a resident and the branch is likely locked forever">把损毁遗物拿给居民，大概率直接永久锁死该分支</span></li>
+          <li><span data-zh="善意的传递存在曲解风险：你带去的字条与口信，可能被恐惧解读成相反的意思" data-en="Kindness can be misread: your notes and messages may be inverted by fear and suspicion">善意的传递存在曲解风险：你带去的字条与口信，可能被恐惧解读成相反的意思</span></li>
+        </ul>
+        <p class="bw-fx-hint" style="margin-top:16px" data-zh="循环的本质：是主角内心不愿接受离别与失去，不断回溯时间。但人心的伤痕，不会被时间重置抹去。"
+           data-en="The loop's true nature: the player refuses to accept parting and loss, and keeps rewinding time. But the scars in people's hearts are not erased by any reset.">循环的本质：是主角内心不愿接受离别与失去，不断回溯时间。但人心的伤痕，不会被时间重置抹去。</p>
+      </div>
+      <div class="px-card bw-carve">
+        <h3><span data-zh="石碑刻痕 · 演示" data-en="Stone carving · demo">石碑刻痕 · 演示</span><span class="bw-mono">LOOP&nbsp;<b id="carveN">0</b></span></h3>
+        <div class="carve-face" id="carveFace"><span class="carve-empty" data-zh="石碑还很干净。每一轮没能带走的人，都会留下淡淡的名字。" data-en="The stone is still clean. Everyone you couldn't take with you leaves a faint name.">石碑还很干净。每一轮没能带走的人，都会留下淡淡的名字。</span></div>
+        <div class="carve-ins" id="carveIns" data-zh="你已经习惯，选择谁活下来" data-en="You've grown used to choosing who survives">你已经习惯，选择谁活下来</div>
+        <div class="carve-bar">
+          <button class="bw-btn" id="carveBtn" type="button" data-zh="再走一轮" data-en="Run one more loop">再走一轮</button>
+          <button class="bw-btn ghost" id="carveReset" type="button" data-zh="重置" data-en="Reset">重置</button>
+        </div>
+        <p class="bw-fx-hint" data-zh="隐藏支线：连续多轮优先保全同一批人、反复放弃另一群人，石碑会浮现这行淡刻字。无惩罚，仅情绪提醒。"
+           data-en="Hidden thread: keep saving the same group and abandoning the other, and this faint line surfaces on the stone. No punishment — only an emotional note.">隐藏支线：连续多轮优先保全同一批人、反复放弃另一群人，石碑会浮现这行淡刻字。无惩罚，仅情绪提醒。</p>
       </div>
     </div>
   </div>
@@ -289,14 +295,14 @@
 <!-- ============ 流弹时刻 ============ -->
 <section class="bw-section" id="fx">
   <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="STRAY SHOT MOMENT · VFX" data-en="STRAY SHOT MOMENT · VFX">STRAY SHOT MOMENT · VFX</div>
-    <h2 class="bw-h2" data-zh="流弹时刻 · 特效演示" data-en="Stray shot moment · VFX demo">流弹时刻 · 特效演示</h2>
-    <p class="bw-lead" data-zh="点击下方画面任意位置（或用按钮）模拟一次流弹击中。注意：是微弱的冲击漫反射闪光，不是强光爆炸；画面是子像素微抖动，不是粗暴整图摇晃。"
-       data-en="Click anywhere on the viewport (or use the button) to simulate a stray shot. Note: a faint diffuse impact flash, not an explosion — and a sub-pixel tremor, not a rude screen shake.">点击下方画面任意位置（或用按钮）模拟一次流弹击中。注意：是微弱的冲击漫反射闪光，不是强光爆炸；画面是子像素微抖动，不是粗暴整图摇晃。</p>
+    <div class="bw-kicker" data-zh="SYSTEM 05 · 「不知道从哪里来的声音」" data-en="SYSTEM 05 · “A SOUND FROM NOWHERE”">SYSTEM 05 · 「不知道从哪里来的声音」</div>
+    <h2 class="bw-h2" data-zh="流弹时刻 · 无预警的环境冲击" data-en="Stray shot moment · unforeseen impact">流弹时刻 · 无预警的环境冲击</h2>
+    <p class="bw-lead" data-zh="战争随机性的具象化：没有明确子弹来源，无法预判、无法防御、无法反击。单轮循环触发 2–4 次，冷却随机；第一轮仅有 1 次轻微扰动。它专挑平静被建立起来的时刻到来。"
+       data-en="The randomness of war made tangible: no visible source, impossible to predict, defend against, or answer back. It fires 2–4 times per loop at random intervals — only once, and lightly, in the first loop. And it always arrives just after calm has been rebuilt.">战争随机性的具象化：没有明确子弹来源，无法预判、无法防御、无法反击。单轮循环触发 2–4 次，冷却随机；第一轮仅有 1 次轻微扰动。它专挑平静被建立起来的时刻到来。</p>
     <div class="px-card bw-fx" style="margin-top:28px">
       <div class="bw-fx-canvas-wrap">
         <canvas id="fxCanvas"></canvas>
-        <div class="bw-fx-hud">NIGHT 3 · THE PATROL</div>
+        <div class="bw-fx-hud">LOOP 03 · OLD LOCUST TREE</div>
       </div>
       <div class="bw-fx-bar">
         <button class="bw-btn" id="fxFire" type="button" data-zh="模拟流弹" data-en="Simulate stray shot">模拟流弹</button>
@@ -304,11 +310,22 @@
         <span class="bw-fx-hint" data-zh="提示：也可以直接点击画面" data-en="Tip: you can also click the viewport">提示：也可以直接点击画面</span>
       </div>
     </div>
-    <div class="bw-fx-layers">
-      <div class="px-card bw-fx-layer"><b data-zh="玻璃碎裂" data-en="Glass shatter">玻璃碎裂</b><span data-zh="分层碎片带反光，大小有别，落地后积灰" data-en="Layered shards with highlights, varied sizes, settling into dust">分层碎片带反光，大小有别，落地后积灰</span></div>
-      <div class="px-card bw-fx-layer"><b data-zh="瓦片击碎" data-en="Tile break">瓦片击碎</b><span data-zh="碎石粒子、尘土扬起、烟尘缓慢消散" data-en="Debris particles, rising dust, slow smoke dissipation">碎石粒子、尘土扬起、烟尘缓慢消散</span></div>
-      <div class="px-card bw-fx-layer"><b data-zh="击中瞬间" data-en="Impact flash">击中瞬间</b><span data-zh="微弱冲击漫反射闪光，短促柔和衰减" data-en="A faint diffuse flash: brief, soft decay">微弱冲击漫反射闪光，短促柔和衰减</span></div>
-      <div class="px-card bw-fx-layer"><b data-zh="震动画面" data-en="Tremor">震动画面</b><span data-zh="子像素微抖动，不粗暴整图摇晃" data-en="Sub-pixel tremor, never a crude screen shake">子像素微抖动，不粗暴整图摇晃</span></div>
+    <div class="bw-fx-levels">
+      <div class="px-card lvl"><b class="bw-mono">LEVEL A</b><h3 data-zh="轻微扰动" data-en="Light disturbance">轻微扰动</h3><p data-zh="远处模糊闷响，地面微震，橘猫受惊跑开。不破坏任何物件。" data-en="A distant muffled thud, a faint tremor, the orange cat bolting. Nothing breaks.">远处模糊闷响，地面微震，橘猫受惊跑开。不破坏任何物件。</p></div>
+      <div class="px-card lvl"><b class="bw-mono">LEVEL B</b><h3 data-zh="物件破坏 · 高频" data-en="Object damage · common">物件破坏 · 高频</h3><p data-zh="窗户碎裂、瓦片坠落、花盆击碎、晾衣布条撕裂、木桶炸开；打断对话与回忆；居民受惊，信任临时下降。" data-en="Windows shatter, tiles fall, flowerpots burst, laundry tears, barrels split; dialogue and flashbacks are cut off; residents startle, trust dips.">窗户碎裂、瓦片坠落、花盆击碎、晾衣布条撕裂、木桶炸开；打断对话与回忆；居民受惊，信任临时下降。</p></div>
+      <div class="px-card lvl"><b class="bw-mono">LEVEL C</b><h3 data-zh="记忆 / 边界冲击" data-en="Memory / border shock">记忆 / 边界冲击</h3><p data-zh="石碑震落石屑，陈列台上的遗物倾倒，正在播放的闪回被噪点直接掐断；居民轮廓蒙上灰噪。" data-en="The stone sheds chips, displayed relics topple, a playing flashback is cut to static; residents' outlines grey over.">石碑震落石屑，陈列台上的遗物倾倒，正在播放的闪回被噪点直接掐断；居民轮廓蒙上灰噪。</p></div>
+    </div>
+    <div class="bw-triggers">
+      <div class="px-card trig">
+        <h3 data-zh="高情绪触发点位" data-en="High-emotion trigger points">高情绪触发点位</h3>
+        <ol>
+          <li><span data-zh="温暖闪回刚结束、回到战火侧的那一刻" data-en="The moment a warm flashback ends and you return to the War side">温暖闪回刚结束、回到战火侧的那一刻</span></li>
+          <li><span data-zh="居民刚刚愿意信任你、准备跟随撤离时" data-en="Just as a resident finally trusts you and prepares to leave">居民刚刚愿意信任你、准备跟随撤离时</span></li>
+          <li><span data-zh="完好遗物放上石碑、暖光亮起的瞬间" data-en="The instant an intact relic is placed and its warm glow rises">完好遗物放上石碑、暖光亮起的瞬间</span></li>
+          <li><span data-zh="真结局哨声响起前，边界野花旁（仅一次轻冲击）" data-en="Before the true-ending whistle, beside the border wildflowers (one light impact only)">真结局哨声响起前，边界野花旁（仅一次轻冲击）</span></li>
+        </ol>
+        <p data-zh="重要机制：被流弹打断的居民对话与专属回忆，本轮循环不再触发——永久错过。" data-en="Key rule: dialogue and exclusive memories cut off by a stray shot do not return this loop — missed forever.">重要机制：被流弹打断的居民对话与专属回忆，本轮循环不再触发——永久错过。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -335,31 +352,303 @@
   </div>
 </section>
 
-<!-- ============ 七夜 ============ -->
-<section class="bw-statement bw-section" id="nights">
+<!-- ============ 场景 · 教室 ============ -->
+<section class="bw-section" id="scenes">
   <div class="bw-wrap">
-    <div class="bw-kicker" data-zh="SEVEN NIGHTS" data-en="SEVEN NIGHTS">SEVEN NIGHTS</div>
-    <h2 class="bw-h2" data-zh="七夜 · 节选" data-en="Seven nights · excerpts">七夜 · 节选</h2>
-    <div class="bw-nights">
-      <div class="bw-night">
-        <span class="n">NIGHT 01</span>
-        <div><h3 data-zh="学会吹哨" data-en="Learning the whistle">学会吹哨</h3>
-        <p data-zh="教程夜。你学会的唯一技能，是把声音送过山谷。" data-en="The tutorial. The only skill you learn is carrying a sound across the valley.">教程夜。你学会的唯一技能，是把声音送过山谷。</p></div>
+    <div class="bw-kicker" data-zh="SCENES · 4 主场景 + 边界石碑" data-en="SCENES · 4 SCENES + BOUNDARY STONE">SCENES · 4 主场景 + 边界石碑</div>
+    <h2 class="bw-h2" data-zh="每一个场景：3 件遗物 · 1 处解谜 · 1 名核心居民 · 流弹点位" data-en="Every scene: 3 relics · 1 puzzle · 1 key resident · stray-shot points">每一个场景：3 件遗物 · 1 处解谜 · 1 名核心居民 · 流弹点位</h2>
+    <div class="px-card bw-scene-feature" style="margin-top:30px">
+      <div class="bw-duo">
+        <img class="p" src="assets/img/bw-class-peace.png" alt="废弃教室 · 安宁侧" loading="lazy">
+        <img class="w" src="assets/img/bw-class-war.png" alt="废弃教室 · 战火侧" loading="lazy" aria-hidden="true">
       </div>
-      <div class="bw-night">
-        <span class="n">NIGHT 03</span>
-        <div><h3 data-zh="巡逻队" data-en="The patrol">巡逻队</h3>
-        <p data-zh="一队人踏冰过河。吹哨，他们绕开雷区；沉默，你保住了自己的位置。" data-en="A patrol walks onto the ice. Blow the whistle and they avoid the mines; stay silent and you keep your own position.">一队人踏冰过河。吹哨，他们绕开雷区；沉默，你保住了自己的位置。</p></div>
+      <div class="sf-copy">
+        <div class="bw-kicker" data-zh="SCENE 03 · 情绪重点区" data-en="SCENE 03 · EMOTIONAL CORE">SCENE 03 · 情绪重点区</div>
+        <h3 data-zh="废弃教室" data-en="The abandoned classroom">废弃教室</h3>
+        <p data-zh="安宁侧：孩子上课画画，老师吹哨集合放学。战火侧：课桌翻倒，黑板只剩半截粉笔字，画纸散落一地。（用右下角的开关，看这间教室的两个世界）"
+           data-en="Peace: children drawing in class, the teacher's whistle calling them home. War: desks overturned, half a chalk sentence left on the board, drawings scattered. (Use the switch to see both worlds of this room.)">安宁侧：孩子上课画画，老师吹哨集合放学。战火侧：课桌翻倒，黑板只剩半截粉笔字，画纸散落一地。（用右下角的开关，看这间教室的两个世界）</p>
+        <p data-zh="小画家看到完好蜡笔画会舍不得离开；看到撕碎的蜡笔画，反而明白家已经破碎，交出画，愿意走。经典脚本：看完蜡笔画的温暖闪回，教室窗户突然碎裂，黑板上新增一道弹痕。"
+           data-en="Shown an intact crayon drawing, the little artist can't bear to leave; shown the torn one, she understands home is already broken, hands it over, and agrees to go. Signature moment: right after the drawing's warm flashback, the classroom window shatters and a fresh bullet mark appears on the blackboard.">小画家看到完好蜡笔画会舍不得离开；看到撕碎的蜡笔画，反而明白家已经破碎，交出画，愿意走。经典脚本：看完蜡笔画的温暖闪回，教室窗户突然碎裂，黑板上新增一道弹痕。</p>
+        <div class="sf-tags">
+          <span class="tag" data-zh="哨片 · 讲台角落" data-en="Whistle fragment · podium">哨片 · 讲台角落</span>
+          <span class="tag" data-zh="永久损毁 · 烧焦全家福" data-en="Permanently lost · scorched photo">永久损毁 · 烧焦全家福</span>
+        </div>
       </div>
-      <div class="bw-night">
-        <span class="n">NIGHT 05</span>
-        <div><h3 data-zh="口琴" data-en="The harmonica">口琴</h3>
-        <p data-zh="对面第一次吹响口琴。你有三秒钟决定要不要回应。" data-en="For the first time, the harmonica sounds across the river. You have three seconds to decide whether to answer.">对面第一次吹响口琴。你有三秒钟决定要不要回应。</p></div>
+    </div>
+
+    <div class="bw-scene-grid">
+      <div class="px-card bw-scene">
+        <h3><span data-zh="镇口老槐树" data-en="Old locust tree">镇口老槐树</span><span class="bw-mono">S1</span></h3>
+        <div class="duo-lines"><p><b data-zh="安宁" data-en="Peace">安宁</b><span data-zh="枝繁叶茂，孩子放风筝，老人树下喝茶" data-en="In full leaf; children fly kites, elders drink tea below">枝繁叶茂，孩子放风筝，老人树下喝茶</span></p><p><b data-zh="战火" data-en="War">战火</b><span data-zh="半棵树干烧焦，碎石遍地" data-en="Half the trunk charred, rubble everywhere">半棵树干烧焦，碎石遍地</span></p></div>
+        <ul class="sc-meta">
+          <li><b data-zh="遗物" data-en="Relics">遗物</b><span data-zh="风筝线 · 搪瓷杯 · 编织手环" data-en="Kite string · enamel cup · woven bracelet">风筝线 · 搪瓷杯 · 编织手环</span></li>
+          <li><b data-zh="解谜" data-en="Puzzle">解谜</b><span data-zh="安宁侧取下卡在树枝的风筝 ↔ 战火侧移开铁丝网的风筝，打通避难小路" data-en="Free the kite from the branch (Peace) ↔ clear it from the wire (War) to open the escape path">安宁侧取下卡在树枝的风筝 ↔ 战火侧移开铁丝网的风筝，打通避难小路</span></li>
+          <li><b data-zh="居民" data-en="Resident">居民</b><span data-zh="两个小姑娘：完好手环→愿意跟随；损毁手环→认定约定破碎，此后永久拒绝离开" data-en="Two little girls: intact bracelet → they follow; damaged → the promise is broken, they refuse forever">两个小姑娘：完好手环→愿意跟随；损毁手环→认定约定破碎，此后永久拒绝离开</span></li>
+          <li><b data-zh="流弹" data-en="Stray shot">流弹</b><span data-zh="风筝旁边、树根处" data-en="Beside the kite, at the tree roots">风筝旁边、树根处</span></li>
+        </ul>
       </div>
-      <div class="bw-night">
-        <span class="n">NIGHT 07</span>
-        <div><h3 data-zh="雪停了" data-en="The snow stops">雪停了</h3>
-        <p data-zh="炮击将在黎明开始。这一次，哨声够响吗？" data-en="The bombardment starts at dawn. This time — is the whistle loud enough?">炮击将在黎明开始。这一次，哨声够响吗？</p></div>
+      <div class="px-card bw-scene">
+        <h3><span data-zh="居民区小院" data-en="Family courtyard">居民区小院</span><span class="bw-mono">S2</span></h3>
+        <div class="duo-lines"><p><b data-zh="安宁" data-en="Peace">安宁</b><span data-zh="整洁小院，开花的花盆，小女孩抱着布娃娃" data-en="A tidy yard, blooming pots, a girl hugging her cloth doll">整洁小院，开花的花盆，小女孩抱着布娃娃</span></p><p><b data-zh="战火" data-en="War">战火</b><span data-zh="围墙坍塌，花盆碎裂，晾衣架歪斜" data-en="Wall collapsed, pots shattered, laundry rack askew">围墙坍塌，花盆碎裂，晾衣架歪斜</span></p></div>
+        <ul class="sc-meta">
+          <li><b data-zh="遗物" data-en="Relics">遗物</b><span data-zh="布娃娃 · 未寄出的家书 · 陶瓷花盆" data-en="Cloth doll · unsent letter · ceramic flowerpot">布娃娃 · 未寄出的家书 · 陶瓷花盆</span></li>
+          <li><b data-zh="解谜" data-en="Puzzle">解谜</b><span data-zh="安宁侧放下井绳 ↔ 战火侧打捞井下急救包裹" data-en="Lower the well rope (Peace) ↔ fish the first-aid kit from the well (War)">安宁侧放下井绳 ↔ 战火侧打捞井下急救包裹</span></li>
+          <li><b data-zh="居民" data-en="Resident">居民</b><span data-zh="独居老人：完好家书→心怀念想，依旧留守；烧焦残缺家书→念想破灭，愿意撤离" data-en="A widowed elder: intact letter → stays with the memory; scorched letter → lets go, agrees to leave">独居老人：完好家书→心怀念想，依旧留守；烧焦残缺家书→念想破灭，愿意撤离</span></li>
+          <li><b data-zh="流弹" data-en="Stray shot">流弹</b><span data-zh="院墙、花盆位置" data-en="The courtyard wall, the flowerpots">院墙、花盆位置</span></li>
+        </ul>
+      </div>
+      <div class="px-card bw-scene">
+        <h3><span data-zh="废弃教室" data-en="Abandoned classroom">废弃教室</span><span class="bw-mono">S3</span></h3>
+        <div class="duo-lines"><p><b data-zh="安宁" data-en="Peace">安宁</b><span data-zh="孩子上课画画，老师吹哨集合放学" data-en="Children drawing; the teacher's whistle gathers them for home">孩子上课画画，老师吹哨集合放学</span></p><p><b data-zh="战火" data-en="War">战火</b><span data-zh="课桌翻倒，黑板只剩半截粉笔字，画纸散落" data-en="Desks overturned, half a chalk line left, drawings scattered">课桌翻倒，黑板只剩半截粉笔字，画纸散落</span></p></div>
+        <ul class="sc-meta">
+          <li><b data-zh="遗物" data-en="Relics">遗物</b><span data-zh="半块橡皮 · 蜡笔画 · 烧焦全家福（永久损毁）" data-en="Half eraser · crayon drawing · scorched photo (permanent)">半块橡皮 · 蜡笔画 · 烧焦全家福（永久损毁）</span></li>
+          <li><b data-zh="解谜" data-en="Puzzle">解谜</b><span data-zh="安宁侧取窗台提灯 ↔ 战火侧照亮地下避难通道入口" data-en="Take the lantern (Peace) ↔ light the shelter entrance below (War)">安宁侧取窗台提灯 ↔ 战火侧照亮地下避难通道入口</span></li>
+          <li><b data-zh="居民" data-en="Resident">居民</b><span data-zh="小画家：完好蜡笔画→犹豫很久才愿意撤离；撕碎的蜡笔画→明白家已破碎，交出画，愿意离开" data-en="The little artist: intact drawing → long hesitation, then leaves; torn drawing → understands, hands it over, goes">小画家：完好蜡笔画→犹豫很久才愿意撤离；撕碎的蜡笔画→明白家已破碎，交出画，愿意离开</span></li>
+          <li><b data-zh="流弹" data-en="Stray shot">流弹</b><span data-zh="教室窗户——看完蜡笔画闪回，窗户突然碎裂" data-en="The classroom window — right after the drawing flashback">教室窗户——看完蜡笔画闪回，窗户突然碎裂</span></li>
+        </ul>
+      </div>
+      <div class="px-card bw-scene">
+        <h3><span data-zh="河边渡口" data-en="River ferry">河边渡口</span><span class="bw-mono">S4</span></h3>
+        <div class="duo-lines"><p><b data-zh="安宁" data-en="Peace">安宁</b><span data-zh="清澈河水，小船停靠，老者垂钓" data-en="Clear water, a moored boat, an elder fishing">清澈河水，小船停靠，老者垂钓</span></p><p><b data-zh="战火" data-en="War">战火</b><span data-zh="船板开裂，水面漂浮碎木" data-en="Planks split, driftwood on the water">船板开裂，水面漂浮碎木</span></p></div>
+        <ul class="sc-meta">
+          <li><b data-zh="遗物" data-en="Relics">遗物</b><span data-zh="小鱼钩 · 褪色头巾 · 破洞婴儿袜（永久损毁）" data-en="Fish hook · faded headscarf · torn baby sock (permanent)">小鱼钩 · 褪色头巾 · 破洞婴儿袜（永久损毁）</span></li>
+          <li><b data-zh="解谜" data-en="Puzzle">解谜</b><span data-zh="安宁侧放置浮板 ↔ 战火侧护送行动不便的妇人渡河" data-en="Place the pontoon (Peace) ↔ help the frail woman across (War)">安宁侧放置浮板 ↔ 战火侧护送行动不便的妇人渡河</span></li>
+          <li><b data-zh="居民" data-en="Resident">居民</b><span data-zh="钓鱼老爷爷：若曾答应接应却迟到放弃，此后无论拿出什么都不再信任你" data-en="The old fisherman: break a promise to escort him once, and nothing you offer will ever restore his trust">钓鱼老爷爷：若曾答应接应却迟到放弃，此后无论拿出什么都不再信任你</span></li>
+          <li><b data-zh="流弹" data-en="Stray shot">流弹</b><span data-zh="木桶、岸边木栈道" data-en="The barrel, the wooden pier">木桶、岸边木栈道</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="px-card bw-stone-block">
+      <div class="bw-duo small">
+        <img class="p" src="assets/img/bw-stone-peace.png" alt="边界石碑 · 安宁侧" loading="lazy">
+        <img class="w" src="assets/img/bw-stone-war.png" alt="边界石碑 · 战火侧" loading="lazy" aria-hidden="true">
+      </div>
+      <div class="sb-copy">
+        <div class="bw-kicker" data-zh="CORE NODE" data-en="CORE NODE">CORE NODE</div>
+        <h3 data-zh="边界石碑" data-en="The boundary stone">边界石碑</h3>
+        <p data-zh="世界切换的锚点，遗物陈列台，循环记录的载体。每一轮循环失败，石碑新增淡像素刻痕，记录本轮没能带走的人；反复失败的名字会重复出现。"
+           data-en="Anchor of the world switch, display slab for relics, and the loop's ledger. Every failed loop adds a faint carved name — the ones you couldn't take. Names that repeat, repeat.">世界切换的锚点，遗物陈列台，循环记录的载体。每一轮循环失败，石碑新增淡像素刻痕，记录本轮没能带走的人；反复失败的名字会重复出现。</p>
+        <p data-zh="真结局触发点：站在边界线上，吹响拼好的木哨。"
+           data-en="And the trigger of the true ending: stand on the boundary line, and sound the assembled whistle.">真结局触发点：站在边界线上，吹响拼好的木哨。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 结局 ============ -->
+<section class="bw-statement bw-section" id="endings">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="ENDINGS · 3" data-en="ENDINGS · 3">ENDINGS · 3</div>
+    <h2 class="bw-h2" data-zh="结局由哨片、遗物与信任共同决定" data-en="Endings are decided by fragments, relics and trust">结局由哨片、遗物与信任共同决定</h2>
+    <div class="bw-endings">
+      <div class="px-card end">
+        <b class="num bw-mono">ENDING 01</b>
+        <h3 data-zh="困局循环 · 普通结局" data-en="Caught in the Loop · normal ending">困局循环 · 普通结局</h3>
+        <div class="cond"><span data-zh="触发条件" data-en="Condition">触发条件</span><p data-zh="5 块哨片未集齐（无论遗物多少）" data-en="Fewer than 5 fragments (relics irrelevant)">5 块哨片未集齐（无论遗物多少）</p></div>
+        <p data-zh="石碑堆满完好与破碎的遗物，刻痕密密麻麻。多次循环后，安宁侧也开始出现争吵与猜忌——恐惧跨过边界，侵染和平之地。你站在石碑前，无法跳出轮回。"
+           data-en="The stone is piled with intact and broken relics, carved names dense as rain. Loop by loop, quarrels and suspicion seep into the Peace side — fear has crossed the border. You stand before the stone, unable to leave the cycle.">石碑堆满完好与破碎的遗物，刻痕密密麻麻。多次循环后，安宁侧也开始出现争吵与猜忌——恐惧跨过边界，侵染和平之地。你站在石碑前，无法跳出轮回。</p>
+        <blockquote data-zh="你以为循环是重来的机会。可伤痛会记住，人心会疲惫，恐惧会越过边界，侵染安宁。循环继续。"
+                    data-en="You thought the loop was a chance to redo. But pain remembers, hearts tire, fear crosses the border and stains the calm. The loop continues.">你以为循环是重来的机会。可伤痛会记住，人心会疲惫，恐惧会越过边界，侵染安宁。循环继续。</blockquote>
+      </div>
+      <div class="px-card end">
+        <b class="num bw-mono">ENDING 02</b>
+        <h3 data-zh="隔岸避难 · 中立结局" data-en="Refuge Across the Water · neutral ending">隔岸避难 · 中立结局</h3>
+        <div class="cond"><span data-zh="触发条件" data-en="Condition">触发条件</span><p data-zh="哨片集齐，但遗物大多损毁、居民信任普遍破碎" data-en="All fragments, but most relics damaged and trust widely broken">哨片集齐，但遗物大多损毁、居民信任普遍破碎</p></div>
+        <p data-zh="你拼好木哨，转移大部分居民到安宁侧避难。哨声干涩单薄；战火短暂停顿，很快复燃。避难的人群挤在边界，无法安心——有人持续望向战火侧，争吵、失眠，创伤无法消散。战火侧小镇彻底死寂。"
+           data-en="You assemble the whistle and move most residents to the Peace side. The whistle sounds thin and dry; the shelling pauses, then resumes. The refugees crowd the border, unable to rest — staring back, quarrelling, sleepless, their trauma unsettled. The War side falls utterly silent.">你拼好木哨，转移大部分居民到安宁侧避难。哨声干涩单薄；战火短暂停顿，很快复燃。避难的人群挤在边界，无法安心——有人持续望向战火侧，争吵、失眠，创伤无法消散。战火侧小镇彻底死寂。</p>
+        <blockquote data-zh="肉身可以逃到安宁的土地，可创伤没有边界。有些人，永远无法真正安顿下来。"
+                    data-en="The body can flee to calmer ground, but trauma knows no border. Some people will never truly settle.">肉身可以逃到安宁的土地，可创伤没有边界。有些人，永远无法真正安顿下来。</blockquote>
+      </div>
+      <div class="px-card end true">
+        <b class="num bw-mono">ENDING 03 · TRUE</b>
+        <h3 data-zh="边界的野花 · 真结局" data-en="Wildflowers on the Border · true ending">边界的野花 · 真结局</h3>
+        <div class="cond"><span data-zh="触发条件" data-en="Condition">触发条件</span><p data-zh="哨片集齐 + 遗物收集度高 + 多数居民信任保留" data-en="All fragments + high relic completion + most trust preserved">哨片集齐 + 遗物收集度高 + 多数居民信任保留</p></div>
+        <p data-zh="你不再执着救人。走到石碑前，看着石台之上完好遗物、损毁遗物、以及永远破碎的全家福与婴儿袜并排陈列——你接纳：有些幸福永远找不回来了。走到边界线，吹响木哨。战火短暂安静；安宁侧孩童停下玩耍，战火侧远处的剪影停下聆听。"
+           data-en="You stop clinging to saving everyone. At the stone, intact and damaged relics sit in a row with the forever-broken photo and sock — and you accept that some happiness is gone for good. You step onto the boundary line and sound the whistle. The shelling hushes; children on the Peace side stop playing, and far silhouettes on the War side stop to listen.">你不再执着救人。走到石碑前，看着石台之上完好遗物、损毁遗物、以及永远破碎的全家福与婴儿袜并排陈列——你接纳：有些幸福永远找不回来了。走到边界线，吹响木哨。战火短暂安静；安宁侧孩童停下玩耍，战火侧远处的剪影停下聆听。</p>
+        <p data-zh="关键的现实改动：不是所有人愿意伸手。一部分人隔着边界互相递出糖果、画、小草；一部分剪影向后退缩，拒绝善意；安宁侧也有人转身离开。野花沿着边界裂缝蔓延，但花丛之间依旧大片荒芜。远处依旧有零星低沉轰鸣——战争没有彻底消失。"
+           data-en="And the crucial, honest touch: not everyone reaches out. Some pass candy, drawings and grass across the line; some silhouettes step back and refuse the kindness; some on the Peace side simply walk away. Wildflowers spread along the cracks — yet vast barren stretches remain between them. A few low rumbles persist in the distance. The war has not vanished.">关键的现实改动：不是所有人愿意伸手。一部分人隔着边界互相递出糖果、画、小草；一部分剪影向后退缩，拒绝善意；安宁侧也有人转身离开。野花沿着边界裂缝蔓延，但花丛之间依旧大片荒芜。远处依旧有零星低沉轰鸣——战争没有彻底消失。</p>
+        <blockquote data-zh="哨声换不来永久的停战，理解也不会降临在所有人身上。有些记忆永远破碎，有些隔阂永远无法消融。和平，是一部分人选择跨过恐惧，试着看见彼此；同时，我们永远记住那些再也找不回来的一切。"
+                    data-en="The whistle buys no lasting truce, and understanding will not reach everyone. Some memories stay broken; some divides never melt. Peace is this: some people choose to cross their fear and try to see each other — while we keep remembering everything that can never be found again.">哨声换不来永久的停战，理解也不会降临在所有人身上。有些记忆永远破碎，有些隔阂永远无法消融。和平，是一部分人选择跨过恐惧，试着看见彼此；同时，我们永远记住那些再也找不回来的一切。</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 彩蛋 ============ -->
+<section class="bw-section" id="eggs">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="EASTER EGGS" data-en="EASTER EGGS">EASTER EGGS</div>
+    <h2 class="bw-h2" data-zh="藏在边界上的温柔" data-en="Gentleness hidden along the border">藏在边界上的温柔</h2>
+    <div class="bw-eggs">
+      <div class="px-card egg"><b data-zh="橘猫" data-en="The orange cat">橘猫</b><p data-zh="跨双世界随机游荡，会嗅石碑上的遗物；真结局时，卧在两件永久损毁遗物旁。"
+         data-en="It wanders both worlds and sniffs at the relics on the stone; in the true ending, it curls up beside the two permanently lost relics.">跨双世界随机游荡，会嗅石碑上的遗物；真结局时，卧在两件永久损毁遗物旁。</p></div>
+      <div class="px-card egg"><b data-zh="全遗物蒙太奇" data-en="Full-relic montage">全遗物蒙太奇</b><p data-zh="集齐 12 件遗物后触发真结局，会播放一段无声闪回蒙太奇，串起所有完好遗物的和平片段；损毁遗物的位置定格黑屏噪点。"
+         data-en="Collect all 12 and the true ending plays a silent montage of every intact flashback — while the damaged slots freeze on black static.">集齐 12 件遗物后触发真结局，会播放一段无声闪回蒙太奇，串起所有完好遗物的和平片段；损毁遗物的位置定格黑屏噪点。</p></div>
+      <div class="px-card egg"><b data-zh="隐藏刻字" data-en="Hidden inscription">隐藏刻字</b><p data-zh="连续多轮刻意放弃同一批居民，石碑浮现淡刻字：「你已经习惯，选择谁活下来」。"
+         data-en="Repeatedly abandon the same group across loops, and a faint line surfaces: “You've grown used to choosing who survives.”">连续多轮刻意放弃同一批居民，石碑浮现淡刻字：「你已经习惯，选择谁活下来」。</p></div>
+      <div class="px-card egg"><b data-zh="闪回红线" data-en="Flashback red line">闪回红线</b><p data-zh="所有闪回画面，不存在任何士兵、武器、战斗画面——战争只在它的缺席里被感知。"
+         data-en="No flashback ever shows a soldier, a weapon, or combat — the war is felt only in its absence.">所有闪回画面，不存在任何士兵、武器、战斗画面——战争只在它的缺席里被感知。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 音频 ============ -->
+<section class="bw-section" id="audio">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="SOUND DESIGN" data-en="SOUND DESIGN">SOUND DESIGN</div>
+    <h2 class="bw-h2" data-zh="同一段旋律，两个世界" data-en="One melody, two worlds">同一段旋律，两个世界</h2>
+    <p class="bw-lead" data-zh="主旋律是同一首温柔的长笛与竖琴。安宁侧完整流畅；战火侧同一旋律降调、断续、磁带失真、大量留白。哨声是主旋律的原始单音——干净、朴素，是整首曲子的原点。安静比持续音效更压抑。"
+       data-en="The main theme is one gentle flute-and-harp melody. On the Peace side it plays whole; on the War side the same melody drops in pitch, breaks up, warps like a worn cassette, and leaves vast silences. The whistle is the melody's original single note — clean, plain, the seed of the whole song. Silence presses harder than any wall of sound.">主旋律是同一首温柔的长笛与竖琴。安宁侧完整流畅；战火侧同一旋律降调、断续、磁带失真、大量留白。哨声是主旋律的原始单音——干净、朴素，是整首曲子的原点。安静比持续音效更压抑。</p>
+    <div class="bw-audio">
+      <div class="px-card wave-card peace">
+        <div class="wc-head"><span class="tone"></span><b data-zh="安宁侧 · 完整流畅" data-en="Peace side · whole and flowing">安宁侧 · 完整流畅</b><span class="bw-mono">FLUTE + HARP</span></div>
+        <svg class="bw-wave" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q15 8 30 30 T60 30 T90 30 T120 30 T150 30 T180 30 T210 30 T240 30 T270 30 T300 30 T330 30 T360 30 T390 30 T420 30 T450 30 T480 30 T510 30 T540 30 T570 30 T600 30" fill="none"/></svg>
+      </div>
+      <div class="px-card wave-card warc">
+        <div class="wc-head"><span class="tone"></span><b data-zh="战火侧 · 降调 · 断续 · 磁带失真" data-en="War side · detuned · broken · tape-worn">战火侧 · 降调 · 断续 · 磁带失真</b><span class="bw-mono">SIGNAL LOST</span></div>
+        <svg class="bw-wave" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q15 14 30 30 L38 30 L38 44 L52 20 L66 36 L80 30 L108 30 L118 12 L132 46 L146 30 L160 30 L172 40 L186 22 L200 30 L232 30 L244 16 L258 44 L272 30 L306 30 L318 38 L332 24 L346 30 L378 30 L390 12 L404 48 L418 30 L452 30 L464 40 L478 22 L492 30 L524 30 L536 16 L550 44 L564 30 L600 30" fill="none"/></svg>
+      </div>
+    </div>
+    <ul class="spec-notes" style="margin-top:24px;max-width:820px">
+      <li><span data-zh="陈列完好遗物：BGM 补入一小段旋律；陈列损毁遗物：旋律叠加杂音，不会补全" data-en="Placing an intact relic weaves a new phrase into the BGM; a damaged one only layers noise — the melody stays broken">陈列完好遗物：BGM 补入一小段旋律；陈列损毁遗物：旋律叠加杂音，不会补全</span></li>
+      <li><span data-zh="流弹音效：短促冷破空声 → 闷沉击中声 → 0.5 秒静默 → 尘土与铁皮晃动余响。不使用尖锐爆炸音" data-en="Stray shot: a cold crack → a muffled impact → half a second of silence → dust and trembling sheet metal. Never a sharp explosion">流弹音效：短促冷破空声 → 闷沉击中声 → 0.5 秒静默 → 尘土与铁皮晃动余响。不使用尖锐爆炸音</span></li>
+      <li><span data-zh="循环重置：轻柔磁带倒带声；环境底音——安宁侧是鸟鸣、流水、孩童轻笑，战火侧是低沉风声与铁皮震颤，炮火遥远低沉、极少出现" data-en="Loop reset: a soft tape rewind. Ambience — birds, water, children's laughter vs low wind and trembling iron; distant shellfire, rare">循环重置：轻柔磁带倒带声；环境底音——安宁侧是鸟鸣、流水、孩童轻笑，战火侧是低沉风声与铁皮震颤，炮火遥远低沉、极少出现</span></li>
+      <li><span data-zh="损毁遗物触发：旋律扭曲错位、磁粉脱落杂音，夹杂极低、模糊不可辨识的低语，快速消散" data-en="Damaged relic playback: warped, misaligned melody and oxide-falling hiss, threaded with a faint unintelligible murmur that fades fast">损毁遗物触发：旋律扭曲错位、磁粉脱落杂音，夹杂极低、模糊不可辨识的低语，快速消散</span></li>
+      <li><span data-zh="居民信任破碎的对话：背景叠加一层持续低频嗡鸣" data-en="Dialogue with broken trust: a steady low-frequency hum underneath">居民信任破碎的对话：背景叠加一层持续低频嗡鸣</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 美术规范 ============ -->
+<section class="bw-statement bw-section" id="spec">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="ART DIRECTION · 32BIT RGBA" data-en="ART DIRECTION · 32BIT RGBA">ART DIRECTION · 32BIT RGBA</div>
+    <h2 class="bw-h2" data-zh="美术规范" data-en="Art direction">美术规范</h2>
+    <p class="bw-lead" data-zh="32bit RGBA 真彩色像素：保留像素轮廓，用高色深实现柔和渐变、软阴影、半透明图层与柔光——区别于老式受限色板 16bit，材质、光影与故障侵蚀的表现力更强。角色无五官，靠肢体姿态、头部倾斜与肩膀动态表达情绪；安宁侧动作轻快，战火侧迟缓沉重。"
+       data-en="32-bit true-colour pixel art: pixel outlines kept, high colour depth for soft gradients, shadows, translucency and glow — far beyond legacy 16-bit palettes in material, light and glitch-erosion expression. Characters are faceless; emotion lives in posture, tilted heads and shoulders — brisk on the Peace side, heavy and slow on the War side.">32bit RGBA 真彩色像素：保留像素轮廓，用高色深实现柔和渐变、软阴影、半透明图层与柔光——区别于老式受限色板 16bit，材质、光影与故障侵蚀的表现力更强。角色无五官，靠肢体姿态、头部倾斜与肩膀动态表达情绪；安宁侧动作轻快，战火侧迟缓沉重。</p>
+    <div class="bw-spec-grid">
+      <div class="px-card bw-spec-card">
+        <h3><span data-zh="安宁侧 · 童话安宁" data-en="Peace side · storybook calm">安宁侧 · 童话安宁</span> <span class="bw-mono">LOW&nbsp;CONTRAST&nbsp;PASTEL</span></h3>
+        <div class="swatches peace">
+          <div class="swatch"><i></i><span data-zh="奶油 · 积雪与晨光" data-en="Cream · snow &amp; dawn">奶油 · 积雪与晨光</span><span class="bw-mono">#F2E3C8</span></div>
+          <div class="swatch"><i></i><span data-zh="沙金 · 木屋与灯光" data-en="Sand · wood &amp; lamplight">沙金 · 木屋与灯光</span><span class="bw-mono">#D9B57C</span></div>
+          <div class="swatch"><i></i><span data-zh="鼠尾草 · 松林" data-en="Sage · pines">鼠尾草 · 松林</span><span class="bw-mono">#9DBB8F</span></div>
+          <div class="swatch"><i></i><span data-zh="灰蓝 · 冰河与远山" data-en="Slate · river &amp; ridges">灰蓝 · 冰河与远山</span><span class="bw-mono">#8FB4CE</span></div>
+          <div class="swatch"><i></i><span data-zh="暮粉 · 天光渐变" data-en="Blush · sky gradient">暮粉 · 天光渐变</span><span class="bw-mono">#E2B09B</span></div>
+        </div>
+        <ul class="spec-notes">
+          <li data-zh="柔和漫射天光、软体积光，阴影边缘虚化" data-en="Soft diffuse light and volume rays; blurred shadow edges">柔和漫射天光、软体积光，阴影边缘虚化</li>
+          <li data-zh="木纹、草叶、陶釉、布褶细腻质感，花草随风微摆" data-en="Fine textures on wood, grass, glaze and cloth; plants sway gently">木纹、草叶、陶釉、布褶细腻质感，花草随风微摆</li>
+          <li data-zh="轮廓清晰，边缘少量色彩过渡，没有硬色块断层" data-en="Clean outlines with slight edge transitions — no hard banding">轮廓清晰，边缘少量色彩过渡，没有硬色块断层</li>
+        </ul>
+      </div>
+      <div class="px-card bw-spec-card">
+        <h3><span data-zh="战火侧 · 侵蚀失真" data-en="War side · erosion">战火侧 · 侵蚀失真</span> <span class="bw-mono">CHROMATIC&nbsp;BLEED</span></h3>
+        <div class="swatches war">
+          <div class="swatch"><i></i><span data-zh="尘土 · 覆盖一切" data-en="Dust · on everything">尘土 · 覆盖一切</span><span class="bw-mono">#A99980</span></div>
+          <div class="swatch"><i></i><span data-zh="灰烬 · 枯黄草木" data-en="Ash · withered green">灰烬 · 枯黄草木</span><span class="bw-mono">#8A7C63</span></div>
+          <div class="swatch"><i></i><span data-zh="枯草 · 失去生机的绿" data-en="Dry · dead green">枯草 · 失去生机的绿</span><span class="bw-mono">#6E6A4A</span></div>
+          <div class="swatch"><i></i><span data-zh="锈红 · 铁皮与火" data-en="Rust · iron &amp; fire">锈红 · 铁皮与火</span><span class="bw-mono">#9C5B3C</span></div>
+          <div class="swatch"><i></i><span data-zh="碳化 · 烧灼的木头" data-en="Char · burnt wood">碳化 · 烧灼的木头</span><span class="bw-mono">#3E372F</span></div>
+        </div>
+        <ul class="spec-notes">
+          <li data-zh="不是简单褪色：色彩偏移、通道色散、色彩渗色、胶片颗粒、轻微色差" data-en="Not just fading: hue shift, channel dispersion, colour bleed, film grain, slight aberration">不是简单褪色：色彩偏移、通道色散、色彩渗色、胶片颗粒、轻微色差</li>
+          <li data-zh="木头碳化纹理、墙面裂纹、瓦片崩缺、铁皮锈蚀" data-en="Charred wood, cracked walls, chipped tile edges, rusted iron">木头碳化纹理、墙面裂纹、瓦片崩缺、铁皮锈蚀</li>
+          <li data-zh="崩坏特效细腻克制，像老旧模拟信号故障，不乱糟糟" data-en="Corruption stays refined — like an ageing analogue signal, never messy">崩坏特效细腻克制，像老旧模拟信号故障，不乱糟糟</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bw-spec-grid" style="margin-top:20px">
+      <div class="px-card bw-spec-card">
+        <h3><span data-zh="像素单位" data-en="Pixel units">像素单位</span> <span class="bw-mono">TILE&nbsp;&amp;&nbsp;SPRITE</span></h3>
+        <div class="bw-sizes">
+          <figure class="bw-size-fig">
+            <span class="bw-mono">32 × 32 px</span>
+            <svg width="150" height="150" shape-rendering="crispEdges" aria-hidden="true">
+              <rect width="150" height="150" fill="#241D15"/>
+              <g stroke="rgba(243,230,207,.14)" stroke-width="1">
+                <line x1="30" y1="0" x2="30" y2="150"/><line x1="60" y1="0" x2="60" y2="150"/><line x1="90" y1="0" x2="90" y2="150"/><line x1="120" y1="0" x2="120" y2="150"/>
+                <line x1="0" y1="30" x2="150" y2="30"/><line x1="0" y1="60" x2="150" y2="60"/><line x1="0" y1="90" x2="150" y2="90"/><line x1="0" y1="120" x2="150" y2="120"/>
+              </g>
+              <rect x="30" y="60" width="60" height="30" fill="#D9B57C"/>
+              <rect x="30" y="90" width="60" height="12" fill="#B58F55"/>
+              <rect x="38" y="38" width="44" height="22" fill="#9DBB8F"/>
+              <rect x="90" y="90" width="30" height="30" fill="#8FB4CE" opacity=".8"/>
+            </svg>
+            <figcaption data-zh="基础瓦片 · 1 格" data-en="Base tile · 1 cell">基础瓦片 · 1 格</figcaption>
+          </figure>
+          <figure class="bw-size-fig">
+            <span class="bw-mono">64 × 64 px</span>
+            <svg width="150" height="150" shape-rendering="crispEdges" aria-hidden="true">
+              <rect width="150" height="150" fill="#241D15"/>
+              <g stroke="rgba(243,230,207,.12)" stroke-width="1">
+                <line x1="25" y1="0" x2="25" y2="150"/><line x1="50" y1="0" x2="50" y2="150"/><line x1="75" y1="0" x2="75" y2="150"/><line x1="100" y1="0" x2="100" y2="150"/><line x1="125" y1="0" x2="125" y2="150"/>
+                <line x1="0" y1="25" x2="150" y2="25"/><line x1="0" y1="50" x2="150" y2="50"/><line x1="0" y1="75" x2="150" y2="75"/><line x1="0" y1="100" x2="150" y2="100"/><line x1="0" y1="125" x2="150" y2="125"/>
+              </g>
+              <rect x="62" y="20" width="26" height="24" fill="#E2C49A"/>
+              <rect x="56" y="10" width="38" height="12" fill="#8A6B4F"/>
+              <rect x="54" y="44" width="42" height="54" fill="#C9AE85"/>
+              <rect x="60" y="98" width="13" height="32" fill="#6E5A44"/>
+              <rect x="77" y="98" width="13" height="32" fill="#6E5A44"/>
+              <rect x="96" y="48" width="9" height="28" fill="#B58F55"/>
+            </svg>
+            <figcaption data-zh="角色 · 无五官 · 2×2 瓦片" data-en="Character · faceless · 2×2 tiles">角色 · 无五官 · 2×2 瓦片</figcaption>
+          </figure>
+          <div style="flex:1;min-width:220px">
+            <ul class="spec-notes" style="margin-top:4px">
+              <li data-zh="世界切换过渡：色彩分层溶解、色相缓慢偏移、颗粒流动，无粗暴闪白" data-en="World transition: layered colour dissolve, slow hue drift, flowing grain — no crude white flash">世界切换过渡：色彩分层溶解、色相缓慢偏移、颗粒流动，无粗暴闪白</li>
+              <li data-zh="遗物独立精致绘制，布 / 陶瓷 / 木头 / 纸张材质区分清晰" data-en="Relics drawn individually with clear material reads: cloth, ceramic, wood, paper">遗物独立精致绘制，布 / 陶瓷 / 木头 / 纸张材质区分清晰</li>
+              <li data-zh="士兵仅远处模糊深灰剪影，永不特写" data-en="Soldiers are distant blurred dark-grey silhouettes — never shown in close-up">士兵仅远处模糊深灰剪影，永不特写</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="px-card bw-spec-card">
+        <h3><span data-zh="美术禁忌" data-en="Art bans">美术禁忌</span> <span class="bw-mono">NEVER</span></h3>
+        <ul class="bw-ban">
+          <li data-zh="血迹、尸体、伤员特写、虐待画面" data-en="Blood, corpses, wounded close-ups, abuse imagery">血迹、尸体、伤员特写、虐待画面</li>
+          <li data-zh="Q 版搞笑元素、夸张卡通爆炸特效" data-en="Chibi comedy gags, cartoonish explosions">Q 版搞笑元素、夸张卡通爆炸特效</li>
+          <li data-zh="清晰的敌方士兵形象" data-en="Any clearly depicted enemy soldier">清晰的敌方士兵形象</li>
+        </ul>
+        <p class="bw-fx-hint" style="margin-top:16px" data-zh="页面上的世界切换是全页生效的：从这一节往上翻，所有双世界画面（教室、石碑、山谷）都会跟随切换。"
+           data-en="The world switch affects the whole page: scroll back up and every dual-world image — classroom, stone, valley — follows.">页面上的世界切换是全页生效的：从这一节往上翻，所有双世界画面（教室、石碑、山谷）都会跟随切换。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UI 与引导 ============ -->
+<section class="bw-section" id="ui">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="UI &amp; GUIDANCE" data-en="UI &amp; GUIDANCE">UI &amp; GUIDANCE</div>
+    <h2 class="bw-h2" data-zh="极简界面 · 没有任务面板" data-en="Minimal UI · no quest panel">极简界面 · 没有任务面板</h2>
+    <ol class="bw-ui-rules">
+      <li><span data-zh="全程没有任务列表、收集计数、血量 UI" data-en="No quest list, no collection counter, no health UI — ever">全程没有任务列表、收集计数、血量 UI</span></li>
+      <li><span data-zh="遗物与哨片只有微弱暖光提示；设置里可开关高亮提示，照顾卡关玩家" data-en="Relics and fragments glow faintly; a settings toggle adds highlights for the stuck">遗物与哨片只有微弱暖光提示；设置里可开关高亮提示，照顾卡关玩家</span></li>
+      <li><span data-zh="移动只有慢走，不支持奔跑——强制放缓节奏" data-en="You can only walk slowly; there is no run — the pace is the point">移动只有慢走，不支持奔跑——强制放缓节奏</span></li>
+      <li><span data-zh="靠近物件按交互键；随时回到石碑陈列遗物" data-en="Walk close and press interact; return to the stone any time to lay relics down">靠近物件按交互键；随时回到石碑陈列遗物</span></li>
+      <li><span data-zh="无失败判定、无惊吓 Jump scare" data-en="No fail state, no jump scares">无失败判定、无惊吓 Jump scare</span></li>
+      <li><span data-zh="文字极度克制：只有结局小字与石碑淡刻痕；居民只有简短独白，拒绝大段说教旁白" data-en="Text stays minimal: ending captions and faint carvings only; residents speak in short monologues — no lecturing narration">文字极度克制：只有结局小字与石碑淡刻痕；居民只有简短独白，拒绝大段说教旁白</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ Steam 文案 ============ -->
+<section class="bw-section" id="store">
+  <div class="bw-wrap">
+    <div class="bw-kicker" data-zh="STORE PAGE · STEAM" data-en="STORE PAGE · STEAM">STORE PAGE · STEAM</div>
+    <h2 class="bw-h2" data-zh="商店简介" data-en="Store description">商店简介</h2>
+    <div class="px-card bw-store" style="margin-top:26px">
+      <p data-zh="《边界哨声》是一款 32bit 像素反战短篇步行叙事游戏。无形的边界切开同一片土地，一边是童话般安宁的小镇，一边是被战争侵蚀失真的废墟。你被困在时间循环之中，穿梭两个世界，寻找散落的遗物，试着读懂普通人藏在物件里的牵挂，尝试带领他们逃离。平静随时会被未知的破空声撕碎——窗户、花盆、瓦片会毫无预兆地碎裂。你拥有重来的机会，却抹不掉人心的伤痕。不是所有人愿意离开，不是所有回忆都能完整保存。收集木哨的碎片，站在边界吹响它。哨声无法终结战火，和解从来不是普惠所有人的奇迹。和平，始于少数人愿意跨过恐惧，试着听见彼此。"
+         data-en="Border Whistle is a 32-bit pixel anti-war short walking narrative. An invisible border cuts one land in two: a storybook-peaceful town on one side, a war-eroded ruin on the other. Trapped in a time loop, you cross between the worlds, gather scattered relics, try to read the attachments ordinary people hide in objects, and try to lead them out. Calm can be torn apart at any moment by a crack from nowhere — windows, flowerpots and tiles shatter without warning. You can always begin again, but never erase the scars in people's hearts. Not everyone is willing to leave; not every memory survives intact. Gather the whistle's fragments and sound it on the border. The whistle cannot end the war, and reconciliation is never a miracle granted to all. Peace begins with the few who choose to cross their fear and try to hear each other.">《边界哨声》是一款 32bit 像素反战短篇步行叙事游戏。无形的边界切开同一片土地，一边是童话般安宁的小镇，一边是被战争侵蚀失真的废墟。你被困在时间循环之中，穿梭两个世界，寻找散落的遗物，试着读懂普通人藏在物件里的牵挂，尝试带领他们逃离。平静随时会被未知的破空声撕碎——窗户、花盆、瓦片会毫无预兆地碎裂。你拥有重来的机会，却抹不掉人心的伤痕。不是所有人愿意离开，不是所有回忆都能完整保存。收集木哨的碎片，站在边界吹响它。哨声无法终结战火，和解从来不是普惠所有人的奇迹。和平，始于少数人愿意跨过恐惧，试着听见彼此。</p>
+      <div class="trailer">
+        <b data-zh="简短宣传片文案" data-en="Trailer copy">简短宣传片文案</b>
+        <p data-zh="一边是童话，一边是尘埃；同一片土地，两种命运。你无数次循环想要拯救所有人，最后才明白：和平无法靠一个人救下所有人。"
+           data-en="One side a fairy tale, one side dust; one land, two fates. You looped countless times to save everyone — until you understood: peace cannot be won by one person saving them all.">一边是童话，一边是尘埃；同一片土地，两种命运。你无数次循环想要拯救所有人，最后才明白：和平无法靠一个人救下所有人。</p>
+      </div>
+      <div class="store-tags">
+        <span class="tag">步行模拟</span><span class="tag">叙事</span><span class="tag">反战</span><span class="tag">像素图形</span><span class="tag">解谜</span><span class="tag">短篇</span><span class="tag">氛围</span><span class="tag">时间循环</span><span class="tag">情感</span><span class="tag">独立游戏</span>
       </div>
     </div>
   </div>
@@ -374,17 +663,17 @@
       <div class="px-card bw-plan-card now">
         <b data-zh="进行中" data-en="Now">进行中</b>
         <h3>2026 · Q4</h3>
-        <p data-zh="竖切可玩：第一夜至第三夜，核心循环与配音小样。" data-en="Vertical slice: nights one to three, core loop and voice samples.">竖切可玩：第一夜至第三夜，核心循环与配音小样。</p>
+        <p data-zh="竖切可玩：镇口老槐树与废弃教室两个场景，双世界切换、遗物闪回与流弹时刻。" data-en="Vertical slice: the locust tree and the classroom, world switching, relic flashbacks and the stray-shot moment.">竖切可玩：镇口老槐树与废弃教室两个场景，双世界切换、遗物闪回与流弹时刻。</p>
       </div>
       <div class="px-card bw-plan-card">
         <b data-zh="计划中" data-en="Planned">计划中</b>
         <h3>2027 · H1</h3>
-        <p data-zh="内容完结，中英日韩四语本地化，无障碍模式（字幕 / 音效提示 / 色觉增强）。" data-en="Content complete; zh/en/ja/ko localization; accessibility modes.">内容完结，中英日韩四语本地化，无障碍模式（字幕 / 音效提示 / 色觉增强）。</p>
+        <p data-zh="内容完结：4 个场景 + 边界石碑、3 个结局、全部 12 件遗物与 5 块哨片；中英本地化与无障碍模式。" data-en="Content complete: 4 scenes + boundary stone, 3 endings, all 12 relics and 5 fragments; zh/en localization and accessibility.">内容完结：4 个场景 + 边界石碑、3 个结局、全部 12 件遗物与 5 块哨片；中英本地化与无障碍模式。</p>
       </div>
       <div class="px-card bw-plan-card">
         <b data-zh="目标" data-en="Target">目标</b>
         <h3>2027 · H2</h3>
-        <p data-zh="Steam / Epic 发售。首发收入的 2% 将继续投入星轨计划。" data-en="Launch on Steam / Epic. 2% of launch revenue keeps flowing into the Starway Project.">Steam / Epic 发售。首发收入的 2% 将继续投入星轨计划。</p>
+        <p data-zh="Steam 发售。首发收入的 2% 将继续投入星轨计划。" data-en="Steam launch. 2% of launch revenue keeps flowing into the Starway Project.">Steam 发售。首发收入的 2% 将继续投入星轨计划。</p>
       </div>
     </div>
     <div class="bw-plan-cta">
@@ -406,10 +695,12 @@
     </div>
     <div class="f-col">
       <h4 data-zh="《边界哨声》" data-en="Border Whistle">《边界哨声》</h4>
+      <a href="#loop" data-zh="核心循环" data-en="Core loop">核心循环</a>
+      <a href="#scenes" data-zh="场景与石碑" data-en="Scenes &amp; stone">场景与石碑</a>
+      <a href="#endings" data-zh="结局" data-en="Endings">结局</a>
+      <a href="#fx" data-zh="流弹时刻" data-en="Stray shots">流弹时刻</a>
       <a href="#spec" data-zh="美术规范" data-en="Art direction">美术规范</a>
-      <a href="#relics" data-zh="遗物" data-en="Relics">遗物</a>
-      <a href="#fx" data-zh="特效演示" data-en="VFX demo">特效演示</a>
-      <a href="#plan" data-zh="开发计划" data-en="Roadmap">开发计划</a>
+      <a href="#store" data-zh="商店文案" data-en="Store copy">商店文案</a>
     </div>
     <div class="f-col">
       <h4 data-zh="更多" data-en="More">更多</h4>

@@ -26,6 +26,61 @@
     b.addEventListener("click", () => setWorld(b.dataset.worldBtn));
   });
 
+  /* ---------- 1b. 滚动后出现的迷你世界切换 ---------- */
+  const fab = document.getElementById("bwFab");
+  if (fab) {
+    const hero = document.querySelector(".bw-hero");
+    const onScroll = () => {
+      const past = window.scrollY > (hero ? hero.offsetHeight * 0.6 : 500);
+      if (past && fab.hidden) { fab.hidden = false; requestAnimationFrame(() => fab.classList.add("show")); }
+      else if (!past && !fab.hidden) { fab.classList.remove("show"); setTimeout(() => { if (!fab.classList.contains("show")) fab.hidden = true; }, 420); }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- 1c. 石碑刻痕演示 ---------- */
+  const carveBtn = document.getElementById("carveBtn");
+  const carveReset = document.getElementById("carveReset");
+  const carveFace = document.getElementById("carveFace");
+  const carveIns = document.getElementById("carveIns");
+  const carveN = document.getElementById("carveN");
+  if (carveBtn && carveFace && carveIns && carveN) {
+    const NAMES = ["陈婆婆", "小满", "阿禾", "周爷爷", "阿柚", "老赵"];
+    const NAMES_EN = ["Granny Chen", "Xiaoman", "A-He", "Grpa Zhou", "A-You", "Lao Zhao"];
+    let n = 0;
+    const setTick = () => {
+      const zh = document.documentElement.getAttribute("data-lang") !== "en";
+      const pool = zh ? NAMES : NAMES_EN;
+      const d = document.createElement("div");
+      d.className = "tick";
+      d.textContent = `LOOP ${String(n).padStart(2, "0")} · ${pool[(n - 1) % pool.length]}${n > pool.length ? (zh ? " · 再次" : " · again") : ""}`;
+      carveFace.appendChild(d);
+      carveN.textContent = n;
+      if (n >= 4) carveIns.classList.add("show");
+    };
+    carveBtn.addEventListener("click", () => {
+      const empty = carveFace.querySelector(".carve-empty");
+      if (empty) empty.remove();
+      n += 1;
+      setTick();
+    });
+    carveReset.addEventListener("click", () => {
+      n = 0;
+      carveFace.innerHTML = '<span class="carve-empty"></span>';
+      carveFace.querySelector(".carve-empty").setAttribute(
+        "data-zh", "石碑还很干净。每一轮没能带走的人，都会留下淡淡的名字。");
+      carveFace.querySelector(".carve-empty").setAttribute(
+        "data-en", "The stone is still clean. Everyone you couldn't take with you leaves a faint name.");
+      carveFace.querySelector(".carve-empty").textContent =
+        document.documentElement.getAttribute("data-lang") === "en"
+          ? "The stone is still clean. Everyone you couldn't take with you leaves a faint name."
+          : "石碑还很干净。每一轮没能带走的人，都会留下淡淡的名字。";
+      carveN.textContent = "0";
+      carveIns.classList.remove("show");
+    });
+  }
+
   /* ---------- 2. 遗物：完好 ⇄ 损毁 ---------- */
   document.querySelectorAll(".bw-relic").forEach((card) => {
     card.addEventListener("click", () => {
