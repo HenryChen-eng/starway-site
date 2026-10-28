@@ -831,6 +831,7 @@ function renderDonate() {
     <ul class="dd-assure">
       <li>${LANG.isZh() ? "款项直接进入受助人 / 机构官方账户，平台不经手资金" : "Funds go directly to the recipient / NGO account; the platform never touches money"}</li>
       <li>${LANG.isZh() ? "执行票据按月公示于星轨计划页" : "Receipts published monthly on the Starway Project page"}</li>
+      <li>${LANG.isZh() ? "演示环境：所有收款码均为占位，扫码不会产生真实扣款 · 详见<a href='legal.html#donation'>捐赠与资金说明</a>" : "Demo: all QR codes are placeholders, no real payment occurs · see <a href='legal.html#donation'>Donations &amp; Funds</a>"}</li>
     </ul>`;
   dWrap.querySelectorAll("canvas[data-qr]").forEach((cv) => drawQR(cv, parseInt(cv.dataset.qr, 10)));
 }
