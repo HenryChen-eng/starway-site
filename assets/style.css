@@ -1525,6 +1525,9 @@ body.starway-theme { background: #0D0A07; }
 .nav-links a.peace-link { color: #6FB7E8; }
 .nav-links a.peace-link:hover { color: #9FD0F0; }
 .nav-links a.peace-link.active { color: #9FD0F0; }
+.nav-links a.peace-link::after { background: #6FB7E8; }
+.nav-links a.peace-link:hover::after { background: #9FD0F0; }
+.nav-links a.peace-link.active::after { background: #9FD0F0; }
 
 .peace-home {
   display: flex; flex-direction: column; gap: 26px;
