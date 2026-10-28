@@ -299,19 +299,19 @@ function initLoader() {
   const tips = {
     zh: [
       "按住 Shift 键，可以让星空中的小星星眨眼哦。加载完成后，去「未成年人模式」的星星乐园吧！",
-      "《星痕》里的每一张星图，都来自我们手绘的 400 多张草图。",
+      "《边界哨声》的雪谷地图，来自我们在真实边关的走访笔记。",
       "页面加载时会自动播放主题曲《星尘》，在公共场合可以点按钮静音。",
       "「星轨计划」的项目不只在云南和甘肃，也在肯尼亚、叙利亚和尼泊尔。",
       "右上角可以切换中英文，整站都会跟着变。",
-      "《萤火小镇》的 14 首环境音乐，每一首对应小镇的一盏灯。"
+      "《边界哨声》里，你唯一能发出声音的道具，是一只旧哨子。"
     ],
     en: [
       "Hold Shift to make the stars blink. When loading finishes, visit Star Park in Minor Mode.",
-      "Every star map in Starscar began as one of 400+ hand-drawn sketches.",
+      "Every snow-valley map in Border Whistle began as notes from our visits to real border posts.",
       "The theme “Stardust” plays on load — you can mute it any time.",
       "The Starway Project works not only in Yunnan and Gansu, but in Kenya, Syria and Nepal.",
       "Switch between Chinese and English at the top right; the whole site follows.",
-      "Firefly has 14 ambient tracks — one for each lamp in town."
+      "In Border Whistle, the only thing you can ever make sound with is one old whistle."
     ]
   };
   let tipIndex = 0;
@@ -451,27 +451,23 @@ const D = () => window.STARWAY_DATA;
 const P = (v) => window.LANG.pick(v);
 
 function renderIndex() {
-  const grid = document.getElementById("gamesGrid");
-  if (grid) {
-    grid.innerHTML = D().games.map((g) => `
-      <article class="game-card reveal in">
-        <div class="game-cover"><img src="${g.img}" alt="${P(g.title)}"></div>
-        <div class="game-body">
-          <h3 class="game-title">${P(g.title)} <small>${g.sub}</small></h3>
-          <div class="tags">${g.tags.map(t => `<span class="tag">${P(t)}</span>`).join("")}</div>
-          <p class="game-desc">${P(g.desc)}</p>
-          <div class="game-foot">
-            <span class="pill ${g.on ? "on" : "dev"}">${P(g.pill)}</span>
-            <span class="plat">${P(g.plat)}</span>
-          </div>
-        </div>
-      </article>`).join("");
+  const feat = document.getElementById("gameFeature");
+  if (feat) {
+    const g = D().games[0];
+    feat.innerHTML = `
+      <a class="work-row reveal in" href="border-whistle.html">
+        <span class="w-idx">01</span>
+        <span class="w-name"><b>${P(g.title)}</b><em>${g.sub}</em></span>
+        <span class="w-tags">${g.tags.map(t => `<span class="tag">${P(t)}</span>`).join("")}</span>
+        <span class="pill ${g.on ? "on" : "dev"}">${P(g.pill)}</span>
+        <span class="w-arrow" aria-hidden="true">→</span>
+      </a>`;
   }
 
   const list = document.getElementById("logList");
   if (list) {
     list.innerHTML = D().logs.map((l) => {
-      const href = l.kind === "peace" ? "starway.html#ledger" : "index.html#games";
+      const href = l.kind === "peace" ? "starway.html#ledger" : (l.kind === "dev" ? "border-whistle.html" : "games.html");
       return `
       <a class="log-row reveal in" href="${href}">
         <div class="log-date">${l.date}</div>

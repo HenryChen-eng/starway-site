@@ -402,51 +402,25 @@
 
     games: [
       {
-        img: "assets/img/starscar.png",
-        title: { zh: "《星痕》", en: "Starscar" },
-        sub: "STARSCAR",
-        tags: [{ zh: "叙事", en: "Narrative" }, { zh: "科幻", en: "Sci-fi" }, { zh: "单人", en: "Single player" }],
+        img: "assets/img/border-whistle.png",
+        title: { zh: "《边界哨声》", en: "Border Whistle" },
+        sub: "BORDER WHISTLE",
+        tags: [{ zh: "反战叙事", en: "Anti-war narrative" }, { zh: "潜行", en: "Stealth" }, { zh: "抉择", en: "Choices" }],
         desc: {
-          zh: "横跨三个星系的手绘叙事冒险，循着姐姐留下的星图，找回失落的记忆。",
-          en: "A hand-painted narrative adventure across three star systems. Follow the star map your sister left behind, and reclaim what was lost."
+          zh: "你没有枪，只有一只哨子。七夜之间，用声音代替射击，让山谷对面那个和你一样年轻的人，活到雪停的那天。",
+          en: "You carry no rifle — only a whistle. Over seven nights, trade gunfire for signals, and keep the boy across the valley — as young as you — alive until the snow stops."
         },
-        pill: { zh: "发售中", en: "Available" },
-        on: true,
-        plat: "Steam · WeGame"
-      },
-      {
-        img: "assets/img/firefly.png",
-        title: { zh: "《萤火小镇》", en: "Firefly" },
-        sub: "FIREFLY",
-        tags: [{ zh: "解谜", en: "Puzzle" }, { zh: "治愈", en: "Healing" }, { zh: "手绘", en: "Hand-drawn" }],
-        desc: {
-          zh: "点亮小镇的每一盏灯，在萤火虫的指引下，听居民们讲未说完的睡前故事。",
-          en: "Light every lamp in town. Following the fireflies, listen to the bedtime stories the townsfolk never finished."
-        },
-        pill: { zh: "开发中 62%", en: "In development 62%" },
+        pill: { zh: "开发中 34%", en: "In development 34%" },
         on: false,
-        plat: { zh: "预计 2027 春", en: "Q2 2027" }
-      },
-      {
-        img: "assets/img/lightkeeper.png",
-        title: { zh: "《拾光者》", en: "Lightkeeper" },
-        sub: "LIGHTKEEPER",
-        tags: [{ zh: "肉鸽", en: "Roguelike" }, { zh: "卡牌", en: "Card" }, { zh: "策略", en: "Strategy" }],
-        desc: {
-          zh: "把回忆做成卡牌，在下坠的灯塔里，一层一层向上，抢救即将熄灭的光。",
-          en: "Turn memories into cards. In a lighthouse falling into darkness, climb floor by floor to rescue the fading light."
-        },
-        pill: { zh: "发售中", en: "Available" },
-        on: true,
-        plat: "Steam · TapTap"
+        plat: { zh: "预计 2027 · Steam / Epic", en: "Coming 2027 · Steam / Epic" }
       }
     ],
 
     logs: [
       {
         date: "10.18",
-        title: { zh: "《萤火小镇》实机演示首次公开，音乐系统幕后故事", en: "Firefly gameplay reveal — the making of its music system" },
-        desc: { zh: "我们为小镇写了 14 首环境音乐，每一盏灯都有专属旋律。", en: "We wrote 14 ambient tracks for the town; every lamp has its own melody." },
+        title: { zh: "《边界哨声》首支概念片段公开：「吹哨代替开枪」", en: "Border Whistle concept teaser — a whistle instead of a rifle" },
+        desc: { zh: "雪谷第一夜在内部测试间跑通了核心循环：吹哨、暴露、抉择。", en: "Night One now runs in internal testing: whistle, exposure, and the choice between them." },
         tag: { zh: "开发中", en: "Devlog" },
         kind: "dev"
       },
@@ -466,8 +440,8 @@
       },
       {
         date: "09.12",
-        title: { zh: "《拾光者》新资料片「灯塔之上」上线，加入无尽模式", en: "Lightkeeper expansion “Above the Lighthouse” is live with endless mode" },
-        desc: { zh: "免费更新，包含 30 张新卡牌与全新的爬塔机制。", en: "A free update with 30 new cards and a rebuilt tower-climbing system." },
+        title: { zh: "《边界哨声》叙事蓝图完成：七夜、两座哨所、十一封信", en: "Border Whistle narrative locked: seven nights, two posts, eleven letters" },
+        desc: { zh: "每一夜的冲突都写成一封寄不出去的信；配乐将围绕一只旧哨子的音色展开。", en: "Every night's conflict is written as an unsent letter; the score is built around one old brass whistle." },
         tag: { zh: "更新", en: "Update" },
         kind: "update"
       }

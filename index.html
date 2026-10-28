@@ -49,7 +49,7 @@
 
   <nav class="nav-links">
     <a href="index.html" class="active" data-zh="首页" data-en="Home">首页</a>
-    <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+    <a href="games.html" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
     <a href="starway.html" class="gold" data-zh="星轨计划" data-en="Starway Project">星轨计划</a>
     <a href="peace.html" class="peace-link" data-zh="世界和平" data-en="World Peace">世界和平</a>
     <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
@@ -76,15 +76,34 @@
     <p data-zh="我们是两个人的小工作室，用耐心打磨每一个世界。愿你在其中找到光，也找到同路的旅人。"
        data-en="We are a two-person studio, polishing every world with patience. May you find light in them — and fellow travellers on the way.">我们是两个人的小工作室，用耐心打磨每一个世界。愿你在其中找到光，也找到同路的旅人。</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#games" data-zh="查看我们的游戏" data-en="Explore our games">查看我们的游戏</a>
+      <a class="btn btn-primary" href="games.html" data-zh="查看我们的游戏" data-en="Explore our games">查看我们的游戏</a>
       <a class="btn btn-ghost" href="starway.html" data-zh="星轨计划 →" data-en="Starway Project →">星轨计划 →</a>
     </div>
-    <div class="hero-meta" data-zh="Steam / WeGame / TapTap · 全球 120 万玩家 · 好评率 94%" data-en="Steam / WeGame / TapTap · 1.2M players worldwide · 94% positive">Steam / WeGame / TapTap · 全球 120 万玩家 · 好评率 94%</div>
+    <div class="hero-meta" data-zh="Steam / Epic · 反战叙事《边界哨声》 · 预计 2027" data-en="Steam / Epic · anti-war narrative Border Whistle · coming 2027">Steam / Epic · 反战叙事《边界哨声》 · 预计 2027</div>
   </div>
 
   <div class="hero-art">
-    <img src="assets/img/hero.png" alt="星轨游戏主视觉">
-    <div class="badge"><span class="dot"></span><span data-zh="《星痕》现已发售" data-en="Starscar — out now">《星痕》现已发售</span></div>
+    <svg viewBox="0 0 560 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="heroStar" x1="240" y1="150" x2="330" y2="300">
+          <stop offset="0" stop-color="#F8E7B4"/><stop offset=".55" stop-color="#E8C268"/><stop offset="1" stop-color="#B07E33"/>
+        </linearGradient>
+        <radialGradient id="heroGlow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#E8C268" stop-opacity=".16"/><stop offset="1" stop-color="#E8C268" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="290" cy="230" r="205" fill="url(#heroGlow)"/>
+      <ellipse cx="290" cy="235" rx="245" ry="86" transform="rotate(-17 290 235)" stroke="#E8C268" stroke-opacity=".34" stroke-width="1.2" stroke-dasharray="2 7"/>
+      <ellipse cx="290" cy="235" rx="182" ry="62" transform="rotate(-17 290 235)" stroke="#E8C268" stroke-opacity=".5" stroke-width="1.4"/>
+      <ellipse cx="290" cy="235" rx="118" ry="38" transform="rotate(-17 290 235)" stroke="#E8C268" stroke-opacity=".28" stroke-width="1" stroke-dasharray="1 6"/>
+      <path d="M290 172 Q294 214 322 235 Q294 256 290 298 Q286 256 258 235 Q286 214 290 172 Z" fill="url(#heroStar)"/>
+      <circle cx="452" cy="148" r="4" fill="#F8E7B4"/>
+      <circle cx="128" cy="306" r="2.6" fill="#E8C268" fill-opacity=".85"/>
+      <circle cx="196" cy="128" r="2" fill="#E8C268" fill-opacity=".6"/>
+      <circle cx="404" cy="330" r="2" fill="#F8E7B4" fill-opacity=".5"/>
+      <circle cx="470" cy="286" r="1.6" fill="#E8C268" fill-opacity=".45"/>
+    </svg>
+    <div class="badge"><span class="dot"></span><span data-zh="《边界哨声》开发中 · 2027 见" data-en="Border Whistle — in development, 2027">《边界哨声》开发中 · 2027 见</span></div>
   </div>
 </section>
 
@@ -95,9 +114,9 @@
       <div class="kicker" data-zh="OUR GAMES" data-en="OUR GAMES">OUR GAMES</div>
       <h2 data-zh="我们的游戏" data-en="Our games">我们的游戏</h2>
     </div>
-    <a class="more" href="#games" data-zh="查看全部作品 →" data-en="All titles →">查看全部作品 →</a>
+    <a class="more" href="games.html" data-zh="进入游戏页 →" data-en="Enter the game page →">进入游戏页 →</a>
   </div>
-  <div class="games-grid" id="gamesGrid"></div>
+  <div class="game-feature" id="gameFeature"></div>
 </section>
 
 <!-- ============ 工作室故事 ============ -->
@@ -113,9 +132,9 @@
   </div>
 
   <div class="stats">
-    <div class="stat"><b data-count="3" data-suffix=" 款">3 款</b><span data-zh="已发行 / 开发中游戏" data-en="Released / in development">已发行 / 开发中游戏</span></div>
-    <div class="stat"><b data-count="120" data-suffix="万+">120万+</b><span data-zh="全球玩家" data-en="Players worldwide">全球玩家</span></div>
-    <div class="stat"><b data-count="94" data-suffix="%">94%</b><span data-zh="玩家好评率" data-en="Positive reviews">玩家好评率</span></div>
+    <div class="stat"><b data-count="1" data-suffix=" 款">1 款</b><span data-zh="在研作品 · 《边界哨声》" data-en="Title in development · Border Whistle">在研作品 · 《边界哨声》</span></div>
+    <div class="stat"><b data-count="7" data-suffix=" 夜">7 夜</b><span data-zh="完整故事结构" data-en="Nights in the full story">完整故事结构</span></div>
+    <div class="stat"><b class="gold" data-count="0" data-suffix=" 发">0 发</b><span data-zh="游戏中的射击机制" data-en="Shots fired in the whole game">游戏中的射击机制</span></div>
     <div class="stat"><b class="gold" data-count="186400" data-prefix="¥">¥186,400</b><span data-zh="星轨计划累计投入" data-en="Starway Project total funding">星轨计划累计投入</span></div>
   </div>
 </section>
@@ -292,7 +311,7 @@
     </div>
     <div class="f-col">
       <h4 data-zh="探索" data-en="Explore">探索</h4>
-      <a href="index.html#games" data-zh="我们的游戏" data-en="Games">我们的游戏</a>
+      <a href="games.html" data-zh="《边界哨声》" data-en="Border Whistle">《边界哨声》</a>
       <a href="index.html#devlog" data-zh="开发日志" data-en="Devlog">开发日志</a>
       <a href="minors.html" data-zh="未成年人模式" data-en="Minor Mode">未成年人模式</a>
     </div>

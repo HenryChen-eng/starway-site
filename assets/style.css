@@ -1952,3 +1952,169 @@ html.a11y-motion .ab-tag { animation: none; }
 
 /* 首页和平区 · 复制链接按钮（button 元素对齐 a 样式） */
 .call-actions button.btn-blue { font-family: inherit; cursor: pointer; }
+
+/* =========================================================
+   《边界哨声》游戏页 · games.html
+   ========================================================= */
+.gw-hero {
+  position: relative; min-height: 88vh;
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.gw-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.gw-hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,13,.42) 0%, rgba(8,8,13,.05) 34%, rgba(8,8,13,.86) 78%, var(--bg) 100%);
+}
+.gw-hero-inner {
+  position: relative; z-index: 1; width: min(1160px, calc(100% - 48px));
+  margin: 0 auto; padding: 0 0 64px;
+}
+.gw-hero-inner h1 { font-size: clamp(38px, 6vw, 64px); letter-spacing: 0.02em; margin: 10px 0 8px; }
+.gw-hero .tags { margin: 16px 0 6px; }
+.gw-tagline { font-size: clamp(17px, 2.2vw, 22px); color: var(--gold); letter-spacing: 0.06em; }
+.gw-meta { font-size: 13px; color: var(--dim); letter-spacing: 0.08em; margin-bottom: 26px; }
+.gw-hero-inner .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.gw-statement { padding: 110px 24px; background: var(--bg-soft); border-block: 1px solid var(--line); }
+.gw-statement-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.gw-statement blockquote {
+  font-size: clamp(19px, 2.6vw, 26px); line-height: 2; font-weight: 600;
+  margin: 26px 0 18px; color: var(--text);
+}
+.gw-note { font-size: 14.5px; color: var(--muted); line-height: 1.9; margin-bottom: 30px; }
+
+.gw-mech { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.gw-mech-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px 28px; display: flex; flex-direction: column; gap: 12px;
+  transition: transform .4s var(--ease), border-color .4s var(--ease);
+}
+.gw-mech-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.gw-mech-card b {
+  font-size: 13px; letter-spacing: 0.14em; color: var(--gold);
+}
+.gw-mech-card h3 { font-size: 19px; }
+.gw-mech-card p { font-size: 13.5px; color: var(--muted); line-height: 1.85; }
+
+.gw-world { padding: 40px 24px 90px; }
+.gw-wide {
+  max-width: 1160px; margin: 0 auto 42px; border-radius: var(--radius-l);
+  overflow: hidden; border: 1px solid var(--line);
+}
+.gw-world-copy { max-width: 780px; margin: 0 auto; text-align: center; }
+.gw-world-copy h2 { font-size: clamp(24px, 3.2vw, 32px); margin-bottom: 16px; }
+.gw-world-copy p { color: var(--muted); line-height: 2; font-size: 15px; }
+
+.gw-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+  max-width: 1160px; margin: 0 auto; padding: 60px 24px;
+}
+.gw-split.rev { direction: rtl; }
+.gw-split.rev > * { direction: ltr; }
+.gw-split-img { border-radius: var(--radius-l); overflow: hidden; border: 1px solid var(--line); }
+.gw-split-copy h2 { font-size: clamp(22px, 3vw, 30px); margin: 10px 0 20px; }
+.gw-split-copy p { color: var(--muted); line-height: 2; font-size: 14.5px; margin-bottom: 14px; }
+.gw-split-copy p b { color: var(--text); display: block; margin-bottom: 4px; font-size: 15.5px; }
+
+.gw-nights { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; }
+.gw-night {
+  display: grid; grid-template-columns: 110px 1fr; gap: 26px;
+  padding: 26px 6px; border-bottom: 1px solid var(--line); align-items: start;
+}
+.gw-night:last-child { border-bottom: 0; }
+.gw-night .n { font-size: 13px; letter-spacing: 0.12em; color: var(--gold); padding-top: 4px; }
+.gw-night h3 { font-size: 17px; margin-bottom: 6px; }
+.gw-night p { font-size: 13.5px; color: var(--muted); line-height: 1.85; }
+
+.gw-plan { max-width: 1160px; margin: 0 auto; padding: 100px 24px 110px; text-align: center; }
+.gw-plan h2 { font-size: clamp(24px, 3.2vw, 32px); margin-bottom: 34px; }
+.gw-plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 40px; }
+.gw-plan-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px 26px; text-align: left; display: flex; flex-direction: column; gap: 10px;
+}
+.gw-plan-card.now { border-color: rgba(232, 194, 104, 0.45); background: linear-gradient(180deg, rgba(232,194,104,.07), transparent), var(--card); }
+.gw-plan-card b { font-size: 11.5px; letter-spacing: 0.14em; color: var(--gold); }
+.gw-plan-card h3 { font-size: 18px; }
+.gw-plan-card p { font-size: 13px; color: var(--muted); line-height: 1.85; }
+.gw-plan-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* 首页 · 单作品大卡 */
+.game-feature { max-width: 980px; margin: 0 auto; }
+.feat-card {
+  display: grid; grid-template-columns: 1.25fr 1fr;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-l);
+  overflow: hidden; min-height: 380px;
+  transition: transform .45s var(--ease), border-color .45s var(--ease);
+}
+.feat-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.feat-cover { display: block; overflow: hidden; }
+.feat-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.feat-card:hover .feat-cover img { transform: scale(1.04); }
+.feat-body { padding: 38px 36px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.feat-body .game-title { font-size: 26px; }
+.feat-body .game-desc { flex: 1; font-size: 14px; line-height: 1.9; }
+.feat-btn { margin-top: 4px; }
+
+@media (max-width: 960px) {
+  .gw-mech, .gw-plan-grid { grid-template-columns: 1fr; }
+  .gw-split { grid-template-columns: 1fr; gap: 26px; }
+  .feat-card { grid-template-columns: 1fr; }
+  .gw-night { grid-template-columns: 1fr; gap: 6px; }
+  .gw-hero { min-height: 72vh; }
+}
+
+/* 首页 · 极简作品行 */
+.work-row {
+  display: flex; align-items: center; gap: 26px;
+  padding: 30px 8px; border-top: 1px solid var(--line);
+  transition: background .3s var(--ease), padding .3s var(--ease);
+}
+.work-row:last-child { border-bottom: 1px solid var(--line); }
+.work-row:hover { background: rgba(232,194,104,.045); padding-left: 18px; padding-right: 6px; }
+.work-row .w-idx { font-size: 12px; letter-spacing: .14em; color: var(--dim); width: 30px; }
+.work-row .w-name { display: flex; flex-direction: column; gap: 3px; min-width: 220px; }
+.work-row .w-name b { font-size: 20px; font-weight: 700; letter-spacing: .01em; }
+.work-row .w-name em { font-style: normal; font-size: 11px; letter-spacing: .18em; color: var(--dim); }
+.work-row .w-tags { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.work-row .w-arrow { font-size: 20px; color: var(--dim); transition: color .3s var(--ease), transform .3s var(--ease); }
+.work-row:hover .w-arrow { color: var(--gold); transform: translateX(6px); }
+.work-row:hover .w-name b { color: var(--gold); }
+.work-row .tag { font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius-pill); padding: 4px 12px; }
+@media (max-width: 720px) {
+  .work-row { flex-wrap: wrap; gap: 12px; }
+  .work-row .w-tags { order: 3; }
+}
+
+/* 作品索引页 · games.html */
+.works-hero { max-width: 1160px; margin: 0 auto; padding: 96px 24px 40px; }
+.works-hero h1 { font-size: clamp(36px, 5vw, 54px); margin: 12px 0 14px; }
+.works-hero p { color: var(--muted); font-size: 15.5px; }
+.works-list { max-width: 1160px; margin: 0 auto; padding: 20px 24px 110px; display: flex; flex-direction: column; gap: 28px; }
+.work-card {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-l);
+  overflow: hidden; padding: 0; transition: transform .45s var(--ease), border-color .45s var(--ease);
+}
+.work-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.work-cover { overflow: hidden; min-height: 320px; }
+.work-cover img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; transition: transform .8s var(--ease); }
+.work-card:hover .work-cover img { transform: scale(1.03); }
+.work-cover.ph { display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #0E0D15 0 14px, #12101B 14px 28px); }
+.work-cover .ph-mark { font-size: 64px; color: var(--dim); opacity: .5; }
+.work-info { padding: 44px 44px 44px 0; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.work-info h2 { font-size: clamp(26px, 3.4vw, 36px); }
+.work-sub { font-size: 11px; letter-spacing: .22em; color: var(--dim); margin-top: -6px; }
+.work-info p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+.work-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 26px; width: 100%; margin: 8px 0 6px; }
+.work-meta span { display: block; font-size: 11px; letter-spacing: .12em; color: var(--dim); margin-bottom: 2px; }
+.work-meta b { font-size: 13.5px; font-weight: 600; }
+.work-more { font-size: 13.5px; color: var(--gold); letter-spacing: .04em; }
+.work-card.muted { opacity: .72; }
+.work-card.muted:hover { transform: none; }
+@media (max-width: 920px) {
+  .work-card { grid-template-columns: 1fr; }
+  .work-info { padding: 8px 28px 34px; }
+  .work-cover { min-height: 220px; }
+}
